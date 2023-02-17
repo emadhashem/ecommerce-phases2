@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    position: relative;
+  min-height: 100vh;
+  position: relative;
+
+}
+#root {
+  --color-mainBlue: #2c7be5;
+  --color-bg: #d8e4f5;
+  --color-bg-Blue: rgba(44, 123, 229, 0.5);
+  --color-white: #ffffff;
+  background-color: var(--color-bg);
+
 }
