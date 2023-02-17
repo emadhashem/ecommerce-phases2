@@ -1,0 +1,21 @@
+.mostsaledproduct-container {
+    width: 100px;
+    height: 116px;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 15px;
+
+}
+.product-info {
+    position: absolute;
+    bottom: 0;
+    height: 36px;
+    background-color: rgba(44, 123, 229, 0.5);;
+    width: 100%;
+
+}
+
+.product-img {
+    position: absolute;
+    border-radius: 10px;
+}
