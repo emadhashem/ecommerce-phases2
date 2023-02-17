@@ -6,19 +6,35 @@ import "./mostSaledSwiper.style.css";
 import MostSaledProduct from "../../products/mostSaledProduct/MostSaledProduct";
 function MostSaledSwiper() {
   return (
-    <div>
-      <Swiper slidesPerView={3} spaceBetween={30} className="mySwiper">
+    <div className="MostSaledSwiper">
+      <h3 className="container-title">المنتجات الأكثر مبيعاً</h3>
+
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={10}
+        freeMode={true}
+        className="mySwiper"
+      >
         <SwiperSlide>
-            <MostSaledProduct />
+          <MostSaledProduct />
         </SwiperSlide>
         <SwiperSlide>
-            <MostSaledProduct />
+          <MostSaledProduct />
         </SwiperSlide>
         <SwiperSlide>
-            <MostSaledProduct />
+          <MostSaledProduct />
         </SwiperSlide>
         <SwiperSlide>
-            <MostSaledProduct />
+          <MostSaledProduct />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MostSaledProduct />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MostSaledProduct />
+        </SwiperSlide>
+        <SwiperSlide>
+          <MostSaledProduct />
         </SwiperSlide>
       </Swiper>
     </div>
