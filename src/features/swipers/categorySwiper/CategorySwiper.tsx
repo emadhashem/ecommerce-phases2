@@ -10,8 +10,8 @@ function CategorySwiper() {
     <div className="categoryswiper-container">
         <h3 className="container-title" >التصنيفات</h3>
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView={4}
+        spaceBetween={10}
         pagination={{
           clickable: true,
         }}
@@ -20,7 +20,7 @@ function CategorySwiper() {
         {[...Array(5)].map((_ , idx) => (
           <SwiperSlide key={idx} >
             <div className="category-container" >
-              <TimeToLeaveIcon />
+              <TimeToLeaveIcon style={{color:"#2C7BE5"}} />
               <p>سيارات</p>
             </div>
           </SwiperSlide>
