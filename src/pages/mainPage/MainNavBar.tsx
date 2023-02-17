@@ -1,25 +1,30 @@
-import React from 'react'
-import './MainNavBar.style.css'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import logo from '../../assets/imgs/logo.png'
+import React from "react";
+import "./MainNavBar.style.css";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import logo from "../../assets/imgs/logo.png";
+import { Link } from "react-router-dom";
 
 function MainNavBar() {
   return (
-    <div className='container' >
-      <div>
-        <AccountCircleIcon sx={{color: '#2C7BE5'}}/>
-        <FavoriteIcon sx={{color: '#2C7BE5'}}/>
-        <NotificationsIcon sx={{color: '#2C7BE5'}} />
-        <ShoppingCartIcon sx={{color: '#2C7BE5'}} />
-      </div>
-      <div>
-        <img src={logo} />
+    <div className="main-nav">
+      <div className="container">
+        <div className="nav-icons">
+          <AccountCircleIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
+          <FavoriteIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
+          <NotificationsIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
+          <ShoppingCartIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
+        </div>
+        <div className="logo">
+          <Link to="/">
+            <img src={logo} />
+          </Link>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default MainNavBar
+export default MainNavBar;
