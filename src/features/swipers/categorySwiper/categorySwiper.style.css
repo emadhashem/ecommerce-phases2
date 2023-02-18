@@ -56,3 +56,11 @@
   height: 100%;
   object-fit: cover;
 }
+
+.icon-category {
+  color: var(--color-mainBlue);
+  
+}
+.active-category {
+  color: red;
+}
