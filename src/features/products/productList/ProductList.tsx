@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { CategoryContext } from "../../../contexts/category/category.context";
 import "./productList.css";
-
 import productImg from "../../../assets/imgs/Rectangle 35.png";
 import ProductListItem from "../productListItem/ProdustListItem";
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+
 const category_data = [5, 2, 1, 0, 6];
 function ProductList() {
   const { id } = useContext(CategoryContext);
@@ -16,7 +17,10 @@ function ProductList() {
             <ProductListItem productId={idx} productImg={productImg} />
           ))
         ) : (
-          <p> لا توجد اي عناصر </p>
+          <div className="error-message">
+            <SentimentVeryDissatisfiedIcon fontSize="large" />
+            <p> لا توجد اي عناصر </p>
+          </div>
         )}
       </div>
     </section>

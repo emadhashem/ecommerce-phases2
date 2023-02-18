@@ -4,7 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import logo from "../../assets/imgs/logo.png";
+import logo from "../../assets/svgs/logo.svg";
 import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 function MainNavBar() {

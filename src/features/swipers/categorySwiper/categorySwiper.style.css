@@ -13,6 +13,8 @@
   line-height: 34px;
   color: var(--color-mainBlue);
   padding-right: 13px;
+  padding-bottom: 10px;
+  margin-top: 20px;
 }
 .categoryswiper-container .category-container {
   display: flex;

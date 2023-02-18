@@ -9,6 +9,7 @@ a:hover {
 } */
 
 .section-products .container {
+  position: relative;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   justify-items: center;
@@ -16,6 +17,21 @@ a:hover {
   align-items: center;
   padding-bottom: 80px;
 }
+
+.section-products .container .error-message {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-size: 20px;
+}
+.section-products .container .error-message img{
+  width: 200px;
+  height: 200px;
+}
+
 .section-products .container .card {
   background: var(--color-white);
   height: 350px;

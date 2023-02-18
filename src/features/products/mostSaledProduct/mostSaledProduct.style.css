@@ -48,6 +48,7 @@
 }
 .mostsaledproduct-container .product-footer .product-icon .icon {
   font-size: 40px;
+  cursor: pointer;
 }
 
 .product-img {
