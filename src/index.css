@@ -18,3 +18,18 @@ body {
   background-color: var(--color-bg);
   min-height: 100vh;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2c7be5;
+  border-radius: 10px;
+}
