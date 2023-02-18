@@ -19,7 +19,7 @@
   font-size: 18px;
   background: transparent;
   border-radius: 10px;
-  width: 30% !important;
+  width: 18% !important;
   padding: 0 !important;
   /* Center slide text vertically */
   display: flex;
@@ -36,3 +36,16 @@
   overflow: hidden;
 }
 
+/* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
+@media screen and (max-width: 1024px) {
+  .MostSaledSwiper .swiper-slide {
+    width: 29% !important;
+  }
+}
+
+/* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
+@media screen and (max-width: 600px) {
+  .MostSaledSwiper .swiper-slide {
+    width: 30% !important;
+  }
+}
