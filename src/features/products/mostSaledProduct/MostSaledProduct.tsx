@@ -9,10 +9,10 @@ function MostSaledProduct() {
       <img className="product-img" src={imgSrc} alt="" />
       <div className="product-footer">
         <div className="product-icon">
-          <AddBoxIcon />
+          <AddBoxIcon className="icon" />
         </div>
         <div className="product-info">
-          test
+          جهاز لوحي
           <span>$500</span>
         </div>
       </div>
