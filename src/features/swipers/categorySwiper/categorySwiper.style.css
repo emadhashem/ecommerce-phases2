@@ -4,7 +4,7 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.container-title {
+.categoryswiper-container .container-title {
   direction: rtl;
   font-family: "Cairo";
   font-style: normal;
@@ -29,10 +29,11 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 30px;
+  text-align: right;
   color: var(--color-mainBlue);
 }
 
-.swiper {
+.categoryswiper-container .swiper {
   width: 100%;
   height: 100%;
 }
@@ -50,17 +51,19 @@
   margin-bottom: 10px;
 }
 
-.swiper-slide img {
+.categoryswiper-container .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.icon-category {
+.categoryswiper-container .icon-category {
   color: var(--color-mainBlue);
-  
 }
-.active-category {
-  color: red;
+.categoryswiper-container .active-category {
+  color: var(--color-orange);
+}
+.categoryswiper-container .active-category p {
+  color: var(--color-orange);
 }

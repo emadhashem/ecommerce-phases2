@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./categorySwiper.style.css";
 import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
 import { CategoryContext } from "../../../contexts/category/category.context";
-import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 function CategorySwiper() {
   const { id, setId } = useContext(CategoryContext);
   return (
@@ -24,13 +24,15 @@ function CategorySwiper() {
           <SwiperSlide key={idx}>
             <div
               className={`category-container ${
-                ((id === idx )? "active-category" : "")
+                id === idx ? "active-category" : ""
               }`}
               onClick={() => setId(idx)}
             >
-              <TimeToLeaveIcon className={`${
-                ((id === idx )? "active-category" : "icon-category ")
-              }`} />
+              <TimeToLeaveIcon
+                className={`${
+                  id === idx ? "active-category" : "icon-category "
+                }`}
+              />
               <p>سيارات</p>
             </div>
           </SwiperSlide>
