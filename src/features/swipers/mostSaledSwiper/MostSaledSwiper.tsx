@@ -10,7 +10,7 @@ function MostSaledSwiper() {
       <h3 className="container-title">المنتجات الأكثر مبيعاً</h3>
 
       <Swiper
-        slidesPerView={3}
+        slidesPerView={"auto"}
         spaceBetween={10}
         freeMode={true}
         className="mySwiper"
