@@ -2,7 +2,9 @@ import React from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import "./productListItem.style.css";
+// import "./productListItem.style.css";
+import "./productListItem.scss";
+
 function ProductListItem({
   productId,
   productImg,

@@ -5,7 +5,7 @@ import mainswiperImg from "../../../assets/imgs/mainswiperImg.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper";
-import "./mainSwiper.style.css";
+import "./mainSwiper.scss";
 
 function MainSwiper() {
   return (

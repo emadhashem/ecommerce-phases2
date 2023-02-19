@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { CategoryContext } from "../../../contexts/category/category.context";
-import "./productList.css";
+import "./productList.scss";
 import productImg from "../../../assets/imgs/Rectangle 35.png";
 import ProductListItem from "../productListItem/ProdustListItem";
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 const category_data = [5, 2, 1, 0, 6];
 function ProductList() {

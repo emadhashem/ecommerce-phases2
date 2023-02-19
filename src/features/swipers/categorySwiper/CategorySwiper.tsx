@@ -3,12 +3,14 @@ import React, { useContext } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "./categorySwiper.style.css";
+import "./categorySwiper.scss";
 import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
 import { CategoryContext } from "../../../contexts/category/category.context";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+
 function CategorySwiper() {
   const { id, setId } = useContext(CategoryContext);
+
   return (
     <div className="categoryswiper-container">
       <h3 className="container-title">التصنيفات</h3>

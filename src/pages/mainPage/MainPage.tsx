@@ -7,9 +7,11 @@ import MostSaledSwiper from "../../features/swipers/mostSaledSwiper/MostSaledSwi
 import ProductList from "../../features/products/productList/ProductList";
 import CategoryContextProvider from "../../contexts/category/category";
 import PageContainer from "../PageContainer";
+import "./mainPage.scss";
+
 function MainPage() {
   return (
-    <div>
+    <div className="main-page">
       <MainNavBar />
       {/* <PageContainer>
         <MainSwiper />

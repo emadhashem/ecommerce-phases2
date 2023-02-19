@@ -1,7 +1,9 @@
 import React from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
-import "./search.style.css";
+// import "./search.style.css";
+import "./search.scss";
+
 
 function Search() {
   return (

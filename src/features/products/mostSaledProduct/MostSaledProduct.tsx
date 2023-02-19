@@ -1,5 +1,5 @@
 import React from "react";
-import "./mostSaledProduct.style.css";
+import "./mostSaledProduct.scss";
 import imgSrc from "../../../assets/imgs/mainswiperImg.png";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 

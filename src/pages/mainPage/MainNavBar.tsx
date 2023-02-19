@@ -1,5 +1,5 @@
 import React from "react";
-import "./MainNavBar.style.css";
+import "./MainNavBar.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NotificationsIcon from "@mui/icons-material/Notifications";
