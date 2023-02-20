@@ -1,0 +1,178 @@
+.ModalProduct {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+
+  .card {
+    background: #fff;
+    width: 620px;
+    height: 550px;
+    overflow: hidden;
+    border: 2px solid #2c7be5;
+
+    .single-product {
+      margin-bottom: 26px;
+      width: 100%;
+      border-radius: 10px;
+
+      .part-1 {
+        position: relative;
+        height: 380px;
+        max-height: 390px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        background: var(--color-white);
+        &::before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          transition: all 0.3s;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 10px;
+        }
+      }
+
+      .part-2 {
+        display: flex;
+        flex-direction: column;
+        margin-top: -10px;
+
+        .product-title {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 28px;
+          line-height: 30px;
+          text-align: center;
+          color: #2c7be5;
+          padding-bottom: 5px;
+        }
+
+        .quantity {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          padding: 10px;
+          gap: 20px;
+          .quantity-icons {
+            display: flex;
+            align-items: center;
+            span {
+              font-family: "Cairo";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 28px;
+              padding: 0px 10px;
+              color: #2c7be5;
+            }
+          }
+          span {
+            font-family: "Cairo";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 29px;
+            line-height: 30px;
+            text-align: center;
+            color: #2c7be5;
+          }
+        }
+
+        .confirmation {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          span {
+            font-family: "Cairo";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 28px;
+            text-align: center;
+            color: #2c7be5;
+            padding-right: 5px;
+          }
+          .left {
+            display: flex;
+            align-items: center;
+          }
+          .right {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
+@media screen and (max-width: 1024px) {
+  .ModalProduct {
+    .card {
+      width: 450px;
+      height: 550px;
+      .single-product {
+        .part-1 {
+          height: 400px;
+          max-height: 410px;
+        }
+      }
+    }
+  }
+}
+
+/* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
+@media screen and (max-width: 600px) {
+  .ModalProduct {
+    .card {
+      width: 220px;
+      height: 420px;
+      .single-product {
+        .part-1 {
+          height: 280px;
+          max-height: 290px;
+          margin-bottom: 20px;
+        }
+
+        .part-2 {
+          display: flex;
+          flex-direction: column;
+          margin-top: -10px;
+          .product-title {
+            font-family: "Cairo";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            color: #2c7be5;
+          }
+          .quantity {
+            span {
+              font-size: 19px;
+            }
+          }
+
+          .confirmation {
+            span {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
