@@ -1,22 +1,28 @@
 import { IconButton } from "@mui/material";
-import React from "react";
 import "./notificationNavBar.style.scss";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import { useNavigate } from "react-router-dom";
 function NotificationNavBar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="notificationnavbar-container">
-      <div className="rapper" >
-        <ArrowBackIcon onClick = {() => navigate('/')} />
-        <div className="title" >
-            <p>
-                الاشعارات <NotificationsIcon />
-            </p>
+      <div className="rapper">
+        <div className="back-icon">
+          <ArrowBackRoundedIcon
+            onClick={() => navigate("/")}
+            fontSize="large"
+          />
         </div>
-        <DeleteIcon />
+        <div className="title">
+          <p>
+            الاشعارات <NotificationsRoundedIcon fontSize="large" />
+          </p>
+        </div>
+        <div className="delete-icon">
+          <DeleteIcon fontSize="large" />
+        </div>
       </div>
     </div>
   );

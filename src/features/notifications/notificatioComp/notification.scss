@@ -1,0 +1,52 @@
+.notifcation-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin: 20px 5px;
+  background: var(--color-white);
+  border-radius: 10px;
+  height: 100px;
+  .notifcation-img {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 7px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .description-container {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    text-align: right;
+    gap: 10px;
+    align-items: center;
+    max-height: 100px;
+    max-width: 100%;
+    overflow: hidden;
+
+    .description {
+      color: var(--color-mainBlue);
+      font-family: "Cairo";
+      font-style: normal;
+
+      span {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 19px;
+        text-align: right;
+      }
+      p {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: right;
+      }
+    }
+
+    .dont-icon {
+      color: var(--color-mainBlue);
+    }
+  }
+}
