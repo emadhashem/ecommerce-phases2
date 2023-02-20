@@ -5,7 +5,7 @@ import useGlobalPath from "./useGlobalPath";
 function NavBar() {
   const CurNav = useGlobalPath(useLocation().pathname);
 
-  return <>{CurNav()}</>;
+  return <>{CurNav}</>;
 }
 
 export default NavBar;
