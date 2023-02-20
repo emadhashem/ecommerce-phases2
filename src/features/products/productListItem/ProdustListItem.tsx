@@ -8,9 +8,11 @@ import "./productListItem.scss";
 function ProductListItem({
   productId,
   productImg,
+  onClick
 }: {
   productId: any;
   productImg: any;
+  onClick : () => void
 }) {
   return (
     <div className="card" key={productId}>
@@ -18,18 +20,18 @@ function ProductListItem({
         <div className="part-1">
           <img src={productImg} alt="" />
           <ul>
-            <li>
-              <a href="#">
+            <li onClick={onClick} >
+              <a>
                 <ShoppingCartIcon />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a >
                 <FavoriteIcon />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a >
                 <FullscreenIcon />
               </a>
             </li>

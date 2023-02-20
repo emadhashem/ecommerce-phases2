@@ -12,18 +12,6 @@ import "./mainPage.scss";
 function MainPage() {
   return (
     <div className="main-page">
-      <MainNavBar />
-      {/* <PageContainer>
-        <MainSwiper />
-        <Search />
-        <MostSaledSwiper />
-        <div>
-          <CategoryContextProvider>
-            <CategorySwiper />
-            <ProductList />
-          </CategoryContextProvider>
-        </div>
-      </PageContainer> */}
       <div>
         <MainSwiper />
         <Search />

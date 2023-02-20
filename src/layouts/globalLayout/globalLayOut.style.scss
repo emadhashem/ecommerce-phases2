@@ -1,0 +1,8 @@
+.globallayout-container {
+    width: 100%;
+    height: 100vh;
+    .layout-body {
+        height: 80%;
+        overflow-y: scroll;
+    }
+}
