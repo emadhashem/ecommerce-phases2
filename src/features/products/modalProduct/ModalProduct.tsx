@@ -1,37 +1,57 @@
 import React from "react";
 import "./modalProduct.scss";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import RemoveCircleTwoToneIcon from "@mui/icons-material/RemoveCircleTwoTone";
 import CancelIcon from "@mui/icons-material/Cancel";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import AddCircleTwoToneIcon from "@mui/icons-material/AddCircleTwoTone";
+import img from "../../../assets/imgs/Rectangle 35.png";
 
 function ModalProduct() {
   return (
     <div className="ModalProduct">
       <div className="card">
         <div className="single-product">
-          <div className="part-1">
-            <img src="" alt="" />
+          <div className="ModalProduct-part-1">
+            <div className="product-title">
+              <h4>لابتوب أبل</h4>
+              <span>2000 $</span>
+            </div>
+            <div className="img-container">
+              <img src={img} alt="" />
+            </div>
+            <div className="quantity-icons">
+              <RemoveCircleTwoToneIcon
+                sx={{ color: "#B8B8B8" }}
+                fontSize="medium"
+                className="iicon"
+              />
+              <span>999</span>
+              <AddCircleTwoToneIcon
+                sx={{ color: "#2C7BE5" }}
+                fontSize="medium"
+                className="iicon"
+              />
+            </div>
           </div>
-          <div className="part-2">
-            <h3 className="product-title">تم اضافتها إلى سلة </h3>
-            <div className="quantity">
-              <div className="quantity-icons">
-                <AddCircleIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
-                <span>01</span>
-                <RemoveCircleIcon sx={{ color: "#B8B8B8" }} fontSize="large" />
-              </div>
-              <span>الكمية</span>
+          <hr />
+          <div className="ModalProduct-part-2">
+            <div className="total-price">
+              <p>
+                السعر الإجمالي: <span>$ 2000</span>
+              </p>
             </div>
             <div className="confirmation">
-              <div className="left">
-                <span>تم</span>
-                <CheckCircleIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
-              </div>
-              <div className="right">
-                <span>تراجع</span>
-                <CancelIcon sx={{ color: "#B8B8B8" }} fontSize="large" />
-              </div>
+              <button className="cancel-btn">
+                <span>إلغاء</span>
+                <CancelIcon sx={{ color: "#FFFFFF" }} fontSize="large" />
+              </button>
+              <button className="check-btn">
+                <span>موافق</span>
+                <CheckCircleRoundedIcon
+                  sx={{ color: "#FFFFFF" }}
+                  fontSize="large"
+                />
+              </button>
             </div>
           </div>
         </div>
