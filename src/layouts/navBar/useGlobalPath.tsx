@@ -6,6 +6,7 @@ const navbars = new Map<string , React.ReactNode>()
 navbars.set("/" , <MainNavBar />)
 navbars.set("/notifications" , <NotificationNavBar />)
 navbars.set("/cart" , <CartNavBar />)
+navbars.set("/login" , null)
 function useGlobalPath(curPath : string ) {
     return navbars.get(curPath)
 }
