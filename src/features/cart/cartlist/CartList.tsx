@@ -1,16 +1,15 @@
-import React from 'react'
-import CartListItem from '../cartComp/CartListItem'
+import React from "react";
+import CartListItem from "../cartComp/CartListItem";
+import "./cartList.scss";
 
 function CartList() {
   return (
-    <div>
-        {
-            [...Array(6)].map((_ , idx) => (
-                <CartListItem />
-            ))
-        }
+    <div className="CartList-container">
+      {[...Array(6)].map((_, idx) => (
+        <CartListItem />
+      ))}
     </div>
-  )
+  );
 }
 
-export default CartList
+export default CartList;

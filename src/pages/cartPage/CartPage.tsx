@@ -1,12 +1,12 @@
-import React from 'react'
-import CartList from '../../features/cart/cartlist/CartList'
+import CartList from "../../features/cart/cartlist/CartList";
+import "./cartPage.scss";
 
 function CartPage() {
   return (
-    <div>
+    <div className="CartPage-container">
       <CartList />
     </div>
-  )
+  );
 }
 
-export default CartPage
+export default CartPage;
