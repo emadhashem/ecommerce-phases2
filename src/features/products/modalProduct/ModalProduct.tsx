@@ -1,9 +1,9 @@
 import React from "react";
 import "./modalProduct.scss";
-import RemoveCircleTwoToneIcon from "@mui/icons-material/RemoveCircleTwoTone";
+import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import AddCircleTwoToneIcon from "@mui/icons-material/AddCircleTwoTone";
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import img from "../../../assets/imgs/Rectangle 35.png";
 
 function ModalProduct() {
@@ -20,16 +20,14 @@ function ModalProduct() {
               <img src={img} alt="" />
             </div>
             <div className="quantity-icons">
-              <RemoveCircleTwoToneIcon
-                sx={{ color: "#B8B8B8" }}
+              <RemoveCircleRoundedIcon
                 fontSize="medium"
-                className="iicon"
+                className="remove-icon"
               />
               <span>999</span>
-              <AddCircleTwoToneIcon
-                sx={{ color: "#2C7BE5" }}
+              <AddOutlinedIcon
                 fontSize="medium"
-                className="iicon"
+                className="add-icon"
               />
             </div>
           </div>

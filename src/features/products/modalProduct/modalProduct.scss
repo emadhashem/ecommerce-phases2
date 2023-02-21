@@ -70,6 +70,17 @@
           align-items: center;
           max-width: 38px;
 
+          .add-icon {
+            color: var(--color-mainBlue);
+            border-radius: 50%;
+            background: rgba(44, 123, 229, 0.3);
+            font-size: 25px;
+          }
+          .remove-icon {
+            color: #b8b8b8;
+            font-size: 28px;
+          }
+
           span {
             font-family: "Cairo";
             font-style: normal;
