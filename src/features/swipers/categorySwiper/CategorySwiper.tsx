@@ -13,7 +13,10 @@ function CategorySwiper() {
 
   return (
     <div className="categoryswiper-container">
-      <h3 className="container-title">التصنيفات</h3>
+      <div className="container-title">
+        <div className="bar"></div>
+        <h3>الأصناف</h3>
+      </div>
       <Swiper
         slidesPerView={4}
         spaceBetween={10}

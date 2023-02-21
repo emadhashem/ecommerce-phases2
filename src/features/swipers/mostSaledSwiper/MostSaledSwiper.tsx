@@ -17,7 +17,10 @@ function MostSaledSwiper() {
   };
   return (
     <div className="MostSaledSwiper">
-      <h3 className="container-title">المنتجات الأكثر مبيعاً</h3>
+      <div className="container-title">
+        <div className="bar"></div>
+        <h3>المنتجات الأكثر مبيعاً</h3>
+      </div>
       <ModalOverLay open={open} handleClose={handleClose}>
         <ModalProduct />
       </ModalOverLay>
