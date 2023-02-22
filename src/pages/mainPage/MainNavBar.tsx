@@ -14,7 +14,7 @@ function MainNavBar() {
       <div className="container">
         <div className="nav-icons">
           <AccountCircleIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
-          <FavoriteIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
+          <FavoriteIcon sx={{ color: "#2C7BE5" }} onClick = {() => navigate('/favorites')} fontSize="large" />
           <Badge badgeContent={99} color="error">
             <NotificationsIcon onClick = {() => navigate('notifications')} sx={{ color: "#2C7BE5" }} fontSize="large" />
           </Badge>
