@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useGetDataApi from "./useGetDataApi";
 import imgSrc from "../../assets/svgs/logo.svg";
-import './splash.style.scss'
+import "./splash.style.scss";
 function SplashPage() {
   const [done, setdone] = useState(false);
   const getDataApi = useGetDataApi();
@@ -16,6 +16,9 @@ function SplashPage() {
     return (
       <div className="splash-container">
         <img src={imgSrc} />
+        <div className="footer-title">
+          <span>أمان , سرعة , تنوع </span>
+        </div>
       </div>
     );
 }
