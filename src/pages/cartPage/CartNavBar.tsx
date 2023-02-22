@@ -1,6 +1,5 @@
-import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useNavigate } from "react-router-dom";
 import "./cartNavBar.scss";
 
@@ -17,12 +16,12 @@ function CartNavBar() {
         </div>
         <div className="title">
           <p>
-          محتوى السلة <NotificationsRoundedIcon fontSize="large" />
+          محتوى السلة <ShoppingCartIcon fontSize="large" />
           </p>
         </div>
-        <div className="delete-icon">
+        {/* <div className="delete-icon">
           <DeleteIcon fontSize="large" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

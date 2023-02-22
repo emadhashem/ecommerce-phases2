@@ -1,6 +1,45 @@
 .notifivationpage-container {
-    width: 100%;
-    min-height: 80vh;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+
+  .container-title {
     display: flex;
-    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 10px 0px;
+
+    .title {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      margin-right: 10px;
+
+      .bar {
+        width: 3px;
+        height: 32px;
+        background: var(--color-orange);
+      }
+
+      h3 {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 37px;
+        text-align: right;
+        color: var(--color-mainBlue);
+        padding-right: 8px;
+      }
+    }
+
+    .delete-icon {
+      color: var(--color-gray);
+    }
+  }
 }

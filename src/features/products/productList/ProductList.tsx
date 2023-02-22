@@ -40,6 +40,11 @@ function ProductList() {
           </div>
         )}
       </div>
+      <div className="btn">
+        <button>
+          <span>...عرض الكل</span>
+        </button>
+      </div>
     </section>
   );
 }

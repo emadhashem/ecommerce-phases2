@@ -12,7 +12,7 @@
     justify-items: center;
     justify-content: center;
     align-items: center;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
 
     // .card {
     //   background: var(--color-white);
@@ -43,19 +43,39 @@
       }
     }
   }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      width: 98px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--color-mainBlue);
+      border: none;
+      padding: 2px;
+      span{
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 500;
+        color: var(--color-white);
+        font-size: 15px;
+      }
+    }
+  }
 }
 
 /* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
 @media screen and (max-width: 1024px) {
-    .section-products .container {
-      grid-template-columns: 33% 33% 33%;
-    }
+  .section-products .container {
+    grid-template-columns: 33% 33% 33%;
   }
-  
-  /* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
-  @media screen and (max-width: 600px) {
-    .section-products .container {
-      grid-template-columns: 50% 50%;
-    }
+}
+
+/* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
+@media screen and (max-width: 600px) {
+  .section-products .container {
+    grid-template-columns: 50% 50%;
   }
-  
+}
