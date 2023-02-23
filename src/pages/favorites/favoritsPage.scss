@@ -1,0 +1,45 @@
+.favoritsPage-container {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .container-title {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+
+    .title {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+
+      .icon {
+        color: var(--color-orange);
+        font-size: 40px;
+      }
+
+      h3 {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 37px;
+        text-align: right;
+        color: var(--color-mainBlue);
+      }
+    }
+
+    .delete-icon {
+      color: var(--color-gray);
+    }
+  }
+
+  .fav-ProductList{
+    width: 100%;
+  }
+
+}

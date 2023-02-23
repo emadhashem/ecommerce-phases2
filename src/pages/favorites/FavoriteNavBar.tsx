@@ -1,16 +1,28 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from "react-router-dom";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import "./favoriteNavBar.scss";
+
 function FavoriteNavBar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div>
-      <ArrowBackIcon onClick = {() => navigate('/')} />
-      <p>
-        المفضلة
-      </p>
+    <div className="favoriteNavBar-container">
+      <div className="rapper">
+        <div className="back-icon">
+          <ArrowBackRoundedIcon
+            onClick={() => navigate("/")}
+            fontSize="large"
+          />
+        </div>
+        <div className="title">
+          <p>
+          المفضلة <FavoriteRoundedIcon fontSize="large" />
+          </p>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default FavoriteNavBar
+export default FavoriteNavBar;
