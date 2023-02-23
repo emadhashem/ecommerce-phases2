@@ -9,6 +9,8 @@
   --color-white: #ffffff;
   --color-orange: #ff6347;
   --color-gray: #989898;
+  scroll-behavior: smooth;
+
 }
 
 body {

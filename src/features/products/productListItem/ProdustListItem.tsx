@@ -1,37 +1,40 @@
 import React from "react";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
-// import "./productListItem.style.css";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import "./productListItem.scss";
 
 function ProductListItem({
   productId,
   productImg,
-  onClick
+  onClick,
 }: {
   productId: any;
   productImg: any;
-  onClick : () => void
+  onClick: () => void;
 }) {
   return (
     <div className="card" key={productId}>
       <div id={`product-${productId}`} className="single-product">
         <div className="part-1">
+          <span className="location">
+            قامشلي <LocationOnRoundedIcon className="icon" />
+          </span>
           <img src={productImg} alt="" />
           <ul>
-            <li onClick={onClick} >
+            <li onClick={onClick}>
               <a>
-                <ShoppingCartIcon />
+                <AddShoppingCartIcon />
               </a>
             </li>
             <li>
-              <a >
+              <a>
                 <FavoriteIcon />
               </a>
             </li>
             <li>
-              <a >
+              <a>
                 <FullscreenIcon />
               </a>
             </li>

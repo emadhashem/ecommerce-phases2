@@ -1,19 +1,19 @@
 import React from "react";
 import "./mostSaledProduct.scss";
 import imgSrc from "../../../assets/imgs/mainswiperImg.png";
-import AddBoxIcon from "@mui/icons-material/AddBox";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 interface IMostSaledProductProps {
-  onClick : () => void
+  onClick: () => void;
 }
 
-function MostSaledProduct({onClick} : IMostSaledProductProps) {
+function MostSaledProduct({ onClick }: IMostSaledProductProps) {
   return (
     <div className="mostsaledproduct-container">
       <img className="product-img" src={imgSrc} alt="" />
       <div className="product-footer">
-        <div className="product-icon" onClick={onClick} >
-          <AddBoxIcon className="icon" />
+        <div className="product-icon" onClick={onClick}>
+          <AddShoppingCartIcon className="icon" />
         </div>
         <div className="product-info">
           جهاز لوحي

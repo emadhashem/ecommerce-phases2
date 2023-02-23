@@ -1,13 +1,15 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import NotificationList from "../../features/notifications/notificationList/NotificationList";
 import "./notifivcationspageStyle.scss";
+import ArrowLeftRoundedIcon from "@mui/icons-material/ArrowLeftRounded";
+
 
 function NotifivationPage() {
   return (
     <div className="notifivationpage-container">
       <div className="container-title">
         <div className="title">
-          <div className="bar"></div>
+        <ArrowLeftRoundedIcon className="icon"/>
           <h3>
             لديك <span>4</span> اشعارات غير مقروءة
           </h3>

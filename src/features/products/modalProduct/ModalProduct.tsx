@@ -1,4 +1,3 @@
-import React from "react";
 import "./modalProduct.scss";
 import RemoveCircleRoundedIcon from "@mui/icons-material/RemoveCircleRounded";
 import CancelIcon from "@mui/icons-material/Cancel";

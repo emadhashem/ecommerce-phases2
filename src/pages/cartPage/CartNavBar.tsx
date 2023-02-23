@@ -19,9 +19,6 @@ function CartNavBar() {
           محتوى السلة <ShoppingCartIcon fontSize="large" />
           </p>
         </div>
-        {/* <div className="delete-icon">
-          <DeleteIcon fontSize="large" />
-        </div> */}
       </div>
     </div>
   );

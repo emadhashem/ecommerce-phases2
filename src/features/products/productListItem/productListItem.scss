@@ -38,6 +38,28 @@
         transition: all 0.3s;
       }
 
+      .location {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        color: var(--color-white);
+        background-color: var(--color-mainBlue);
+        padding: 2px 7px;
+        text-transform: uppercase;
+        font-family: "Cairo";
+        font-weight: 600;
+        font-size: 8px;
+        text-align: right;
+        border-radius: 10px;
+
+        .icon {
+          font-size: 10px;
+        }
+      }
+
       ul {
         position: absolute;
         bottom: -41px;

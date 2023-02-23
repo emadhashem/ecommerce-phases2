@@ -17,6 +17,7 @@ function MainSwiper() {
         }}
         navigation={true}
         modules={[Autoplay, Navigation]}
+        spaceBetween={20}
         className="mySwiper"
       >
         <SwiperSlide>
