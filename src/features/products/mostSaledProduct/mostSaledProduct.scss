@@ -70,6 +70,14 @@
   }
   .mostsaledproduct-container .product-footer {
     height: 60px;
+    .product-icon {
+      width: 40px;
+      height: 40px;
+      .icon {
+        font-size: 35px;
+        cursor: pointer;
+      }
+    }
   }
 }
 
@@ -91,7 +99,11 @@
     font-size: 16px;
     line-height: 25px;
   }
+  .mostsaledproduct-container .product-footer .product-icon {
+    width: 27px;
+    height: 27px;
+  }
   .mostsaledproduct-container .product-footer .product-icon .icon {
-    font-size: 25px;
+    font-size: 22px;
   }
 }

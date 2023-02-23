@@ -40,6 +40,7 @@
   }
 
   .cart-footer {
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,6 +55,7 @@
     }
 
     .price {
+      width: 95%;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -117,6 +119,48 @@
       .icon {
         color: var(--color-white);
         font-size: 30px;
+      }
+    }
+  }
+}
+
+/* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
+@media screen and (min-width: 600px) {
+  .CartPage-container {
+    .container-title {
+      margin: 10px 0px;
+    }
+    .cart-footer {
+      .price {
+        p {
+          font-size: 24px;
+          line-height: 26px;
+          text-align: right;
+          color: var(--color-mainBlue);
+          span {
+            color: var(--color-orange);
+            font-weight: 600;
+          }
+        }
+
+        .total-price {
+          width: 50%;
+          height: 60px;
+        }
+
+        .delivery {
+          width: 35%;
+          height: 60px;
+        }
+      }
+
+      .check-btn {
+        gap: 15px;
+        width: 249px;
+        height: 60px;
+        span {
+          font-size: 26px;
+        }
       }
     }
   }

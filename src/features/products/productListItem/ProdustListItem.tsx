@@ -1,4 +1,4 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
@@ -14,6 +14,8 @@ function ProductListItem({
   productImg: any;
   onClick: () => void;
 }) {
+  const navigate = useNavigate();
+
   return (
     <div className="card" key={productId}>
       <div id={`product-${productId}`} className="single-product">
@@ -33,7 +35,7 @@ function ProductListItem({
                 <FavoriteIcon />
               </a>
             </li>
-            <li>
+            <li onClick={() => navigate("/details")}>
               <a>
                 <FullscreenIcon />
               </a>
