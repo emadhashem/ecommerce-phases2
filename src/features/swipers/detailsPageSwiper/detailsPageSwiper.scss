@@ -1,0 +1,36 @@
+.detailsPageSwiper-container {
+  width: 100%;
+  height: 186px !important;
+  border-radius: 10px;
+  margin: 19px auto;
+  overflow: hidden;
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+    padding-left: 8px;
+
+  }
+  .swiper-slide {
+    width: 288px !important;
+    border-radius: 10px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+  }
+}
+/* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
+// @media screen and (max-width: 600px) {
+//   .detailsPageSwiper-container {
+//     height: 186px;
+//   }
+//   .detailsPageSwiper-container .swiper {
+//     max-height: 186px;
+//   }
+// }
