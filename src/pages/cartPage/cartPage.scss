@@ -1,6 +1,5 @@
 .CartPage-container {
   width: 100%;
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,12 +16,11 @@
       display: flex;
       flex-direction: row-reverse;
       align-items: center;
-      margin-right: 10px;
+      // margin-right: 10px;
 
-      .bar {
-        width: 3px;
-        height: 32px;
-        background: var(--color-orange);
+      .icon {
+        color: var(--color-orange);
+        font-size: 40px;
       }
 
       h3 {
@@ -33,12 +31,93 @@
         line-height: 37px;
         text-align: right;
         color: var(--color-mainBlue);
-        padding-right: 8px;
       }
     }
 
     .delete-icon {
       color: var(--color-gray);
+    }
+  }
+
+  .cart-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    direction: rtl;
+    padding-bottom: 5px;
+
+    hr {
+      width: 96%;
+      border: 1px solid var(--color-orange);
+    }
+
+    .price {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      p {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 26px;
+        text-align: right;
+        color: var(--color-mainBlue);
+        span {
+          color: var(--color-orange);
+          font-weight: 600;
+        }
+      }
+
+      .total-price {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 189px;
+        height: 35px;
+        background: var(--color-white);
+        border-radius: 10px;
+      }
+
+      .delivery {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 144px;
+        height: 35px;
+        background: var(--color-white);
+        border-radius: 10px;
+      }
+    }
+
+    .check-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 189px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      background: var(--color-mainBlue);
+      direction: rtl;
+      span {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        color: var(--color-white);
+      }
+
+      .icon {
+        color: var(--color-white);
+        font-size: 30px;
+      }
     }
   }
 }
