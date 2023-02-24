@@ -23,8 +23,9 @@ function ProductListItem({
           <span className="location">
             قامشلي <LocationOnRoundedIcon className="icon" />
           </span>
-          <img src={productImg} alt="" />
-          <ul>
+          <FavoriteIcon className="fav-icon" />
+          <img src={productImg} alt="" onClick={() => navigate("/details")} />
+          {/* <ul>
             <li onClick={onClick}>
               <a>
                 <AddShoppingCartIcon />
@@ -40,12 +41,17 @@ function ProductListItem({
                 <FullscreenIcon />
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
         <div className="part-2">
-          <h3 className="product-title">جهاز لوحي </h3>
-          {/* <h4 className="product-old-price">$79.99</h4> */}
-          <h4 className="product-price">$49.99</h4>
+          <AddShoppingCartIcon className="icon" />
+          <div className="product-info">
+            <h3 className="product-title" onClick={() => navigate("/details")}>
+              جهاز لوحي
+            </h3>
+            {/* <h4 className="product-old-price">$79.99</h4> */}
+            <h4 className="product-price">$49.99</h4>
+          </div>
         </div>
       </div>
     </div>

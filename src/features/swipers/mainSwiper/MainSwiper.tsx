@@ -4,7 +4,7 @@ import mainswiperImg from "../../../assets/imgs/mainswiperImg.png";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation, Autoplay } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 import "./mainSwiper.scss";
 
 function MainSwiper() {
@@ -16,7 +16,11 @@ function MainSwiper() {
           disableOnInteraction: false,
         }}
         navigation={true}
-        modules={[Autoplay, Navigation]}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Navigation, Pagination]}
         spaceBetween={20}
         className="mySwiper"
       >

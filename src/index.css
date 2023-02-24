@@ -3,21 +3,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
   --color-mainBlue: #2c7be5;
   --color-bg: #edf2f9;
   --color-bg-Blue: rgba(44, 123, 229, 0.5);
   --color-white: #ffffff;
   --color-orange: #ff6347;
   --color-gray: #989898;
-  scroll-behavior: smooth;
-}
-
-body {
-  min-height: 100vh;
-  position: relative;
 }
 #root {
   background-color: var(--color-bg);
+
+  --swiper-navigation-size: 22px;
+  --swiper-pagination-color: var(--color-mainBlue);
+  scroll-behavior: smooth;
   /* min-height: 100vh; */
 }
 ::placeholder {
