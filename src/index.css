@@ -4,13 +4,12 @@
   padding: 0;
   box-sizing: border-box;
   --color-mainBlue: #2c7be5;
-  --color-bg: #EDF2F9;
+  --color-bg: #edf2f9;
   --color-bg-Blue: rgba(44, 123, 229, 0.5);
   --color-white: #ffffff;
   --color-orange: #ff6347;
   --color-gray: #989898;
   scroll-behavior: smooth;
-
 }
 
 body {
@@ -20,6 +19,10 @@ body {
 #root {
   background-color: var(--color-bg);
   /* min-height: 100vh; */
+}
+::placeholder {
+  color: var(--color-mainBlue);
+  font-family: "Cairo";
 }
 
 ::-webkit-scrollbar {

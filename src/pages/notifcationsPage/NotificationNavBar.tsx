@@ -1,4 +1,3 @@
-import { IconButton } from "@mui/material";
 import "./notificationNavBar.style.scss";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
@@ -19,9 +18,6 @@ function NotificationNavBar() {
           <p>
             الاشعارات <NotificationsRoundedIcon fontSize="large" />
           </p>
-        </div>
-        <div className="delete-icon">
-          <DeleteIcon fontSize="large" />
         </div>
       </div>
     </div>
