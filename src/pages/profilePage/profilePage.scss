@@ -1,8 +1,8 @@
 .profilePage-container {
-  width: 95%;
+  width: 100%;
   height: 80%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   grid-template-rows: 80% 20%;
   grid-column-gap: 0px;
   grid-row-gap: 20px;
@@ -10,8 +10,10 @@
   .profile-header {
     font-family: "Cairo";
     font-style: normal;
+    width: 95%;
+    margin: 0px auto;
     .profile-edit {
-    //   padding: 5px 0px;
+      //   padding: 5px 0px;
       P {
         display: flex;
         align-items: center;
@@ -67,18 +69,25 @@
         .orderDetails-item {
           display: flex;
           flex-direction: row-reverse;
-          align-items: center;
-          margin-right: 5px;
+          align-items: flex-start;
+          margin: 5px 5px 5px 0px;
           .icon {
             color: var(--color-orange);
             font-size: 25px;
           }
+
           h4 {
+            white-space: initial;
+            // word-wrap: break-word;
             font-weight: 500;
             font-size: 13px;
-            line-height: 37px;
+            // line-height: 37px;
             text-align: right;
             color: var(--color-mainBlue);
+            span {
+              font-weight: 600;
+              padding: 0px 3px;
+            }
           }
         }
       }

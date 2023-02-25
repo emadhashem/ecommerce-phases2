@@ -85,16 +85,24 @@ const ProfilePage = () => {
               <div className="orderDetails-item">
                 <ArrowLeftRoundedIcon className="icon" />
                 <h4>
-                  الطلبية رقم: <span>#333</span> - تاريخ:{" "}
-                  <span>01/01/2023</span> - المبلغ: <span>9999</span> ل.س
+                  الطلبية رقم:<span>#333</span>- تاريخ:<span>01/01/2023</span>-
+                  المبلغ:<span>9999</span> ل.س
                 </h4>
               </div>
               {/* ---- single details ----- */}
               <div className="orderDetails-item">
                 <ArrowLeftRoundedIcon className="icon" />
                 <h4>
-                  الطلبية رقم: <span>#333</span> - تاريخ:{" "}
-                  <span>01/01/2023</span> - المبلغ: <span>9999</span> ل.س
+                  الطلبية رقم:<span>#333347833</span>- تاريخ:<span>01/01/2023</span>-
+                  المبلغ:<span>9999</span> ل.س
+                </h4>
+              </div>
+              {/* ---- single details ----- */}
+              <div className="orderDetails-item">
+                <ArrowLeftRoundedIcon className="icon" />
+                <h4>
+                  الطلبية رقم:<span>#333</span>- تاريخ:<span>01/01/2023</span>-
+                  المبلغ:<span>99999</span> ل.س
                 </h4>
               </div>
             </div>
