@@ -9,7 +9,8 @@ import FavoritsPage from "./pages/favorites/FavoritsPage";
 import MainPage from "./pages/mainPage/MainPage";
 import NotifivationPage from "./pages/notifcationsPage/NotifivationPage";
 import SplashPage from "./pages/splashScreen/SplashPage";
-import DetailsNavBar from "./pages/detailsPage/DetailsPage";
+import DetailsPage from "./pages/detailsPage/DetailsPage";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 
 function App() {
   if (SplashPage()) {
@@ -25,7 +26,8 @@ function App() {
           <Route path="/favorites" element={<FavoritsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/details" element={<DetailsNavBar />} />
+          <Route path="/details" element={<DetailsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </GlobalLayOut>
     );

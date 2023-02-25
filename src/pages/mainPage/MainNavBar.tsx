@@ -8,18 +8,34 @@ import logo from "../../assets/svgs/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 function MainNavBar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="main-nav">
       <div className="container">
         <div className="nav-icons">
-          <AccountCircleIcon sx={{ color: "#2C7BE5" }} fontSize="large" />
-          <FavoriteIcon sx={{ color: "#2C7BE5" }} onClick = {() => navigate('/favorites')} fontSize="large" />
+          <AccountCircleIcon
+            sx={{ color: "#2C7BE5" }}
+            onClick={() => navigate("/profile")}
+            fontSize="large"
+          />
+          <FavoriteIcon
+            sx={{ color: "#2C7BE5" }}
+            onClick={() => navigate("/favorites")}
+            fontSize="large"
+          />
           <Badge badgeContent={99} color="error">
-            <NotificationsIcon onClick = {() => navigate('notifications')} sx={{ color: "#2C7BE5" }} fontSize="large" />
+            <NotificationsIcon
+              onClick={() => navigate("notifications")}
+              sx={{ color: "#2C7BE5" }}
+              fontSize="large"
+            />
           </Badge>
           <Badge badgeContent={4} color="error">
-            <ShoppingCartIcon onClick = {() => navigate('/cart')} sx={{ color: "#2C7BE5" }} fontSize="large" />
+            <ShoppingCartIcon
+              onClick={() => navigate("/cart")}
+              sx={{ color: "#2C7BE5" }}
+              fontSize="large"
+            />
           </Badge>
         </div>
         <div className="logo">
