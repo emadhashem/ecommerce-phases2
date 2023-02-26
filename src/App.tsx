@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import GlobalLayOut from "./layouts/globalLayout/GlobalLayOut";
@@ -11,8 +11,11 @@ import NotifivationPage from "./pages/notifcationsPage/NotifivationPage";
 import SplashPage from "./pages/splashScreen/SplashPage";
 import DetailsPage from "./pages/detailsPage/DetailsPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
+import { DarkModeContext } from "./contexts/darkModeContext/darkModeContext";
 
 function App() {
+  const { darkMode } = useContext(DarkModeContext);
+
   if (SplashPage()) {
     return <SplashPage />;
   } else

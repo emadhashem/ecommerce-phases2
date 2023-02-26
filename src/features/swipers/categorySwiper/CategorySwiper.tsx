@@ -18,7 +18,7 @@ function CategorySwiper() {
         <h3>الأصناف</h3>
       </div>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={"auto"}
         spaceBetween={10}
         pagination={{
           clickable: true,

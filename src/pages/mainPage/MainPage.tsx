@@ -6,7 +6,6 @@ import CategorySwiper from "../../features/swipers/categorySwiper/CategorySwiper
 import MostSaledSwiper from "../../features/swipers/mostSaledSwiper/MostSaledSwiper";
 import ProductList from "../../features/products/productList/ProductList";
 import CategoryContextProvider from "../../contexts/category/category";
-import PageContainer from "../PageContainer";
 import "./mainPage.scss";
 
 function MainPage() {

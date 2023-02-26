@@ -22,14 +22,14 @@
     background-color: rgba(44, 123, 229, 0.5);
     border-radius: 10px;
     width: 100%;
-    color: var(--color-white);
+    color: #ffffff;
     text-align: right;
 
     .product-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-white);
+      background: #ffffff;
       width: 27px;
       height: 27px;
       border-radius: 5px;
@@ -37,7 +37,7 @@
       .icon {
         font-size: 40px;
         cursor: pointer;
-        color: var(--color-mainBlue);
+        color: #2c7be5;
       }
     }
 
@@ -84,7 +84,7 @@
 /* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
 @media screen and (max-width: 600px) {
   .mostsaledproduct-container {
-    width: 110px;
+    width: 131px;
     height: 136px;
   }
   .mostsaledproduct-container .product-footer {

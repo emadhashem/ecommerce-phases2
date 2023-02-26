@@ -1,141 +1,145 @@
-.profilePage-container {
-  width: 100%;
-  height: 80%;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 80% 20%;
-  grid-column-gap: 0px;
-  grid-row-gap: 20px;
+@import "../../style.scss";
 
-  .profile-header {
-    font-family: "Cairo";
-    font-style: normal;
-    width: 95%;
-    margin: 0px auto;
-    .profile-edit {
-      //   padding: 5px 0px;
-      P {
+.profilePage-container {
+  @include themify($themes) {
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 20%;
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+
+    .profile-header {
+      font-family: "Cairo";
+      font-style: normal;
+      width: 95%;
+      margin: 0px auto;
+      .profile-edit {
+        //   padding: 5px 0px;
+        P {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 10px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 30px;
+          color: themed("textColor");
+          .icon {
+            color: themed("orangeGrayIcons");
+            font-size: 25px;
+          }
+        }
+      }
+
+      .theme {
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: 10px;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-        color: var(--color-mainBlue);
-        .icon {
-          color: var(--color-orange);
-          font-size: 25px;
+        // gap: 10px;
+        // margin-right: 22px;
+        padding: 5px 0px;
+        .css-j204z7-MuiFormControlLabel-root {
+          margin-right: 10px;
         }
-      }
-    }
-
-    .theme {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      // gap: 10px;
-      // margin-right: 22px;
-      padding: 5px 0px;
-      .css-j204z7-MuiFormControlLabel-root {
-        margin-right: 10px;
-      }
-      .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
-        font-family: "Cairo";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-        color: var(--color-mainBlue);
-      }
-      .dark-icon {
-        font-size: 25px;
-        color: #0b1727;
-      }
-      .light-icon {
-        font-size: 25px;
-        color: #fff620;
-      }
-    }
-
-    .orders {
-      padding: 2px 0px;
-      .title {
-        display: flex;
-        flex-direction: row-reverse;
-        width: 100%;
-        margin-left: 5px;
-        .icon {
-          color: var(--color-orange);
-          font-size: 40px;
-        }
-        h3 {
+        .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+          font-family: "Cairo";
+          font-style: normal;
           font-weight: 500;
-          font-size: 20px;
-          line-height: 37px;
-          text-align: right;
-          color: var(--color-mainBlue);
+          font-size: 16px;
+          line-height: 30px;
+          color: themed("textColor");
+        }
+        .dark-icon {
+          font-size: 25px;
+          color: #0b1727;
+        }
+        .light-icon {
+          font-size: 25px;
+          color: #fff620;
         }
       }
 
-      .ordersDetails-container {
-        .orderDetails-item {
+      .orders {
+        padding: 2px 0px;
+        .title {
           display: flex;
           flex-direction: row-reverse;
-          align-items: flex-start;
-          margin: 5px 5px 5px 0px;
+          width: 100%;
+          margin-left: 5px;
           .icon {
-            color: var(--color-orange);
-            font-size: 25px;
+            color: themed("orangeGrayIcons");
+            font-size: 40px;
           }
-          h4 {
-            white-space: initial;
-            // word-wrap: break-word;
+          h3 {
             font-weight: 500;
-            font-size: 13px;
-            // line-height: 37px;
+            font-size: 17px;
+            line-height: 37px;
             text-align: right;
-            color: var(--color-mainBlue);
-            span {
-              font-weight: 600;
-              padding: 0px 3px;
+            color: themed("textColor");
+          }
+        }
+
+        .ordersDetails-container {
+          .orderDetails-item {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: flex-start;
+            margin: 5px 5px 5px 0px;
+            .icon {
+              color: themed("orangeGrayIcons");
+              font-size: 25px;
+            }
+            h4 {
+              white-space: initial;
+              // word-wrap: break-word;
+              font-weight: 500;
+              font-size: 13px;
+              // line-height: 37px;
+              text-align: right;
+              color: themed("textColor");
+              span {
+                font-weight: 600;
+                padding: 0px 3px;
+              }
             }
           }
         }
       }
     }
-  }
 
-  .profile-footer {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    font-family: "Cairo";
-    font-style: normal;
-    color: var(--color-mainBlue);
-
-    .footer-title {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 30px;
-    }
-    .footer-icons {
+    .profile-footer {
+      width: 100%;
       display: flex;
-      flex-direction: row;
-      gap: 15px;
-      a {
-        font-size: 25px;
-        text-decoration: none;
-        color: var(--color-mainBlue);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-family: "Cairo";
+      font-style: normal;
+      color: themed("textColor");
+
+      .footer-title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 30px;
       }
-    }
-    .copyRights {
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 22px;
+      .footer-icons {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        a {
+          font-size: 25px;
+          text-decoration: none;
+          color: themed("textColor");
+        }
+      }
+      .copyRights {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 22px;
+      }
     }
   }
 }

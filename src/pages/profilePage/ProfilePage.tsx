@@ -1,6 +1,6 @@
 import "./profilePage.scss";
 import ProfileNavBar from "./ProfileNavBar";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -12,6 +12,7 @@ import { styled } from "@mui/material/styles";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
+import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -62,7 +63,9 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }));
 
 const ProfilePage = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
+  const { toggle, darkMode } = useContext(DarkModeContext);
+
   return (
     <React.Fragment>
       <ProfileNavBar />
@@ -77,12 +80,12 @@ const ProfilePage = () => {
             <FormControlLabel
               control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
               label="تغيير المظهر"
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggle}
             />
             {darkMode ? (
-              <DarkModeIcon className="dark-icon" />
-            ) : (
               <WbSunnyOutlinedIcon className="light-icon" />
+            ) : (
+              <DarkModeIcon className="dark-icon" />
             )}
             {/* <CiDark className="icon" /> */}
           </div>
