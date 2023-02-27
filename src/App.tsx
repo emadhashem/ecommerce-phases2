@@ -12,6 +12,7 @@ import SplashPage from "./pages/splashScreen/SplashPage";
 import DetailsPage from "./pages/detailsPage/DetailsPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import { DarkModeContext } from "./contexts/darkModeContext/darkModeContext";
+import SettingsPage from "./pages/settingsPage/SettingsPage";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -31,6 +32,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/details" element={<DetailsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/settings" element = {<SettingsPage />} />
+
         </Routes>
       </GlobalLayOut>
     );
