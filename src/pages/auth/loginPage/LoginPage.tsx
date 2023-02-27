@@ -60,6 +60,7 @@ function LoginPage() {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
+                  className="Visibility-icon"
                     aria-label="toggle password visibility"
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}

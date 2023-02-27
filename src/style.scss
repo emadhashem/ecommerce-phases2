@@ -6,8 +6,9 @@ $themes: (
     mainIconColor: #2c7be5,
     orangeGrayIcons: #ff6347,
     orangeBlueIcons: #ff6347,
+    blueWhite: #2c7be5,
     border: #2c7be5,
-    logo: url("./assets/svgs/logo.svg")
+    iconBg: rgba(44, 123, 229, 0.3),
   ),
   dark: (
     textColor: #d9d9d9,
@@ -16,9 +17,9 @@ $themes: (
     mainIconColor: #9da9bb,
     orangeGrayIcons: #d8e2ef,
     orangeBlueIcons: #2c7be5,
+    blueWhite: #ffffff,
     border: #9da9bb,
-    logo: url("./assets/svgs/darklogo.svg")
-
+    iconBg: #2c7be5,
   ),
 );
 

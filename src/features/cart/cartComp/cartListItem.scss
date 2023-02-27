@@ -1,83 +1,87 @@
+@import "../../../style.scss";
+
 .CartListItem-container {
-  background: var(--color-white);
-  width: 95%;
-  height: 97px;
-  border-radius: 10px;
-  margin: 13px auto;
-  display: grid;
-  grid-template-columns: 20% 80%;
+  @include themify($themes) {
+    background: themed("bgSoft");
+    width: 95%;
+    height: 97px;
+    border-radius: 10px;
+    margin: 13px auto;
+    display: grid;
+    grid-template-columns: 20% 80%;
 
-  .delete-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-gray);
-  }
-
-  .single-product {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 10px;
-    padding-right: 22px;
-    margin-bottom: 10px;
-    gap: 15px;
-
-    .product-title {
-      color: var(--color-mainBlue);
-      text-align: right;
-      font-family: "Cairo";
-      font-style: normal;
-      h4 {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 30px;
-      }
-      span {
-        font-weight: 500;
-        font-size: 22px;
-        line-height: 41px;
-      }
-    }
-
-    .img-container {
-      width: 79px;
-      height: 66px;
-      //   border-radius: 10px;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        overflow: hidden;
-        border-radius: 10px;
-      }
-    }
-
-    .quantity-icons {
+    .delete-icon {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      max-width: 38px;
+      justify-content: center;
+      color: #989898;
+    }
 
-      .remove-icon {
-        color: #b8b8b8;
-        font-size: 25px;
-      }
-      .add-icon {
-        color: var(--color-mainBlue);
-        border-radius: 39px;
-        background: rgba(44, 123, 229, 0.3);
-        font-size: 22px;
-      }
+    .single-product {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      padding-top: 10px;
+      padding-right: 22px;
+      margin-bottom: 10px;
+      gap: 15px;
 
-      span {
+      .product-title {
+        color: themed("textColor");
+        text-align: right;
         font-family: "Cairo";
         font-style: normal;
-        font-weight: 500;
-        font-size: 15px;
-        padding: auto;
-        color: var(--color-mainBlue);
+        h4 {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 30px;
+        }
+        span {
+          font-weight: 500;
+          font-size: 22px;
+          line-height: 41px;
+        }
+      }
+
+      .img-container {
+        width: 79px;
+        height: 66px;
+        //   border-radius: 10px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 10px;
+        }
+      }
+
+      .quantity-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 38px;
+
+        .remove-icon {
+          color: #b8b8b8;
+          font-size: 25px;
+        }
+        .add-icon {
+          color: themed("blueWhite");
+          border-radius: 39px;
+          background: themed("iconBg");
+          font-size: 22px;
+        }
+
+        span {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 15px;
+          padding: auto;
+          color: themed("textColor");
+        }
       }
     }
   }
