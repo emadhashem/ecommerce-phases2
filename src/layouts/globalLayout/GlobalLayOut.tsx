@@ -8,11 +8,9 @@ function GlobalLayOut({ children }: IComponentPorps) {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div className={`theme-${darkMode ? "dark" : "light"}`}>
-      <div className="globallayout-container">
-        <NavBar />
-        <div className="layout-body">{children}</div>
-      </div>
+    <div className="globallayout-container">
+      <NavBar />
+      <div className="layout-body">{children}</div>
     </div>
   );
 }

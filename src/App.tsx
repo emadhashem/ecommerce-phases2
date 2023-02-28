@@ -21,21 +21,22 @@ function App() {
     return <SplashPage />;
   } else
     return (
-      <GlobalLayOut>
-        <Routes>
-          {/* <Route path="/home" element={<MainPage />} /> */}
-          <Route path="/" element={<MainPage />} />
-          <Route path="/notifications" element={<NotifivationPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favorites" element={<FavoritsPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/details" element={<DetailsPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/profile/settings" element = {<SettingsPage />} />
-
-        </Routes>
-      </GlobalLayOut>
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <GlobalLayOut>
+          <Routes>
+            {/* <Route path="/home" element={<MainPage />} /> */}
+            <Route path="/" element={<MainPage />} />
+            <Route path="/notifications" element={<NotifivationPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/favorites" element={<FavoritsPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/details" element={<DetailsPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/settings" element={<SettingsPage />} />
+          </Routes>
+        </GlobalLayOut>
+      </div>
     );
 }
 
