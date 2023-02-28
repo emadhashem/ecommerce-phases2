@@ -7,6 +7,9 @@ import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import ProductList from "../../features/products/productList/ProductList";
 
 const DetailsPage = () => {
+  return(
+    <DetailsPageSwiper />
+  )
   return (
     <div className="detailsPage-container">
       <div className="container-title">
