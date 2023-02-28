@@ -1,103 +1,123 @@
-.registerPage {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  //   gap: 20px;
+@import "../../../style.scss";
 
-  .logo-container {
-    padding-top: auto;
+.registerPage {
+  @include themify($themes) {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
+    background: themed("bg");
 
-    .img-container {
-      width: 175px;
-      height: 175px;
+    //   gap: 20px;
+
+    .logo-container {
+      padding-top: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      background: rgba(44, 123, 229, 0.3);
-      span {
-        padding-top: 10px;
-        font-size: 15px;
-        font-weight: 200;
-      }
-    }
+      gap: 10px;
 
-    span {
-      font-family: "Cairo";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 22px;
-      line-height: 41px;
-      color: var(--color-mainBlue);
-    }
-  }
-
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    direction: rtl;
-    gap: 10px;
-    .input fieldset {
-      font-family: "Cairo";
-      margin: 10px 0px;
-      border: 1px solid var(--color-mainBlue);
-      border-radius: 10px;
-      color: var(--color-mainBlue);
-    }
-  }
-
-  .btn {
-    // margin-top: 20px;
-    width: 130px;
-    height: 46px;
-    border-radius: 12px;
-    background: var(--color-orange);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    span {
-      font-family: "Cairo";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      text-align: center;
-    }
-  }
-
-  .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    // padding-top: 30px;
-
-    .footer-title {
-      .link {
-        text-align: center;
-        text-decoration: none;
-        width: 100%;
+      .img-container {
+        width: 175px;
+        height: 175px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(44, 123, 229, 0.3);
         span {
-          font-weight: 600;
-          color: var(--color-orange);
+          padding-top: 10px;
+          font-size: 15px;
+          font-weight: 200;
+          color: themed("textColor");
         }
       }
+
+      span {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 41px;
+        color: themed("textColor");
+      }
     }
 
-    span {
-      font-family: "Cairo";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 34px;
-      text-align: center;
-      color: var(--color-mainBlue);
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      direction: rtl;
+      gap: 10px;
+
+      .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+        color: themed("blackGray");
+        &::placeholder {
+          color: themed("textColor");
+        }
+      }
+
+      .input fieldset {
+        font-family: "Cairo";
+        margin: 10px 0px;
+        border: 1px solid themed("border");
+        border-radius: 10px;
+        color: themed("textColor") !important;
+      }
+      &::placeholder {
+        color: red !important;
+      }
+    }
+
+    .btn {
+      // margin-top: 20px;
+      width: 130px;
+      height: 46px;
+      border-radius: 12px;
+      background: themed("orangeBlueIcons");
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+      span {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        text-align: center;
+        color: #ffffff;
+      }
+    }
+
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      // padding-top: 30px;
+
+      .footer-title {
+        .link {
+          text-align: center;
+          text-decoration: none;
+          width: 100%;
+
+          span {
+            font-weight: 600;
+            color: themed("orangeBlueIcons");
+          }
+        }
+      }
+
+      span {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 34px;
+        text-align: center;
+        color: themed("textColor");
+      }
     }
   }
 }
