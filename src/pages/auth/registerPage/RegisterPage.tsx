@@ -60,7 +60,7 @@ function RegisterPage() {
             required
             type="address"
             id="address"
-            placeholder="العنوان "
+            placeholder="العنوان"
           />
         </div>
       </div>

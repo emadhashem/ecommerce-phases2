@@ -13,6 +13,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
+import { useNavigate } from "react-router-dom";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -64,6 +65,7 @@ const IOSSwitch = styled((props: SwitchProps) => (
 
 const ProfilePage = () => {
   // const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
   const { toggle, darkMode } = useContext(DarkModeContext);
 
   return (
@@ -72,16 +74,17 @@ const ProfilePage = () => {
       <div className="profilePage-container">
         <div className="profile-header">
           <div className="profile-edit">
-            <p>
+            <p onClick={() => navigate("/profile/settings")}>
               تعديل بيانات الحساب <ManageAccountsIcon className="icon" />
             </p>
           </div>
           <div className="theme">
             <FormControlLabel
               control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-              label="تغيير المظهر"
+              label=""
               onClick={toggle}
             />
+            <span className="label">تغير المظهر</span>
             {darkMode ? (
               <WbSunnyOutlinedIcon className="light-icon" />
             ) : (

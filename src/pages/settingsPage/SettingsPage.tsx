@@ -1,5 +1,8 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState, useRef } from "react";
+import Badge from "@mui/material/Badge";
+import EditIcon from "@mui/icons-material/Edit";
+import "./settingsPage.scss";
 
 function SettingsPage() {
   const [imgFile, setimgFile] = useState<any>();
@@ -18,27 +21,62 @@ function SettingsPage() {
     return objectURL;
   }
   return (
-    <div>
-      <div className="img-container" style={{ height: 300, width: "100%" }}>
-        <Button onClick={onClickBtn}>choose file</Button>
-        <img style={{ width: "50%", height: "80%" }} src={imgFile} />
-        <input
-          ref={chooseFileRef}
-          type={"file"}
-          style={{ display: "none" }}
-          onChange={onFileChoosen}
-        />
+    <div className="settingsPage">
+      <Badge
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+      ></Badge>
+
+      <div className="logo-container">
+        <span>تعديل البيانات</span>
+        {/* <Badge
+          badgeContent={
+            <Button className="edit-btn" onClick={onClickBtn}>
+              <EditIcon />
+            </Button>
+          }
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+        > */}
+        <div className="img-container">
+          <button className="edit-btn" onClick={onClickBtn}>
+            <EditIcon className="icon" />
+          </button>
+          <img src={imgFile} />
+          <input
+            ref={chooseFileRef}
+            type={"file"}
+            style={{ display: "none" }}
+            onChange={onFileChoosen}
+          />
+        </div>
+        {/* </Badge> */}
       </div>
+
       <div className="input-container">
-        <TextField placeholder="name" />
-        <TextField placeholder="phone" />
-        <TextField placeholder="email" />
-        <TextField placeholder="password" />
-        <TextField placeholder="confirm password" />
-        <TextField placeholder="location" />
+        <TextField className="input" type="text" placeholder="الاسم" />
+        <TextField className="input" type="number" placeholder="الهاتف" />
+        <TextField className="input" type="email" placeholder="البريد" />
+        <TextField
+          className="input"
+          type="password"
+          placeholder="كلمة المرور"
+        />
+        <TextField
+          className="input"
+          type="password"
+          placeholder="تاكيد كلمة المرور "
+        />
+        <TextField className="input" type="address" placeholder="العنوان" />
       </div>
       <div>
-        <Button>Update</Button>
+        <Button className="btn" variant="contained">
+          <span>حفظ التعديلات</span>
+        </Button>
       </div>
     </div>
   );
