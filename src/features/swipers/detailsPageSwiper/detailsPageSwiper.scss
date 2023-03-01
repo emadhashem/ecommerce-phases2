@@ -1,18 +1,30 @@
 .detailsPageSwiper-container {
-  width: 100%;
-  height: 186px !important;
+  width: 95%;
+  height: 281px !important;
   border-radius: 10px;
   margin: 19px auto;
   overflow: hidden;
 
+  .mySwiper2 {
+    .swiper-slide {
+      width: 79px !important;
+      height: 79px;
+      img {
+        border-radius: 3px;
+      }
+    }
+    .swiper-wrapper {
+      height: 79px;
+    }
+  }
+
   .swiper {
     width: 100%;
-    height: 100%;
-    padding-left: 8px;
-
+    margin-bottom: 20px;
   }
   .swiper-slide {
-    width: 288px !important;
+    width: 354px !important;
+    height: 186px;
     border-radius: 10px;
 
     img {
