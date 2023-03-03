@@ -8,8 +8,8 @@
     align-items: center;
     justify-content: space-around;
     background: themed("bg");
-
-    //   gap: 20px;
+    // gap: 40px;
+    // padding-top: 70px;
 
     .logo-container {
       padding-top: auto;
@@ -19,23 +19,6 @@
       justify-content: center;
       gap: 10px;
 
-      .img-container {
-        width: 175px;
-        height: 175px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: rgba(44, 123, 229, 0.3);
-        span {
-          padding-top: 10px;
-          font-size: 15px;
-          font-weight: 200;
-          color: themed("textColor");
-        }
-      }
-
       span {
         font-family: "Cairo";
         font-style: normal;
@@ -43,6 +26,43 @@
         font-size: 22px;
         line-height: 41px;
         color: themed("textColor");
+      }
+
+      .edit-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 176px;
+        height: 176px;
+        border: none;
+        border-radius: 50%;
+        background-color: rgba(44, 123, 229, 0.3);
+        background-image: url("../../../assets/svgs/Vectorregister.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        .selected-img {
+          height: 100%;
+          object-fit: cover;
+          overflow: hidden;
+          border-radius: 50%;
+          border: none;
+          outline: none;
+          border-style: none;
+          z-index: 999;
+        }
+        .img-container {
+          border-radius: 50%;
+        }
+        span {
+          position: absolute;
+          bottom: 10px;
+          padding-top: 10px;
+          font-size: 15px;
+          font-weight: 200;
+          color: themed("textColor");
+          // z-index: 1;
+        }
       }
     }
 
@@ -66,7 +86,6 @@
         border-radius: 10px;
         color: themed("textColor") !important;
       }
-
     }
 
     .btn {
