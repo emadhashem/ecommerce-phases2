@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import SwiperCore from "swiper";
 import { FreeMode, Thumbs } from "swiper";
 import "./detailsPageSwiper.scss";
-
+// test
 const DetailsPageSwiper = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
