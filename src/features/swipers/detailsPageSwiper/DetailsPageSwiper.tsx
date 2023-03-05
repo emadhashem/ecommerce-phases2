@@ -4,8 +4,8 @@ import mainswiperImg2 from "../../../assets/imgs/Rectangle 244.png";
 import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { FreeMode, Thumbs } from "swiper";
 import SwiperCore from "swiper";
+import { FreeMode, Thumbs } from "swiper";
 import "./detailsPageSwiper.scss";
 
 const DetailsPageSwiper = () => {
@@ -50,20 +50,20 @@ const DetailsPageSwiper = () => {
           className="mySwiper2"
         >
           <SwiperSlide>
-            <img src={mainswiperImg2} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={mainswiperImg} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={mainswiperImg2} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={mainswiperImg} alt="" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={mainswiperImg2} alt="" />
-          </SwiperSlide>
+          <img src={mainswiperImg2} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={mainswiperImg} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={mainswiperImg2} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={mainswiperImg} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={mainswiperImg2} alt="" />
+        </SwiperSlide>
         </Swiper>
       </div>
       {/* <Swiper
