@@ -51,7 +51,9 @@ function CategorySwiper() {
                     : "icon-category "
                 }`}
               />
-              <p>{item.sub_category_name}</p>
+              <div className="category-name">
+                <p>{item.sub_category_name}</p>
+              </div>
             </div>
           </SwiperSlide>
         ))}
