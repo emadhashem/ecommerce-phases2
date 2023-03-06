@@ -12,16 +12,26 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
+import { postLogin } from "../../../api/auth/login";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setemail] = useState('')
+  const [password, setpassword] = useState('')
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
-
+  async function handleLogin() {
+    try {
+      const data = await postLogin(email, password)
+      console.log(data);
+    } catch (error) {
+     alert('something wrong happen') 
+    }
+  }
   return (
     <div className="loginPage">
       <div className="logo-container">
@@ -42,6 +52,8 @@ function LoginPage() {
               sx={{ fontFamily: "Cairo" }}
               id="outlined-basic"
               label="رقم الموبايل او البريد الالكتروني"
+              value={email}
+              onChange = {e => setemail(e.target.value)}
             />
           </FormControl>
         </div>
@@ -57,6 +69,8 @@ function LoginPage() {
               sx={{ fontFamily: "Cairo" }}
               id="outlined-adornment-password"
               type={showPassword ? "text" : "password"}
+              value = {password}
+              onChange = {e => setpassword(e.target.value)}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -76,7 +90,7 @@ function LoginPage() {
         </div>
       </div>
       <div>
-        <Button className="btn" variant="contained">
+        <Button onClick={handleLogin} className="btn" variant="contained">
           <span>تسجيل الدخول</span>
         </Button>
       </div>

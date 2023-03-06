@@ -18,7 +18,7 @@ function FavoritsPage() {
         </div>
       </div>
       <div className="fav-ProductList">
-        <ProductList />
+        <ProductList products={[]} showAllProduts = {false} />
       </div>
     </div>
   );

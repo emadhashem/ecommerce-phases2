@@ -20,19 +20,20 @@ const DetailsPage = () => {
     }
     async function fetchPorductById() {
       const data = await getProductById(location.state.product_id)
+      setproduct(data.product)
     }
     fetchPorductById();
   }, []);
 
-  return (
+  return product && (
     <div className="detailsPage-container">
       <div className="container-title">
         <div className="title">
           <ArrowLeftRoundedIcon className="icon" />
-          <h3>جهاز لوحي</h3>
+          <h3> {product.product_name}</h3>
         </div>
         <div className="price">
-          <span>99,99 $</span>
+          <span>{product.product_price_dollar} $</span>
         </div>
       </div>
       <DetailsPageSwiper />
@@ -52,12 +53,7 @@ const DetailsPage = () => {
           <h3>:التفاصيل</h3>
         </div>
         <p>
-          حول هذا العنصر شاشة Liquid Retina XDR الرائعة مقاس 11 بوصة مع شريحة
-          ProMotion و True Tone و P3 عريضة الألوان M2 مع وحدة معالجة مركزية
-          ثمانية النواة و 10 أنوية GPU وكاميرا عريضة 12 ميجابكسل وكاميرا خلفية
-          فائقة الاتساع 10 ميجابكسل وماسح ضوئي LiDAR لـ AR 12MP غامرة كاميرا
-          أمامية فائقة الاتساع مع Center Stage ابق على اتصال مع موصل Wi-Fi 6E
-          USB-C فائق السرعة مع دعم Thunderbolt
+          {product.product_details}
         </p>
       </div>
       <div className="more">
@@ -65,7 +61,7 @@ const DetailsPage = () => {
           <ArrowDropDownRoundedIcon className="icon" />
           <h3>:أجهزة أخرى</h3>
         </div>
-        <ProductList />
+        <ProductList products={[]} showAllProduts = {false} />
       </div>
     </div>
   );

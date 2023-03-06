@@ -13,6 +13,7 @@ import DetailsPage from "./pages/detailsPage/DetailsPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import { DarkModeContext } from "./contexts/darkModeContext/darkModeContext";
 import SettingsPage from "./pages/settingsPage/SettingsPage";
+import CategoryContextProvider from "./contexts/category/category";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -23,6 +24,7 @@ function App() {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <GlobalLayOut>
+        <CategoryContextProvider>
           <Routes>
             {/* <Route path="/home" element={<MainPage />} /> */}
             <Route path="/" element={<MainPage />} />
@@ -35,6 +37,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/settings" element={<SettingsPage />} />
           </Routes>
+          </CategoryContextProvider>
         </GlobalLayOut>
       </div>
     );

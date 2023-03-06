@@ -8,19 +8,15 @@ import ModalProduct from "../modalProduct/ModalProduct";
 import { getPorductsBySubCategory } from "../../../api/subcategoies/sub_categories";
 import { getImg } from "../../../api";
 
-function ProductList() {
-  const { id: idOfSubCategory } = useContext(CategoryContext);
-  const [products, setproducts] = useState<any>([]);
+function ProductList({
+  showAllProduts = true,
+  products = [],
+}: {
+  showAllProduts?: boolean;
+  products: any[];
+}) {
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-    async function fetchProductsBySubcategory() {
-      const data = await getPorductsBySubCategory(idOfSubCategory);
-      setproducts(data.product);
-    }
-    fetchProductsBySubcategory();
-  }, [idOfSubCategory]);
-
   const handleOpen = (idx: number) => {
     setidxOfMadlProduct(idx);
     setOpen(true);
@@ -56,11 +52,13 @@ function ProductList() {
           </div>
         )}
       </div>
-      <div className="btn">
-        <button>
-          <span>...عرض الكل</span>
-        </button>
-      </div>
+      {showAllProduts && (
+        <div className="btn">
+          <button>
+            <span>...عرض الكل</span>
+          </button>
+        </div>
+      )}
     </section>
   );
 }
