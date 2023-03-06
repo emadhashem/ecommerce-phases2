@@ -6,10 +6,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background: themed("bg");
-    // gap: 40px;
-    // padding-top: 70px;
+    gap: 40px;
+    padding: 70px 0px;
 
     .logo-container {
       padding-top: auto;
@@ -114,6 +114,8 @@
       // padding-top: 30px;
 
       .footer-title {
+        margin-bottom: 10px;
+
         .link {
           text-align: center;
           text-decoration: none;
