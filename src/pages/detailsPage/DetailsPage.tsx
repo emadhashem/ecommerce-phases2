@@ -5,8 +5,25 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import ProductList from "../../features/products/productList/ProductList";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getProductById } from "../../api/product/product";
 
 const DetailsPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [product, setproduct] = useState<any>();
+  useEffect(() => {
+    if (!location.state || !location.state.product_id) {
+      navigate("/");
+      return;
+    }
+    async function fetchPorductById() {
+      const data = await getProductById(location.state.product_id)
+    }
+    fetchPorductById();
+  }, []);
+
   return (
     <div className="detailsPage-container">
       <div className="container-title">

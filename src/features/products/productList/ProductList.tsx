@@ -1,17 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../../../contexts/category/category.context";
 import "./productList.scss";
-import productImg from "../../../assets/imgs/Rectangle 35.png";
 import ProductListItem from "../productListItem/ProdustListItem";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import ModalOverLay from "../../../layouts/modlaOverLay/ModalOverLay";
 import ModalProduct from "../modalProduct/ModalProduct";
+import { getPorductsBySubCategory } from "../../../api/subcategoies/sub_categories";
+import { getImg } from "../../../api";
 
-const category_data = [5, 2, 1, 0, 6];
 function ProductList() {
-  const { id } = useContext(CategoryContext);
+  const { id: idOfSubCategory } = useContext(CategoryContext);
+  const [products, setproducts] = useState<any>([]);
+  const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => {
+  useEffect(() => {
+    async function fetchProductsBySubcategory() {
+      const data = await getPorductsBySubCategory(idOfSubCategory);
+      setproducts(data.product);
+    }
+    fetchProductsBySubcategory();
+  }, [idOfSubCategory]);
+
+  const handleOpen = (idx: number) => {
+    setidxOfMadlProduct(idx);
     setOpen(true);
   };
   const handleClose = () => {
@@ -23,14 +34,19 @@ function ProductList() {
         {/* <!-- Single Product --> */}
         <ModalOverLay open={open} handleClose={handleClose}>
           {/* modal content or product */}
-          <ModalProduct />
+          {products[idxOfMadlProduct] && (
+            <ModalProduct product={products[idxOfMadlProduct]} />
+          )}
         </ModalOverLay>
-        {category_data[id] > 0 ? (
-          [...Array(category_data[id])].map((_, idx) => (
+        {products.length > 0 ? (
+          products.map((product: any, idx: number) => (
             <ProductListItem
               onClick={handleOpen}
-              productId={idx}
-              productImg={productImg}
+              productId={product.product_id}
+              productImg={getImg(product.product_url)}
+              productName={product.product_name}
+              productPrice={product.product_price_dollar}
+              idx={idx}
             />
           ))
         ) : (

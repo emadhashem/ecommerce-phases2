@@ -9,10 +9,16 @@ function ProductListItem({
   productId,
   productImg,
   onClick,
+  productName,
+  productPrice,
+  idx
 }: {
   productId: any;
   productImg: any;
-  onClick: () => void;
+  onClick: (idx : number) => void;
+  productName : string;
+  productPrice : string;
+  idx : number
 }) {
   const navigate = useNavigate();
 
@@ -24,33 +30,21 @@ function ProductListItem({
             قامشلي <LocationOnRoundedIcon className="icon" />
           </span>
           <FavoriteIcon className="fav-icon" />
-          <img src={productImg} alt="" onClick={() => navigate("/details")} />
-          {/* <ul>
-            <li onClick={onClick}>
-              <a>
-                <AddShoppingCartIcon />
-              </a>
-            </li>
-            <li>
-              <a>
-                <FavoriteIcon />
-              </a>
-            </li>
-            <li onClick={() => navigate("/details")}>
-              <a>
-                <FullscreenIcon />
-              </a>
-            </li>
-          </ul> */}
+          <img src={productImg} alt="" onClick={() => navigate("/details", {
+            state : {
+              product_id : productId
+            }
+          })} />
+         
         </div>
         <div className="part-2">
-          <AddShoppingCartIcon className="icon" />
+          <AddShoppingCartIcon className="icon" onClick = {() => onClick(idx)} />
           <div className="product-info">
             <h3 className="product-title" onClick={() => navigate("/details")}>
-              جهاز لوحي
+              {productName}
             </h3>
             {/* <h4 className="product-old-price">$79.99</h4> */}
-            <h4 className="product-price">$49.99</h4>
+            <h4 className="product-price">${productPrice}</h4>
           </div>
         </div>
       </div>

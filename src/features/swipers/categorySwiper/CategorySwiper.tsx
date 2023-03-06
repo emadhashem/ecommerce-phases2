@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -7,9 +7,19 @@ import "./categorySwiper.scss";
 import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
 import { CategoryContext } from "../../../contexts/category/category.context";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import { getSubCategories } from "../../../api/subcategoies/sub_categories";
+import { getImg } from "../../../api";
 
 function CategorySwiper() {
   const { id, setId } = useContext(CategoryContext);
+  const [subCategories, setsubCategories] = useState<any>([]);
+  useEffect(() => {
+    async function fetchSubCategories() {
+      const data = await getSubCategories();
+      setsubCategories(data.sub_category);
+    }
+    fetchSubCategories();
+  }, []);
 
   return (
     <div className="categoryswiper-container">
@@ -25,20 +35,23 @@ function CategorySwiper() {
         }}
         className="mySwiper"
       >
-        {[...Array(5)].map((_, idx) => (
-          <SwiperSlide key={idx}>
+        {subCategories.map((item: any) => (
+          <SwiperSlide key={item.sub_category_id}>
             <div
               className={`category-container ${
-                id === idx ? "active-category" : ""
+                id === item.sub_category_id ? "active-category" : ""
               }`}
-              onClick={() => setId(idx)}
+              onClick={() => setId(item.sub_category_id)}
             >
-              <TimeToLeaveIcon
+              <img
+                src={getImg(item.sub_category_url)}
                 className={`${
-                  id === idx ? "active-category" : "icon-category "
+                  id === item.sub_category_id
+                    ? "active-category"
+                    : "icon-category "
                 }`}
               />
-              <p>سيارات</p>
+              <p>{item.sub_category_name}</p>
             </div>
           </SwiperSlide>
         ))}
