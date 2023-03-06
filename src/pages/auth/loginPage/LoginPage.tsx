@@ -4,7 +4,8 @@ import {
   InputLabel,
   OutlinedInput,
   InputAdornment,
-  FormControl
+  FormControl,
+  TextField,
 } from "@mui/material";
 import "./loginPage.scss";
 import logo from "../../../assets/svgs/logo.svg";
@@ -16,8 +17,8 @@ import { postLogin } from "../../../api/auth/login";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setemail] = useState('')
-  const [password, setpassword] = useState('')
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -26,10 +27,10 @@ function LoginPage() {
   };
   async function handleLogin() {
     try {
-      const data = await postLogin(email, password)
+      const data = await postLogin(email, password);
       console.log(data);
     } catch (error) {
-     alert('something wrong happen') 
+      alert("something wrong happen");
     }
   }
   return (
@@ -39,7 +40,12 @@ function LoginPage() {
         <p>تسجيل الدخول</p>
       </div>
       <div className="input-container">
-        <div className="input">
+        <TextField
+          className="input"
+          type="text"
+          placeholder="رقم الموبايل او البريد الالكتروني"
+        />
+        {/* <div className="input">
           <FormControl sx={{ mt: 2, width: "333px" }} variant="outlined">
             <InputLabel
               className="label"
@@ -53,38 +59,34 @@ function LoginPage() {
               id="outlined-basic"
               label="رقم الموبايل او البريد الالكتروني"
               value={email}
-              onChange = {e => setemail(e.target.value)}
+              onChange={(e) => setemail(e.target.value)}
+              inputProps={{ style: { textAlign: "right" } }}
             />
           </FormControl>
-        </div>
+        </div> */}
         <div className="input">
-          <FormControl sx={{ mt: 2, width: "333px" }} variant="outlined">
-            <InputLabel
-              htmlFor="outlined-adornment-password"
-              sx={{ fontSize: "16px", color: "#2C7BE580", fontFamily: "Cairo" }}
-            >
-              كلمة المرور
-            </InputLabel>
-            <OutlinedInput
+          <FormControl sx={{ mt: 2, width: "333px" }}>
+            <TextField
               sx={{ fontFamily: "Cairo" }}
-              id="outlined-adornment-password"
+              variant="outlined"
               type={showPassword ? "text" : "password"}
-              value = {password}
-              onChange = {e => setpassword(e.target.value)}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                  className="Visibility-icon"
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="كلمة المرور"
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      className="Visibility-icon"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              placeholder="كلمة المرور"
             />
           </FormControl>
         </div>
