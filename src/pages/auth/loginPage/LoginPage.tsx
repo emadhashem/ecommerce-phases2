@@ -44,26 +44,9 @@ function LoginPage() {
           className="input"
           type="text"
           placeholder="رقم الموبايل او البريد الالكتروني"
-        />
-        {/* <div className="input">
-          <FormControl sx={{ mt: 2, width: "333px" }} variant="outlined">
-            <InputLabel
-              className="label"
-              htmlFor="outlined-adornment-password"
-              sx={{ fontSize: "16px", color: "#2C7BE580", fontFamily: "Cairo" }}
-            >
-              رقم الموبايل او البريد الالكتروني
-            </InputLabel>
-            <OutlinedInput
-              sx={{ fontFamily: "Cairo" }}
-              id="outlined-basic"
-              label="رقم الموبايل او البريد الالكتروني"
-              value={email}
+          value={email}
               onChange={(e) => setemail(e.target.value)}
-              inputProps={{ style: { textAlign: "right" } }}
-            />
-          </FormControl>
-        </div> */}
+        />
         <div className="input">
           <FormControl sx={{ mt: 2, width: "333px" }}>
             <TextField
