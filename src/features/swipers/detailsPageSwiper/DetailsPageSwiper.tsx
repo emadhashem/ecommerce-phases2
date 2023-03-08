@@ -7,8 +7,9 @@ import "swiper/css/navigation";
 import SwiperCore from "swiper";
 import { FreeMode, Thumbs } from "swiper";
 import "./detailsPageSwiper.scss";
+import { getImg } from "../../../api";
 // test
-const DetailsPageSwiper = () => {
+const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   return (
     <div className="detailsPageSwiper-container">
@@ -21,23 +22,16 @@ const DetailsPageSwiper = () => {
         }}
         modules={[Thumbs]}
         className="mySwiper1"
-        onInit={(core) => setThumbsSwiper(core)}
       >
-        <SwiperSlide>
-          <img src={mainswiperImg2} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg2} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg2} alt="" />
-        </SwiperSlide>
+        {photos.map((item: any, idx: number) => (
+          <SwiperSlide>
+            <img
+              src={getImg(item.product_photo_url)}
+              key={item.product_photo_id}
+              alt=""
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
       <div>
         <Swiper
@@ -49,43 +43,17 @@ const DetailsPageSwiper = () => {
           modules={[FreeMode]}
           className="mySwiper2"
         >
-          <SwiperSlide>
-          <img src={mainswiperImg2} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg2} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg} alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg2} alt="" />
-        </SwiperSlide>
+          {photos.map((item: any, idx: number) => (
+            <SwiperSlide>
+              <img
+                src={getImg(item.product_photo_url)}
+                key={item.product_photo_id}
+                alt=""
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
-      {/* <Swiper
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay]}
-        spaceBetween={10}
-        slidesPerView={"auto"}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src={mainswiperImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={mainswiperImg} />
-        </SwiperSlide>
-      </Swiper> */}
     </div>
   );
 };

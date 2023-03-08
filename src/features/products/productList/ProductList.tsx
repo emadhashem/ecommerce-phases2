@@ -52,7 +52,7 @@ function ProductList({
           </div>
         )}
       </div>
-      {showAllProduts && (
+      {showAllProduts && products.length > 5 && (
         <div className="btn">
           <button>
             <span>...عرض الكل</span>

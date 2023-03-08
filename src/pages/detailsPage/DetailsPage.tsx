@@ -7,12 +7,13 @@ import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import ProductList from "../../features/products/productList/ProductList";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getProductById } from "../../api/product/product";
+import { getProductById, getProductPhotosById } from "../../api/product/product";
 
 const DetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [product, setproduct] = useState<any>();
+  const [photos, setphotos] = useState<any>();
   useEffect(() => {
     if (!location.state || !location.state.product_id) {
       navigate("/");
@@ -20,6 +21,8 @@ const DetailsPage = () => {
     }
     async function fetchPorductById() {
       const data = await getProductById(location.state.product_id)
+      const dataPhotos = await getProductPhotosById(location.state.product_id)
+      setphotos(dataPhotos.product_photo)
       setproduct(data.product)
     }
     fetchPorductById();
@@ -36,7 +39,7 @@ const DetailsPage = () => {
           <span>{product.product_price_dollar} $</span>
         </div>
       </div>
-      <DetailsPageSwiper />
+      <DetailsPageSwiper photos = {photos} />
       <div className="btn-container">
         <div className="location">
           <span>قامشلي</span>
