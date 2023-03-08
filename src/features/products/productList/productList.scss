@@ -1,11 +1,11 @@
 @import "../../../style.scss";
 
 .section-products {
-  // @include themify($themes) {
-  //   .error-message {
-  //     color: themed("orangeBlueIcons");
-  //   }
-  // }
+  @include themify($themes) {
+    .error-message {
+      color: themed("orangeBlueIcons");
+    }
+  }
   a,
   a:hover {
     text-decoration: none;
