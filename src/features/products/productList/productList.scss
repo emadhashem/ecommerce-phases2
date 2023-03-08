@@ -1,4 +1,11 @@
+@import "../../../style.scss";
+
 .section-products {
+  // @include themify($themes) {
+  //   .error-message {
+  //     color: themed("orangeBlueIcons");
+  //   }
+  // }
   a,
   a:hover {
     text-decoration: none;
@@ -35,7 +42,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      color: red;
+      margin-top: 150px;
       font-size: 20px;
       img {
         width: 200px;
@@ -56,7 +63,7 @@
       background: var(--color-mainBlue);
       border: none;
       padding: 2px;
-      span{
+      span {
         font-family: "Cairo";
         font-style: normal;
         font-weight: 500;

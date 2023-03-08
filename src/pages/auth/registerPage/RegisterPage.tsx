@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Avatar, Button, MenuItem, NativeSelect, Select, TextField } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  MenuItem,
+  NativeSelect,
+  Select,
+  TextField,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/svgs/Vectorregister.svg";
 import "./registerPage.scss";
@@ -15,7 +22,7 @@ function RegisterPage() {
   const [password2, setpassword2] = useState("");
   const [address, setaddress] = useState("");
   const [cities, setcities] = useState<any>([]);
-  const [city, setcity] = useState('-1')
+  const [city, setcity] = useState("-1");
   const chooseFileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -40,8 +47,8 @@ function RegisterPage() {
     return objectURL;
   }
   async function handleRegister() {
-    if(city === '-1') {
-      return alert('PLEASE CHOOSE CITY')
+    if (city === "-1") {
+      return alert("PLEASE CHOOSE CITY");
     }
     try {
       const data = await postRegister({
@@ -60,7 +67,7 @@ function RegisterPage() {
   }
   function handleCitySelect(eve: React.ChangeEvent<HTMLSelectElement>) {
     eve.preventDefault();
-    setcity(eve.target.value as string)
+    setcity(eve.target.value as string);
   }
   return (
     <div className="registerPage">
@@ -142,20 +149,22 @@ function RegisterPage() {
             onChange={(e) => setaddress(e.target.value)}
           />
         </div>
-        <div className="input">
-          <NativeSelect
-          required
-          sx={{ width: "351px", height: "40px" }}
-          onChange={handleCitySelect} value = {city} >
-            <option value={-1} hidden >
-              المدينة
+        <div className="select-input">
+          <select
+            required
+            // sx={{ width: "351px", height: "40px" }}
+            onChange={handleCitySelect}
+            value={city}
+          >
+            <option value="" selected hidden>
+              اختر المدينة
             </option>
             {cities.map((city: any) => (
-              <option 
-              style={{width : '50%'}}
-              key={city.city_id} value={city.city_id}>{city.city_name}</option>
+              <option key={city.city_id} value={city.city_id}>
+                {city.city_name}
+              </option>
             ))}
-          </NativeSelect>
+          </select>
         </div>
       </div>
       <div>
