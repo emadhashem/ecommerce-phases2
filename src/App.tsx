@@ -36,6 +36,7 @@ function App() {
             <Route path="/details" element={<DetailsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/settings" element={<SettingsPage />} />
+            <Route path="*" element={<h1>Not found </h1>} />
           </Routes>
           </CategoryContextProvider>
         </GlobalLayOut>
