@@ -1,17 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import {
   Avatar,
   Button,
+  CircularProgress,
   MenuItem,
   NativeSelect,
   Select,
   TextField,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/svgs/Vectorregister.svg";
 import "./registerPage.scss";
 import { postRegister } from "../../../api/auth/register";
 import { getCities } from "../../../api/city/city";
+import { UserContext } from "../../../contexts/category/user.context";
 
 function RegisterPage() {
   const [imgFile, setimgFile] = useState<any>();
@@ -23,8 +25,14 @@ function RegisterPage() {
   const [address, setaddress] = useState("");
   const [cities, setcities] = useState<any>([]);
   const [city, setcity] = useState("-1");
+  const [loading, setloading] = useState(false);
   const chooseFileRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
+  const { setUserToken, setUsername, userToken } = useContext(UserContext);
+  useEffect(() => {
+    if (userToken) navigate("/");
+  }, [userToken]);
   useEffect(() => {
     async function fetchCities() {
       const data = await getCities();
@@ -51,6 +59,7 @@ function RegisterPage() {
       return alert("PLEASE CHOOSE CITY");
     }
     try {
+      setloading(true);
       const data = await postRegister({
         customer_name: name,
         customer_password: password1,
@@ -61,8 +70,12 @@ function RegisterPage() {
         customer_url: imgFile,
         customer_mobile: phone,
       });
-    } catch (error) {
-      alert("some thing is wrong");
+      setUserToken(data.customer.remember_token);
+      setUsername(data.customer.customer_name);
+      setloading(false);
+    } catch (error: any) {
+      alert(error.message);
+      setloading(false);
     }
   }
   function handleCitySelect(eve: React.ChangeEvent<HTMLSelectElement>) {
@@ -168,9 +181,13 @@ function RegisterPage() {
         </div>
       </div>
       <div>
-        <Button onClick={handleRegister} className="btn" variant="contained">
-          <span>تسجيل</span>
-        </Button>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Button onClick={handleRegister} className="btn" variant="contained">
+            <span>تسجيل</span>
+          </Button>
+        )}
       </div>
       <div className="footer-container">
         <span>هل لديك اشتراك بالفعل؟</span>

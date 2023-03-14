@@ -14,6 +14,8 @@ import { FiPhoneCall } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 import { useNavigate } from "react-router-dom";
+import useLogOut from "../../hooks/useLogOut";
+import { Button } from "@mui/material";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -67,13 +69,14 @@ const ProfilePage = () => {
   // const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
   const { toggle, darkMode } = useContext(DarkModeContext);
-
+  const { fetchLogOut } = useLogOut();
   return (
     <React.Fragment>
       <ProfileNavBar />
       <div className="profilePage-container">
         <div className="profile-header">
           <div className="profile-edit">
+            <Button onClick={fetchLogOut}>logout</Button>
             <p onClick={() => navigate("/profile/settings")}>
               تعديل بيانات الحساب <ManageAccountsIcon className="icon" />
             </p>

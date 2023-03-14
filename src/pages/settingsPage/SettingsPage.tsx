@@ -1,12 +1,22 @@
 import { Button, TextField } from "@mui/material";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import Badge from "@mui/material/Badge";
 import EditIcon from "@mui/icons-material/Edit";
 import "./settingsPage.scss";
+import { getUserData } from "../../api/user/userdata";
+import { UserContext } from "../../contexts/category/user.context";
 
 function SettingsPage() {
   const [imgFile, setimgFile] = useState<any>();
   const chooseFileRef = useRef<HTMLInputElement>(null);
+  const {userToken} = useContext(UserContext)
+  useEffect(() => {
+    async function fetchUserData() {
+      const data = await getUserData(userToken)
+    }
+    fetchUserData()
+  }, [])
+  
   async function onFileChoosen(eve: React.ChangeEvent<HTMLInputElement>) {
     eve.stopPropagation();
     eve.preventDefault();

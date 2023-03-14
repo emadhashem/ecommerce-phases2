@@ -21,7 +21,12 @@ function ProductListItem({
   idx : number
 }) {
   const navigate = useNavigate();
-
+  async function addToFavorite() {
+    
+  }
+  async function removeFromFavorite() {
+    
+  }
   return (
     <div className="card" key={productId}>
       <div id={`product-${productId}`} className="single-product">

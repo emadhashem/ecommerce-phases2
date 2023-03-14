@@ -22,15 +22,21 @@ export async function postRegister({
     city_id,
     customer_address
 }: IPostRegisterBody) {
-    const { data } = await axios.post(post_register_api_url, {
-        customer_name,
-        customer_password,
-        customer_confirm_password,
-        customer_mobile,
-        customer_email,
-        customer_url,
-        city_id,
-        customer_address
-    })
-    return data
+    try {
+        const { data } = await axios.post(post_register_api_url, {
+            customer_name,
+            customer_password,
+            customer_confirm_password,
+            customer_mobile,
+            customer_email,
+            customer_url,
+            city_id,
+            customer_address
+        })
+        return data
+    } catch (error: any) {
+        
+        throw new Error(error.response.data.message)
+
+    }
 }

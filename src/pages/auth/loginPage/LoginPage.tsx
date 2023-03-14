@@ -6,6 +6,7 @@ import {
   InputAdornment,
   FormControl,
   TextField,
+  CircularProgress,
 } from "@mui/material";
 import "./loginPage.scss";
 import logo from "../../../assets/svgs/logo.svg";
@@ -20,6 +21,8 @@ function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [loading, setloading] = useState(false);
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const { setUserToken, setUsername, userToken } = useContext(UserContext);
   const navigate = useNavigate();
@@ -33,11 +36,15 @@ function LoginPage() {
   };
   async function handleLogin() {
     try {
+      setloading(true);
       const data = await postLogin(email, password);
       setUserToken(data.customer.remember_token);
       setUsername(data.customer.customer_name);
-    } catch (error) {
-      alert("something wrong happen");
+      setloading(false);
+    } catch (error: any) {
+      setloading(false);
+
+      alert(error.message);
     }
   }
   return (
@@ -82,9 +89,13 @@ function LoginPage() {
         </div>
       </div>
       <div>
-        <Button onClick={handleLogin} className="btn" variant="contained">
-          <span>تسجيل الدخول</span>
-        </Button>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Button onClick={handleLogin} className="btn" variant="contained">
+            <span>تسجيل الدخول</span>
+          </Button>
+        )}
       </div>
       <div className="footer-container">
         <span>ليس لديك حساب؟</span>
