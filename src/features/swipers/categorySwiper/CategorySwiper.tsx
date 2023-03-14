@@ -5,18 +5,19 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./categorySwiper.scss";
 import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
-import { CategoryContext } from "../../../contexts/category/category.context";
+import { UserContext } from "../../../contexts/category/user.context";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import { getSubCategories } from "../../../api/subcategoies/sub_categories";
 import { getImg } from "../../../api";
 
 function CategorySwiper() {
-  const { id, setId } = useContext(CategoryContext);
+  const { categoryId, setcategoryId } = useContext(UserContext);
   const [subCategories, setsubCategories] = useState<any>([]);
   useEffect(() => {
     async function fetchSubCategories() {
       const data = await getSubCategories();
       setsubCategories(data.sub_category);
+      setcategoryId(data.sub_category[0].sub_category_id);
     }
     fetchSubCategories();
   }, []);
@@ -38,21 +39,24 @@ function CategorySwiper() {
         {subCategories.map((item: any) => (
           <SwiperSlide key={item.sub_category_id}>
             <div
-              className={`category-container ${
-                id === item.sub_category_id ? "active-category" : ""
+              style={{
+                backgroundColor: categoryId === item.sub_category_id ? "red" : "",
+              }}
+              className={`category-container red${
+                categoryId === item.sub_category_id && "active-category"
               }`}
-              onClick={() => setId(item.sub_category_id)}
+              onClick={() => setcategoryId(item.sub_category_id)}
             >
               <img
                 src={getImg(item.sub_category_url)}
                 className={`${
-                  id === item.sub_category_id
+                  categoryId === item.sub_category_id
                     ? "active-category"
                     : "icon-category "
                 }`}
               />
               <div className="category-name">
-                <p>{item.sub_category_name}</p>
+                <p>{item.sub_category_name} </p>
               </div>
             </div>
           </SwiperSlide>

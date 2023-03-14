@@ -13,7 +13,7 @@ import DetailsPage from "./pages/detailsPage/DetailsPage";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import { DarkModeContext } from "./contexts/darkModeContext/darkModeContext";
 import SettingsPage from "./pages/settingsPage/SettingsPage";
-import CategoryContextProvider from "./contexts/category/category";
+import UserContextProvider from "./contexts/category/UserContextProvider";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -24,7 +24,7 @@ function App() {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <GlobalLayOut>
-        <CategoryContextProvider>
+        <UserContextProvider>
           <Routes>
             {/* <Route path="/home" element={<MainPage />} /> */}
             <Route path="/" element={<MainPage />} />
@@ -38,7 +38,7 @@ function App() {
             <Route path="/profile/settings" element={<SettingsPage />} />
             <Route path="*" element={<h1>Not found </h1>} />
           </Routes>
-          </CategoryContextProvider>
+          </UserContextProvider>
         </GlobalLayOut>
       </div>
     );

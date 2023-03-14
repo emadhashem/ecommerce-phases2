@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CategoryContext } from "../../../contexts/category/category.context";
+import { UserContext } from "../../../contexts/category/user.context";
 import "./productList.scss";
 import ProductListItem from "../productListItem/ProdustListItem";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
@@ -39,10 +39,11 @@ function ProductList({
             <ProductListItem
               onClick={handleOpen}
               productId={product.product_id}
-              productImg={getImg(product.product_url)}
+              productImg={getImg(product.product_photo_url)}
               productName={product.product_name}
               productPrice={product.product_price_dollar}
               idx={idx}
+              key = {product.product_id}
             />
           ))
         ) : (

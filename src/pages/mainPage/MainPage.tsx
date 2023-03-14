@@ -6,19 +6,19 @@ import CategorySwiper from "../../features/swipers/categorySwiper/CategorySwiper
 import MostSaledSwiper from "../../features/swipers/mostSaledSwiper/MostSaledSwiper";
 import ProductList from "../../features/products/productList/ProductList";
 import "./mainPage.scss";
-import { CategoryContext } from "../../contexts/category/category.context";
+import { UserContext } from "../../contexts/category/user.context";
 import { getPorductsBySubCategory } from "../../api/subcategoies/sub_categories";
 
 function MainPage() {
   const [products, setproducts] = useState<any>([]);
-  const { id: idOfSubCategory } = useContext(CategoryContext);
+  const { categoryId } = useContext(UserContext);
   useEffect(() => {
     async function fetchProductsBySubcategory() {
-      const data = await getPorductsBySubCategory(idOfSubCategory);
+      const data = await getPorductsBySubCategory(categoryId);
       setproducts(data.product);
     }
     fetchProductsBySubcategory();
-  }, [idOfSubCategory]);
+  }, [categoryId]);
   return (
     <div className="main-page">
       <div>

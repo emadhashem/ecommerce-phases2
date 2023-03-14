@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   Button,
   InputLabel,
@@ -12,14 +12,20 @@ import logo from "../../../assets/svgs/logo.svg";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../../../api/auth/login";
+import { UserContext } from "../../../contexts/category/user.context";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const { setUserToken, setUsername, userToken } = useContext(UserContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userToken) navigate("/");
+  }, [userToken]);
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -28,7 +34,8 @@ function LoginPage() {
   async function handleLogin() {
     try {
       const data = await postLogin(email, password);
-      console.log(data);
+      setUserToken(data.customer.remember_token);
+      setUsername(data.customer.customer_name);
     } catch (error) {
       alert("something wrong happen");
     }
@@ -45,7 +52,7 @@ function LoginPage() {
           type="text"
           placeholder="رقم الموبايل او البريد الالكتروني"
           value={email}
-              onChange={(e) => setemail(e.target.value)}
+          onChange={(e) => setemail(e.target.value)}
         />
         <div className="input">
           <FormControl sx={{ mt: 2, width: "333px" }}>

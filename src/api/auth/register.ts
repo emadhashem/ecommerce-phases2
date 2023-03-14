@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL } from "..";
 
-const post_register_api_url = API_URL + `/post_register_customer`
+const post_register_api_url = API_URL + `/post_register`
 interface IPostRegisterBody {
     customer_name: string,
     customer_password: string,
