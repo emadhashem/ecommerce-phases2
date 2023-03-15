@@ -39,10 +39,10 @@ function CategorySwiper() {
         {subCategories.map((item: any) => (
           <SwiperSlide key={item.sub_category_id}>
             <div
-              style={{
-                backgroundColor: categoryId === item.sub_category_id ? "red" : "",
-              }}
-              className={`category-container red${
+              // style={{
+              //   backgroundColor: categoryId === item.sub_category_id ? "red" : "",
+              // }}
+              className={`category-container ${
                 categoryId === item.sub_category_id && "active-category"
               }`}
               onClick={() => setcategoryId(item.sub_category_id)}
@@ -55,7 +55,9 @@ function CategorySwiper() {
                     : "icon-category "
                 }`}
               />
-              <div className="category-name">
+              <div className={`category-name ${
+                categoryId === item.sub_category_id && "active-category"
+              }`}>
                 <p>{item.sub_category_name} </p>
               </div>
             </div>

@@ -62,11 +62,11 @@
       .icon-category {
         color: themed("mainIconColor");
       }
-      .active-category {
-        color: themed("orangeBlueIcons");
-        p {
-          color: themed("orangeBlueIcons");
-        }
+    }
+    .active-category {
+      color: themed("orangeBlueIcons");
+      p {
+        color: themed("orangeBlueIcons") !important;
       }
     }
 
