@@ -8,7 +8,7 @@ export function getImg(url : string) {
 export function getHeaders(token : string) {
     return {
         headers : {
-            remember_token : token,
+            remembertoken : token,
             'Content-Type': 'application/json'
         }
     }
