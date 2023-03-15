@@ -11,9 +11,10 @@ function FavoritsPage() {
   useEffect(() => {
     async function fetchFavirotes() {
       const data = await getFavorites(userToken)
+      console.log(data.favorite);
     }
     fetchFavirotes()
-  }, [])
+  }, [userToken])
   
   return (
     <div className="favoritsPage-container">

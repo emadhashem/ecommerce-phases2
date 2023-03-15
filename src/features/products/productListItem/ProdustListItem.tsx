@@ -4,6 +4,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import "./productListItem.scss";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/category/user.context";
+import { postDeleteProductToOrder, postProductToOrder } from "../../../api/product/product";
 
 function ProductListItem({
   productId,
@@ -20,12 +23,13 @@ function ProductListItem({
   productPrice : string;
   idx : number
 }) {
+  const {userToken} = useContext(UserContext)
   const navigate = useNavigate();
   async function addToFavorite() {
-    
+    const data = await postProductToOrder(productId, '1' , productPrice , "dollar" , userToken)
   }
   async function removeFromFavorite() {
-    
+    // const data = postDeleteProductToOrder()
   }
   return (
     <div className="card" key={productId}>
@@ -34,7 +38,7 @@ function ProductListItem({
           <span className="location">
             قامشلي <LocationOnRoundedIcon className="icon" />
           </span>
-          <FavoriteIcon className="fav-icon" />
+          <FavoriteIcon className="fav-icon" onClick = {() => addToFavorite()} />
           <img src={productImg} alt="" onClick={() => navigate("/details", {
             state : {
               product_id : productId
