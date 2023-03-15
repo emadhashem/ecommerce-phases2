@@ -1,6 +1,6 @@
 import "./profilePage.scss";
 import ProfileNavBar from "./ProfileNavBar";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -70,6 +70,8 @@ const ProfilePage = () => {
   const navigate = useNavigate();
   const { toggle, darkMode } = useContext(DarkModeContext);
   const { fetchLogOut } = useLogOut();
+  
+  
   return (
     <React.Fragment>
       <ProfileNavBar />

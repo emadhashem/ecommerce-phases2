@@ -10,13 +10,32 @@ function SettingsPage() {
   const [imgFile, setimgFile] = useState<any>();
   const chooseFileRef = useRef<HTMLInputElement>(null);
   const {userToken} = useContext(UserContext)
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [phone, setphone] = useState("");
+  const [password1, setpassword1] = useState("");
+  const [password2, setpassword2] = useState("");
+  const [address, setaddress] = useState("");
+  const [city, setcity] = useState("-1");
   useEffect(() => {
     async function fetchUserData() {
-      const data = await getUserData(userToken)
+      try {
+        const data = await getUserData(userToken)
+        setname(data.customer.customer_name)
+        setemail(data.customer.customer_email)
+        setphone(data.customer.customer_mobile)
+        setaddress(data.customer.customer_address)
+        setimgFile(data.customer.customer_url)
+      } catch (error : any) {
+        alert(error.message)
+      }
+
     }
     fetchUserData()
   }, [])
-  
+  async function saveSettings() {
+    
+  }
   async function onFileChoosen(eve: React.ChangeEvent<HTMLInputElement>) {
     eve.stopPropagation();
     eve.preventDefault();
@@ -68,23 +87,33 @@ function SettingsPage() {
       </div>
 
       <div className="input-container">
-        <TextField className="input" type="text" placeholder="الاسم" />
-        <TextField className="input" type="number" placeholder="الهاتف" />
-        <TextField className="input" type="email" placeholder="البريد" />
+        <TextField className="input" type="text" placeholder="الاسم" 
+        value={name}
+        />
+        <TextField className="input" type="number" placeholder="الهاتف"
+        value={phone}
+        />
+        <TextField className="input" type="email" placeholder="البريد" 
+        value={email}
+        />
         <TextField
           className="input"
           type="password"
           placeholder="كلمة المرور"
+          value={password1}
         />
         <TextField
           className="input"
           type="password"
           placeholder="تاكيد كلمة المرور "
+          value={password2}
         />
-        <TextField className="input" type="address" placeholder="العنوان" />
+        <TextField className="input" type="address" placeholder="العنوان"
+        value={address}
+        />
       </div>
       <div>
-        <Button className="btn" variant="contained">
+        <Button onClick={saveSettings} className="btn" variant="contained">
           <span>حفظ التعديلات</span>
         </Button>
       </div>

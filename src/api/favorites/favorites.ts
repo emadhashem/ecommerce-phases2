@@ -1,31 +1,47 @@
 import axios from "axios";
-import { API_URL, getHeaders } from "..";
+import { API_URL, getHeaders, throwMessageError } from "..";
 
 const post_favorite_api_url = API_URL + '/post_favorite'
-export async function addFavorite(customer_id: string | number,
+export async function addFavorite(
     product_id: string | number, token: string) {
-    const { data } = await axios.post(post_favorite_api_url, {
-        customer_id,
-        product_id
-    },
-        getHeaders(token)
-    )
-    return data
+    try {
+
+        const { data } = await axios.post(post_favorite_api_url, {
+            product_id
+        },
+            getHeaders(token)
+        )
+        return data
+    } catch (error: any) {
+        throwMessageError(error)
+
+    }
+
+
 }
 
 const post_delete_favorite_api_url = API_URL + '/post_delete_favorite'
-export async function deleteFavorite(customer_id: string | number,
+export async function deleteFavorite(
     product_id: string | number, token: string) {
-    const { data } = await axios.post(post_delete_favorite_api_url, {
-        customer_id,
-        product_id
-    },
-        getHeaders(token)
-    )
-    return data
+    try {
+        const { data } = await axios.post(post_delete_favorite_api_url, {
+            product_id
+        },
+            getHeaders(token)
+        )
+        return data
+    } catch (error: any) {
+        throwMessageError(error)
+
+    }
 }
 const get_favorite_api_url = API_URL + '/get_favorite'
 export async function getFavorites(token: string) {
-    const { data } = await axios.get(get_favorite_api_url, getHeaders(token))
-    return data
+    try {
+        const { data } = await axios.get(get_favorite_api_url, getHeaders(token))
+        return data
+    } catch (error: any) {
+        throwMessageError(error)
+
+    }
 }

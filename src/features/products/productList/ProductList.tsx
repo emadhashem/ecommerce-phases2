@@ -31,7 +31,7 @@ function ProductList({
         <ModalOverLay open={open} handleClose={handleClose}>
           {/* modal content or product */}
           {products[idxOfMadlProduct] && (
-            <ModalProduct product={products[idxOfMadlProduct]} />
+            <ModalProduct product={products[idxOfMadlProduct]} handleClose = {handleClose} />
           )}
         </ModalOverLay>
         {products.length > 0 ? (
@@ -44,6 +44,7 @@ function ProductList({
               productPrice={product.product_price_dollar}
               idx={idx}
               key = {product.product_id}
+              is_favorite = {product.is_favorite}
             />
           ))
         ) : (

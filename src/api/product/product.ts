@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL, getHeaders } from "..";
+import { API_URL, getHeaders, throwMessageError } from "..";
 
 const get_product_by_id_api_url = API_URL + `/get_product_by_product_id`
 export async function getProductById(id: string | number) {
@@ -19,19 +19,23 @@ export async function postProductToOrder(product_id: string,
     product_price: string,
     product_coin: string,
     token: string) {
-    const { data } = await axios.post(post_product_to_order_api_url, {
-        
-        data: {
-            product_id,
-            product_price,
-            product_count,
-            product_coin
-        }
-    },getHeaders(token))
-    return data
+    try {
+        const { data } = await axios.post(post_product_to_order_api_url, {
+
+            data: {
+                product_id : "1",
+                product_price : "5",
+                product_count : "5",
+                product_coin :"sy"
+            }
+        }, getHeaders(token))
+        return data
+    } catch (error: any) {
+        throwMessageError(error)
+    }
 }
 
-const post_remove_product_from_order_api_url = API_URL + '/post_remove_product_from_order '
+const post_remove_product_from_order_api_url = API_URL + '/post_remove_product_from_order'
 export async function postDeleteProductToOrder(
     order_details_id: string,
     token: string) {
@@ -43,12 +47,12 @@ export async function postDeleteProductToOrder(
     })
     return data
 }
-const post_change_product_count_in_order_api_url = API_URL + '/post_change_product_count_in_order '
+const post_change_product_count_in_order_api_url = API_URL + '/post_change_product_count_in_order'
 export async function postchangeProductCountInOrder(
     order_details_id: string,
     token: string,
-    product_count : string
-    ) {
+    product_count: string
+) {
     const { data } = await axios.post(post_change_product_count_in_order_api_url, {
         ...getHeaders(token),
         data: {

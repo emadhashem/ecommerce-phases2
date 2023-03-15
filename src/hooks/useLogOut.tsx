@@ -5,12 +5,18 @@ import { UserContext } from "../contexts/category/user.context";
 
 function useLogOut() {
   const { setUserToken, setUsername, userToken } = useContext(UserContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const fetchLogOut = async () => {
-    await logOut(userToken);
-    setUserToken('')
-    setUsername('')
-    navigate('/')
+    try {
+      await logOut(userToken);
+      setUserToken("");
+      setUsername("");
+      navigate("/");
+    } catch (error) {
+      setUserToken("");
+      setUsername("");
+      navigate("/");
+    }
   };
   return { fetchLogOut };
 }

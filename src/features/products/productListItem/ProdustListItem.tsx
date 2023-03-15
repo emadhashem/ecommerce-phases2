@@ -4,9 +4,9 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import "./productListItem.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/category/user.context";
-import { postDeleteProductToOrder, postProductToOrder } from "../../../api/product/product";
+import { addFavorite, deleteFavorite } from "../../../api/favorites/favorites";
 
 function ProductListItem({
   productId,
@@ -14,22 +14,39 @@ function ProductListItem({
   onClick,
   productName,
   productPrice,
-  idx
+  idx,
+  is_favorite,
 }: {
   productId: any;
   productImg: any;
-  onClick: (idx : number) => void;
-  productName : string;
-  productPrice : string;
-  idx : number
+  onClick: (idx: number) => void;
+  productName: string;
+  productPrice: string;
+  idx: number;
+  is_favorite: boolean;
 }) {
-  const {userToken} = useContext(UserContext)
+  const { userToken } = useContext(UserContext);
+  const [favorite, setfavorite] = useState(is_favorite);
   const navigate = useNavigate();
   async function addToFavorite() {
-    const data = await postProductToOrder(productId, '1' , productPrice , "dollar" , userToken)
+    try {
+      setfavorite(true);
+      const data = await addFavorite(productId, userToken);
+    } catch (error: any) {
+      setfavorite(false);
+
+      alert(error.message);
+    }
   }
   async function removeFromFavorite() {
-    // const data = postDeleteProductToOrder()
+    try {
+      setfavorite(false);
+      const data = await deleteFavorite(productId, userToken);
+    } catch (error: any) {
+      setfavorite(true);
+
+      alert(error.message);
+    }
   }
   return (
     <div className="card" key={productId}>
@@ -38,16 +55,27 @@ function ProductListItem({
           <span className="location">
             قامشلي <LocationOnRoundedIcon className="icon" />
           </span>
-          <FavoriteIcon className="fav-icon" onClick = {() => addToFavorite()} />
-          <img src={productImg} alt="" onClick={() => navigate("/details", {
-            state : {
-              product_id : productId
+          <FavoriteIcon
+            style={{
+              color: favorite ? "red" : "",
+            }}
+            className="fav-icon"
+            onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}
+          />
+          <img
+            src={productImg}
+            alt=""
+            onClick={() =>
+              navigate("/details", {
+                state: {
+                  product_id: productId,
+                },
+              })
             }
-          })} />
-         
+          />
         </div>
         <div className="part-2">
-          <AddShoppingCartIcon className="icon" onClick = {() => onClick(idx)} />
+          <AddShoppingCartIcon className="icon" onClick={() => onClick(idx)} />
           <div className="product-info">
             <h3 className="product-title" onClick={() => navigate("/details")}>
               {productName}

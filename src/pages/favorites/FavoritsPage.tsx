@@ -2,16 +2,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ArrowLeftRoundedIcon from "@mui/icons-material/ArrowLeftRounded";
 import "./favoritsPage.scss";
 import ProductList from "../../features/products/productList/ProductList";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getFavorites } from "../../api/favorites/favorites";
 import { UserContext } from "../../contexts/category/user.context";
 
 function FavoritsPage() {
   const {userToken} = useContext(UserContext)
+  const [products , setproducts] = useState<any>([])
   useEffect(() => {
     async function fetchFavirotes() {
       const data = await getFavorites(userToken)
-      console.log(data.favorite);
+      setproducts(data.favorite);
     }
     fetchFavirotes()
   }, [userToken])
@@ -30,7 +31,7 @@ function FavoritsPage() {
         </div>
       </div>
       <div className="fav-ProductList">
-        <ProductList products={[]} showAllProduts = {false} />
+        <ProductList products={products} showAllProduts = {false} />
       </div>
     </div>
   );
