@@ -21,12 +21,11 @@ export async function postProductToOrder(product_id: string,
     token: string) {
     try {
         const { data } = await axios.post(post_product_to_order_api_url, {
-
             data: {
-                product_id : "1",
-                product_price : "5",
+                product_coin :"sy",
                 product_count : "5",
-                product_coin :"sy"
+                product_id : "1",
+                product_price : "5"
             }
         }, getHeaders(token))
         return data

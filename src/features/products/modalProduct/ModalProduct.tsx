@@ -48,7 +48,7 @@ function ModalProduct({
               <span>{product.product_price_dollar} $</span>
             </div>
             <div className="img-container">
-              <img src={getImg(product.product_url)} alt="" />
+              <img src={getImg(product.product_photo_url)} alt="" />
             </div>
             <div className="quantity-icons">
               <RemoveCircleRoundedIcon
