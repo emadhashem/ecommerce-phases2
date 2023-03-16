@@ -59,6 +59,24 @@
         }
       }
 
+      .light-filter {
+        filter: invert(47%) sepia(59%) saturate(4340%) hue-rotate(200deg)
+          brightness(92%) contrast(94%);
+      }
+      .light-ActiveFilter {
+        filter: invert(51%) sepia(40%) saturate(4477%) hue-rotate(334deg)
+          brightness(107%) contrast(101%);
+      }
+
+      .dark-filter {
+        filter: invert(72%) sepia(27%) saturate(185%) hue-rotate(177deg)
+          brightness(90%) contrast(84%);
+      }
+      .dark-ActiveFilter {
+        filter: invert(47%) sepia(59%) saturate(4340%) hue-rotate(200deg)
+          brightness(92%) contrast(94%);
+      }
+
       .icon-category {
         color: themed("mainIconColor");
       }

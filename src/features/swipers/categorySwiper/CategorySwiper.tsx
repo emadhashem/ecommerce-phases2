@@ -9,9 +9,11 @@ import { UserContext } from "../../../contexts/category/user.context";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import { getSubCategories } from "../../../api/subcategoies/sub_categories";
 import { getImg } from "../../../api";
+import { DarkModeContext } from "../../../contexts/darkModeContext/darkModeContext";
 
 function CategorySwiper() {
   const { categoryId, setcategoryId } = useContext(UserContext);
+  const { darkMode } = useContext(DarkModeContext);
   const [subCategories, setsubCategories] = useState<any>([]);
   useEffect(() => {
     async function fetchSubCategories() {
@@ -49,15 +51,32 @@ function CategorySwiper() {
             >
               <img
                 src={getImg(item.sub_category_url)}
-                className={`${
-                  categoryId === item.sub_category_id
-                    ? "active-category"
-                    : "icon-category "
-                }`}
+                alt=""
+                className={
+                  darkMode
+                    ? `${
+                        categoryId === item.sub_category_id
+                          ? "dark-ActiveFilter"
+                          : "dark-filter"
+                      }`
+                    : `${
+                        categoryId === item.sub_category_id
+                          ? "light-ActiveFilter"
+                          : "light-filter"
+                      }`
+                }
+                id={categoryId === item.sub_category_id ? "" : ""}
+                // className={`${
+                //   categoryId === item.sub_category_id
+                //     ? "active-category"
+                //     : "icon-category "
+                // }`}
               />
-              <div className={`category-name ${
-                categoryId === item.sub_category_id && "active-category"
-              }`}>
+              <div
+                className={`category-name ${
+                  categoryId === item.sub_category_id && "active-category"
+                }`}
+              >
                 <p>{item.sub_category_name} </p>
               </div>
             </div>
