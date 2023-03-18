@@ -17,12 +17,18 @@ function ProductList({
 }) {
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
+  const [productsState, setproductsState] = useState(products);
   const handleOpen = (idx: number) => {
     setidxOfMadlProduct(idx);
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+  };
+  const handleRemoveFromList = (product_id: string) => {
+    setproductsState((prev) =>
+      prev.filter((item: any) => item.product_id !== product_id)
+    );
   };
   return (
     <section className="section-products">
@@ -31,7 +37,10 @@ function ProductList({
         <ModalOverLay open={open} handleClose={handleClose}>
           {/* modal content or product */}
           {products[idxOfMadlProduct] && (
-            <ModalProduct product={products[idxOfMadlProduct]} handleClose = {handleClose} />
+            <ModalProduct
+              product={products[idxOfMadlProduct]}
+              handleClose={handleClose}
+            />
           )}
         </ModalOverLay>
         {products.length > 0 ? (
@@ -43,8 +52,9 @@ function ProductList({
               productName={product.product_name}
               productPrice={product.product_price_dollar}
               idx={idx}
-              key = {product.product_id}
-              is_favorite = {product.is_favorite}
+              key={product.product_id}
+              in_favorite={product.in_favorite}
+              handleRemoveFromList = {handleRemoveFromList}
             />
           ))
         ) : (

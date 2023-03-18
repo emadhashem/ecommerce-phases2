@@ -7,6 +7,7 @@ import "./productListItem.scss";
 import { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/category/user.context";
 import { addFavorite, deleteFavorite } from "../../../api/favorites/favorites";
+import { CircularProgress } from "@mui/material";
 
 function ProductListItem({
   productId,
@@ -15,7 +16,8 @@ function ProductListItem({
   productName,
   productPrice,
   idx,
-  is_favorite,
+  in_favorite,
+  handleRemoveFromList,
 }: {
   productId: any;
   productImg: any;
@@ -23,28 +25,36 @@ function ProductListItem({
   productName: string;
   productPrice: string;
   idx: number;
-  is_favorite: boolean;
+  in_favorite: boolean;
+  handleRemoveFromList: (id: string) => void;
 }) {
   const { userToken } = useContext(UserContext);
-  const [favorite, setfavorite] = useState(is_favorite);
+  const [favorite, setfavorite] = useState(in_favorite);
+  const [favoriteLoading, setfavoriteLoading] = useState(false);
   const navigate = useNavigate();
   async function addToFavorite() {
     try {
+      setfavoriteLoading(true);
       setfavorite(true);
       const data = await addFavorite(productId, userToken);
+      setfavoriteLoading(false);
     } catch (error: any) {
       setfavorite(false);
+      setfavoriteLoading(false);
 
       alert(error.message);
     }
   }
   async function removeFromFavorite() {
     try {
+      setfavoriteLoading(true);
       setfavorite(false);
       const data = await deleteFavorite(productId, userToken);
+      handleRemoveFromList(productId);
+      setfavoriteLoading(false);
     } catch (error: any) {
+      setfavoriteLoading(false);
       setfavorite(true);
-
       alert(error.message);
     }
   }
@@ -55,13 +65,17 @@ function ProductListItem({
           <span className="location">
             قامشلي <LocationOnRoundedIcon className="icon" />
           </span>
-          <FavoriteIcon
-            style={{
-              color: favorite ? "red" : "",
-            }}
-            className="fav-icon"
-            onClick={() => (favorite ? removeFromFavorite() : addToFavorite())}
-          />
+          {favoriteLoading ? <CircularProgress /> : (
+            <FavoriteIcon
+              style={{
+                color: favorite ? "red" : "",
+              }}
+              className="fav-icon"
+              onClick={() =>
+                favorite ? removeFromFavorite() : addToFavorite()
+              }
+            />
+          )}
           <img
             src={productImg}
             alt=""

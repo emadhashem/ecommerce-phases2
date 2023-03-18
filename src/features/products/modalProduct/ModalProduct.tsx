@@ -6,7 +6,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import img from "../../../assets/imgs/Rectangle 35.png";
 import { getImg } from "../../../api";
 import { useContext, useState } from "react";
-import { postProductToOrder } from "../../../api/product/product";
+import { postOrder, postProductToOrder } from "../../../api/product/product";
 import { UserContext } from "../../../contexts/category/user.context";
 
 function ModalProduct({
@@ -27,13 +27,14 @@ function ModalProduct({
   async function addProductToCart() {
     console.log(product);
     try {
-      const data = await postProductToOrder(
-        product.product_id + "",
-        count + "",
-        product.product_price_dollar,
-        product.product_coin,
-        userToken
-      );
+      const data = await postOrder(userToken)
+      // const data = await postProductToOrder(
+      //   product.product_id + "",
+      //   count + "",
+      //   product.product_price_dollar,
+      //   product.product_coin,
+      //   userToken
+      // );
     } catch (error: any) {
       alert(error.message);
     }
