@@ -21,7 +21,7 @@ function CategorySwiper() {
       setsubCategories(data.sub_category);
       setcategoryId(data.sub_category[0].sub_category_id);
     }
-    fetchSubCategories();
+     fetchSubCategories();
   }, []);
 
   return (

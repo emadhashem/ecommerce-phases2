@@ -17,7 +17,12 @@ function ProductList({
 }) {
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
-  const [productsState, setproductsState] = useState(products);
+  const [productsState, setproductsState] = useState<any[]>([]);
+  useEffect(() => {
+    setproductsState(products)
+    return () => setproductsState([])
+  }, [products])
+  
   const handleOpen = (idx: number) => {
     setidxOfMadlProduct(idx);
     setOpen(true);
@@ -43,8 +48,8 @@ function ProductList({
             />
           )}
         </ModalOverLay>
-        {products.length > 0 ? (
-          products.map((product: any, idx: number) => (
+        {productsState.length > 0 ? (
+          productsState.map((product: any, idx: number) => (
             <ProductListItem
               onClick={handleOpen}
               productId={product.product_id}

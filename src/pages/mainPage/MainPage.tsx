@@ -18,6 +18,7 @@ function MainPage() {
       setproducts(data.product);
     }
     fetchProductsBySubcategory();
+    return () => setproducts([])
   }, [categoryId]);
   return (
     <div className="main-page">
