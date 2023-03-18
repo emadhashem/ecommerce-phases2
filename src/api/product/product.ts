@@ -14,6 +14,23 @@ export async function getProductPhotosById(id: string | number) {
 }
 
 const post_product_to_order_api_url = API_URL + '/post_product_to_order'
+export async function postOrder(token: string) {
+    const res = await fetch("https://app.hamidkano.com/api/post_product_to_order", {
+        method: 'POST',
+        body: JSON.stringify({
+            product_coin: "sy",
+            product_count: "5",
+            product_id: 1,
+            product_price: "5"
+        }),
+        headers: {
+            "Content-Type": "application/j son",
+            "renembertoken": token
+        }
+    })
+    const ress = res.json()
+
+}
 export async function postProductToOrder(product_id: string,
     product_count: string,
     product_price: string,
@@ -22,10 +39,10 @@ export async function postProductToOrder(product_id: string,
     try {
         const { data } = await axios.post(post_product_to_order_api_url, {
             data: {
-                product_coin :"sy",
-                product_count : "5",
-                product_id : "1",
-                product_price : "5"
+                product_coin: "sy",
+                product_count: "5",
+                product_id: "1",
+                product_price: "5"
             }
         }, getHeaders(token))
         return data
