@@ -11,6 +11,9 @@
         color: themed("textColor");
       }
     }
+    #Active-fav-icon {
+      color: themed("orangeBlueIcons");
+    }
   }
   height: 350px;
   border-radius: 10px;
@@ -56,7 +59,22 @@
         top: 10px;
         right: 10px;
         font-size: 28px;
+        filter: drop-shadow(0 0 0.4rem rgb(56, 56, 56));
+      }
+
+      #inactive-fav-icon {
         color: #ffffff;
+      }
+
+      .loader {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 100px;
+        height: 100px;
       }
 
       .location {

@@ -32,6 +32,7 @@ function ProductListItem({
   const [favorite, setfavorite] = useState(in_favorite);
   const [favoriteLoading, setfavoriteLoading] = useState(false);
   const navigate = useNavigate();
+  console.log(favorite)
   async function addToFavorite() {
     try {
       setfavoriteLoading(true);
@@ -65,12 +66,12 @@ function ProductListItem({
           <span className="location">
             قامشلي <LocationOnRoundedIcon className="icon" />
           </span>
-          {favoriteLoading ? <CircularProgress /> : (
+          {favoriteLoading ? (
+            <CircularProgress className="loader" />
+          ) : (
             <FavoriteIcon
-              style={{
-                color: favorite ? "red" : "",
-              }}
               className="fav-icon"
+              id={favorite ? "Active-fav-icon" : "inactive-fav-icon"}
               onClick={() =>
                 favorite ? removeFromFavorite() : addToFavorite()
               }
@@ -91,7 +92,16 @@ function ProductListItem({
         <div className="part-2">
           <AddShoppingCartIcon className="icon" onClick={() => onClick(idx)} />
           <div className="product-info">
-            <h3 className="product-title" onClick={() => navigate("/details")}>
+            <h3
+              className="product-title"
+              onClick={() =>
+                navigate("/details", {
+                  state: {
+                    product_id: productId,
+                  },
+                })
+              }
+            >
               {productName}
             </h3>
             {/* <h4 className="product-old-price">$79.99</h4> */}
