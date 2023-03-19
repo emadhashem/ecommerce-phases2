@@ -7,6 +7,7 @@ import ModalOverLay from "../../../layouts/modlaOverLay/ModalOverLay";
 import ModalProduct from "../modalProduct/ModalProduct";
 import { getPorductsBySubCategory } from "../../../api/subcategoies/sub_categories";
 import { getImg } from "../../../api";
+import { postProductToOrder } from "../../../api/product/product";
 
 function ProductList({
   showAllProduts = true,
@@ -18,11 +19,27 @@ function ProductList({
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
   const [productsState, setproductsState] = useState<any[]>([]);
+  const { userToken } = useContext(UserContext);
+
   useEffect(() => {
     setproductsState(products)
     return () => setproductsState([])
   }, [products])
-  
+  async function addProductToCart(product : any, count : number) {
+    try {
+      
+      const data = await postProductToOrder(
+        product.product_id,
+        count,
+        product.product_price_dollar,
+        product.product_coin,
+        userToken
+      );
+      handleClose()
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
   const handleOpen = (idx: number) => {
     setidxOfMadlProduct(idx);
     setOpen(true);
@@ -40,11 +57,11 @@ function ProductList({
       <div className="container">
         {/* <!-- Single Product --> */}
         <ModalOverLay open={open} handleClose={handleClose}>
-          {/* modal content or product */}
           {products[idxOfMadlProduct] && (
             <ModalProduct
               product={products[idxOfMadlProduct]}
               handleClose={handleClose}
+              onAccept = {addProductToCart}
             />
           )}
         </ModalOverLay>

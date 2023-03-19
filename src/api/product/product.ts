@@ -14,19 +14,17 @@ export async function getProductPhotosById(id: string | number) {
 }
 
 const post_product_to_order_api_url = API_URL + '/post_product_to_order'
-export async function postProductToOrder(product_id: string,
-    product_count: string,
+export async function postProductToOrder(product_id: string | number,
+    product_count: string | number,
     product_price: string,
     product_coin: string,
     token: string) {
     try {
         const { data } = await axios.post(post_product_to_order_api_url, {
-            data: {
-                product_coin: "sy",
-                product_count: "5",
-                product_id: "1",
-                product_price: "5"
-            }
+            product_coin,
+            product_count,
+            product_id,
+            product_price
         }, getHeaders(token))
         return data
     } catch (error: any) {
@@ -39,25 +37,39 @@ export async function postDeleteProductToOrder(
     order_details_id: string,
     token: string) {
     const { data } = await axios.post(post_remove_product_from_order_api_url, {
-        ...getHeaders(token),
-        data: {
-            order_details_id
-        }
-    })
+        order_details_id
+    }, getHeaders(token),)
     return data
 }
 const post_change_product_count_in_order_api_url = API_URL + '/post_change_product_count_in_order'
 export async function postchangeProductCountInOrder(
     order_details_id: string,
+    product_count: string | number,
     token: string,
-    product_count: string
 ) {
     const { data } = await axios.post(post_change_product_count_in_order_api_url, {
-        ...getHeaders(token),
-        data: {
-            order_details_id,
-            product_count
-        }
-    })
+        order_details_id,
+        product_count
+    }, getHeaders(token))
     return data
+}
+const get_order_in_basket_api_url = API_URL + '/get_order_in_basket'
+export async function getPorductsInCart(token: string) {
+    try {
+        const { data } = await axios.get(get_order_in_basket_api_url, getHeaders(token))
+        return data
+    } catch (error: any) {
+        throwMessageError(error)
+    }
+}
+
+const post_remove_all_product_from_order_api_url = API_URL + '/post_remove_all_product_from_order'
+export async function postRemoveAllFromCart(order_id : string | number , token : string) {
+    try {
+        const {data} = await axios.post(post_remove_all_product_from_order_api_url , {
+            order_id
+        } , getHeaders(token))
+    } catch (error : any) {
+        throwMessageError(error)
+    }
 }

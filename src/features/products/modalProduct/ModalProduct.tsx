@@ -5,39 +5,17 @@ import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import img from "../../../assets/imgs/Rectangle 35.png";
 import { getImg } from "../../../api";
-import { useContext, useState } from "react";
-import { postProductToOrder } from "../../../api/product/product";
-import { UserContext } from "../../../contexts/category/user.context";
+import { useState } from "react";
+import { CircularProgress } from "@mui/material";
 
-function ModalProduct({
-  product,
-  handleClose,
-}: {
-  product?: any;
-  handleClose?: any;
-}) {
-  const [count, setcount] = useState(0);
-  const { userToken } = useContext(UserContext);
+function ModalProduct({ product, handleClose, onAccept }: any) {
+  const [count, setcount] = useState(product.product_count ? product.product_count : 0);
+  const [disapleAcceptBtn, setdisapleAcceptBtn] = useState(false);
   async function handleReduceCount() {
     if (count > 1) return setcount(count - 1);
   }
   async function handleAddCount() {
     setcount(count + 1);
-  }
-  async function addProductToCart() {
-    console.log(product);
-    try {
-      
-      const data = await postProductToOrder(
-        product.product_id + "",
-        count + "",
-        product.product_price_dollar,
-        product.product_coin,
-        userToken
-      );
-    } catch (error: any) {
-      alert(error.message);
-    }
   }
   return (
     <div className="ModalProduct">
@@ -69,7 +47,8 @@ function ModalProduct({
           <div className="ModalProduct-part-2">
             <div className="total-price">
               <p>
-                السعر الإجمالي: <span>$ {count * product.product_price_dollar}</span>
+                السعر الإجمالي:{" "}
+                <span>$ {count * product.product_price_dollar}</span>
               </p>
             </div>
             <div className="confirmation">
@@ -77,13 +56,26 @@ function ModalProduct({
                 <span>إلغاء</span>
                 <CancelIcon sx={{ color: "#FFFFFF" }} fontSize="large" />
               </button>
-              <button className="check-btn" onClick={addProductToCart} >
-                <span>موافق</span>
-                <CheckCircleRoundedIcon
-                  sx={{ color: "#FFFFFF" }}
-                  fontSize="large"
-                />
-              </button>
+              {disapleAcceptBtn ? (
+                <CircularProgress />
+              ) : (
+                <button
+                  className="check-btn"
+                  disabled={disapleAcceptBtn}
+                  onClick={() => {
+                    setdisapleAcceptBtn(true);
+                    onAccept(product, count);
+                    setdisapleAcceptBtn(false);
+                    handleClose();
+                  }}
+                >
+                  <span>موافق</span>
+                  <CheckCircleRoundedIcon
+                    sx={{ color: "#FFFFFF" }}
+                    fontSize="large"
+                  />
+                </button>
+              )}
             </div>
           </div>
         </div>
