@@ -21,7 +21,7 @@ function CategorySwiper() {
       setsubCategories(data.sub_category);
       setcategoryId(data.sub_category[0].sub_category_id);
     }
-     fetchSubCategories();
+    fetchSubCategories();
   }, []);
 
   return (
@@ -65,7 +65,6 @@ function CategorySwiper() {
                           : "light-filter"
                       }`
                 }
-                id={categoryId === item.sub_category_id ? "" : ""}
                 // className={`${
                 //   categoryId === item.sub_category_id
                 //     ? "active-category"
