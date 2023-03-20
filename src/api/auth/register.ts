@@ -8,7 +8,7 @@ interface IPostRegisterBody {
     customer_confirm_password: string,
     customer_mobile: string,
     customer_email: string,
-    customer_url: string,
+    customer_url: any,
     city_id: string,
     customer_address: string,
 }

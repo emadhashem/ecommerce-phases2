@@ -23,7 +23,7 @@ function ProductList({
 
   useEffect(() => {
     setproductsState(products)
-    return () => setproductsState([])
+
   }, [products])
   async function addProductToCart(product : any, count : number) {
     try {
@@ -65,6 +65,7 @@ function ProductList({
             />
           )}
         </ModalOverLay>
+        
         {productsState.length > 0 ? (
           productsState.map((product: any, idx: number) => (
             <ProductListItem

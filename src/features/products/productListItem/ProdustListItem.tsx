@@ -32,7 +32,6 @@ function ProductListItem({
   const [favorite, setfavorite] = useState(in_favorite);
   const [favoriteLoading, setfavoriteLoading] = useState(false);
   const navigate = useNavigate();
-  console.log(favorite)
   async function addToFavorite() {
     try {
       setfavoriteLoading(true);

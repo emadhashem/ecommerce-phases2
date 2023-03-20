@@ -17,6 +17,7 @@ import { UserContext } from "../../../contexts/category/user.context";
 
 function RegisterPage() {
   const [imgFile, setimgFile] = useState<any>();
+  const [imgForUpload , setimgForUpload] = useState<any>()
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [phone, setphone] = useState("");
@@ -45,6 +46,7 @@ function RegisterPage() {
     eve.stopPropagation();
     eve.preventDefault();
     const objectURL = await readBlob(eve.target.files![0]);
+    setimgForUpload(eve.target.files![0])
     setimgFile(objectURL);
   }
   function onClickBtn() {
@@ -96,6 +98,7 @@ function RegisterPage() {
               type={"file"}
               style={{ display: "none" }}
               onChange={onFileChoosen}
+              accept="image/png, image/jpg, image/svg ,image/jpeg"
             />
           </div>
         </button>
