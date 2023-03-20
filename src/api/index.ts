@@ -6,9 +6,11 @@ export function getImg(url: string) {
 }
 
 export function getHeaders(token: string) {
+    let ret = null
+    if (token || token != '') ret = token
     return {
         headers: {
-            remembertoken: token,
+            remembertoken: ret,
             'Content-Type': 'application/json'
         }
     }

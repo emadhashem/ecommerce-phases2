@@ -23,7 +23,7 @@ function FavoritsPage() {
         <div className="title">
           <ArrowLeftRoundedIcon className="icon" />
           <h3>
-            لديك في المفضلة: <span>8</span> عناصر
+            لديك في المفضلة: <span>{products.length}</span> عناصر
           </h3>
         </div>
         <div className="delete-icon">

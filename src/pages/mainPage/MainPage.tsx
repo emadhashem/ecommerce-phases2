@@ -11,10 +11,10 @@ import { getPorductsBySubCategory } from "../../api/subcategoies/sub_categories"
 
 function MainPage() {
   const [products, setproducts] = useState<any>([]);
-  const { categoryId } = useContext(UserContext);
+  const { categoryId, userToken } = useContext(UserContext);
   useEffect(() => {
     async function fetchProductsBySubcategory() {
-      const data = await getPorductsBySubCategory(categoryId);
+      const data = await getPorductsBySubCategory(categoryId , userToken);
       setproducts(data.product);
     }
     fetchProductsBySubcategory();

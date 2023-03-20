@@ -17,7 +17,7 @@ import { UserContext } from "../../../contexts/category/user.context";
 
 function RegisterPage() {
   const [imgFile, setimgFile] = useState<any>();
-  const [imgForUpload , setimgForUpload] = useState<any>()
+  const [imgForUpload, setimgForUpload] = useState<any>();
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [phone, setphone] = useState("");
@@ -46,7 +46,7 @@ function RegisterPage() {
     eve.stopPropagation();
     eve.preventDefault();
     const objectURL = await readBlob(eve.target.files![0]);
-    setimgForUpload(eve.target.files![0])
+    setimgForUpload(eve.target.files![0]);
     setimgFile(objectURL);
   }
   function onClickBtn() {
@@ -62,7 +62,8 @@ function RegisterPage() {
     }
     try {
       setloading(true);
-      const data = await postRegister({
+      const formData = new FormData();
+      const registerInput = {
         customer_name: name,
         customer_password: password1,
         customer_confirm_password: password2,
@@ -71,7 +72,13 @@ function RegisterPage() {
         customer_address: address,
         customer_url: imgFile,
         customer_mobile: phone,
-      });
+      };
+
+      for (let key in registerInput) {
+        formData.append(key, registerInput[key as keyof typeof registerInput]);
+      }
+      if(imgForUpload) formData.append('customer_url' , imgForUpload) 
+      const data = await postRegister(formData);
       setUserToken(data.customer.remember_token);
       setUsername(data.customer.customer_name);
       setloading(false);

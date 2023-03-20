@@ -8,6 +8,7 @@ import ModalProduct from "../modalProduct/ModalProduct";
 import { getPorductsBySubCategory } from "../../../api/subcategoies/sub_categories";
 import { getImg } from "../../../api";
 import { postProductToOrder } from "../../../api/product/product";
+import { useLocation } from "react-router-dom";
 
 function ProductList({
   showAllProduts = true,
@@ -20,14 +21,12 @@ function ProductList({
   const [open, setOpen] = useState(false);
   const [productsState, setproductsState] = useState<any[]>([]);
   const { userToken } = useContext(UserContext);
-
+  const { pathname } = useLocation();
   useEffect(() => {
-    setproductsState(products)
-
-  }, [products])
-  async function addProductToCart(product : any, count : number) {
+    setproductsState(products);
+  }, [products]);
+  async function addProductToCart(product: any, count: number) {
     try {
-      
       const data = await postProductToOrder(
         product.product_id,
         count,
@@ -35,7 +34,7 @@ function ProductList({
         product.product_coin,
         userToken
       );
-      handleClose()
+      handleClose();
     } catch (error: any) {
       alert(error.message);
     }
@@ -48,10 +47,15 @@ function ProductList({
     setOpen(false);
   };
   const handleRemoveFromList = (product_id: string) => {
+    if(!handleCheckingInFavorite()) return
     setproductsState((prev) =>
       prev.filter((item: any) => item.product_id !== product_id)
     );
   };
+  function handleCheckingInFavorite() {
+    if(pathname.includes('favorites')) return true
+    return false
+  }
   return (
     <section className="section-products">
       <div className="container">
@@ -61,11 +65,11 @@ function ProductList({
             <ModalProduct
               product={products[idxOfMadlProduct]}
               handleClose={handleClose}
-              onAccept = {addProductToCart}
+              onAccept={addProductToCart}
             />
           )}
         </ModalOverLay>
-        
+
         {productsState.length > 0 ? (
           productsState.map((product: any, idx: number) => (
             <ProductListItem
@@ -77,7 +81,7 @@ function ProductList({
               idx={idx}
               key={product.product_id}
               in_favorite={product.in_favorite}
-              handleRemoveFromList = {handleRemoveFromList}
+              handleRemoveFromList={handleRemoveFromList}
             />
           ))
         ) : (
