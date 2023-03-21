@@ -26,11 +26,13 @@ function CartPage() {
       setproducts(data.order.product);
       setorder_id(data.order.order_id);
     }
-    fetchPoductsInCart();
-  }, []);
+    if (userToken) {
+      fetchPoductsInCart();
+    }
+  }, [userToken]);
   useEffect(() => {
     setCartLength(products.length);
-  }, [products]);
+  }, [products?.length]);
 
   function handleDeletePorduct(id: string | number) {
     setproducts((prev) => prev.filter((item) => item.product_id != id));

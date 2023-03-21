@@ -11,13 +11,13 @@ const CartProductsContextProvider = ({ children }: Props) => {
   const { userToken } = useContext(UserContext);
   const [cartLength, setCartLength] = useState(0);
 
-//   useEffect(() => {
-//     async function fetchPoductsInCart() {
-//       const data = await getPorductsInCart(userToken);
-//       setCartLength(data.order.product?.length);
-//     }
-//     fetchPoductsInCart();
-//   });
+  useEffect(() => {
+    async function fetchPoductsInCart() {
+      const data = await getPorductsInCart(userToken);
+      setCartLength(data.order.product?.length);
+    }
+    fetchPoductsInCart();
+  });
 
   return (
     <CartProductsContext.Provider value={{ cartLength, setCartLength: setCartLength }}>
