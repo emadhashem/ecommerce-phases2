@@ -5,18 +5,28 @@ import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import img from "../../../assets/imgs/Rectangle 35.png";
 import { getImg } from "../../../api";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import { CartProductsContext } from "../../../contexts/CartProducts/CartProductsContext";
 
 function ModalProduct({ product, handleClose, onAccept }: any) {
-  const [count, setcount] = useState(product.product_count ? product.product_count : 0);
+  const [count, setcount] = useState(
+    product.product_count ? product.product_count : 0
+  );
   const [disapleAcceptBtn, setdisapleAcceptBtn] = useState(false);
+  const { cartLength, setCartLength } = useContext(CartProductsContext);
+  console.log("cart=", cartLength);
   async function handleReduceCount() {
     if (count > 1) return setcount(count - 1);
   }
   async function handleAddCount() {
     setcount(count + 1);
   }
+  // useEffect(() => {
+  //   setCartLength(cartLength + count);
+  //   console.log("count=", count);
+  // }, [count]);
+
   return (
     <div className="ModalProduct">
       <div className="card">
@@ -67,6 +77,7 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
                     onAccept(product, count);
                     setdisapleAcceptBtn(false);
                     handleClose();
+                    setCartLength(cartLength + 1);
                   }}
                 >
                   <span>موافق</span>

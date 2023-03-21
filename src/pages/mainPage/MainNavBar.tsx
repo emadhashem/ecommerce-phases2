@@ -12,22 +12,15 @@ import Badge from "@mui/material/Badge";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 import { UserContext } from "../../contexts/category/user.context";
 import { Button } from "@mui/material";
-import { getPorductsInCart } from "../../api/product/product";
+import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
 
 function MainNavBar() {
   const navigate = useNavigate();
   const { darkMode } = useContext(DarkModeContext);
   const { userToken } = useContext(UserContext);
-  const [cartLength, setCartLength] = useState(0);
-  console.log(cartLength);
+  const { cartLength } = useContext(CartProductsContext);
 
-  useEffect(() => {
-    async function fetchPoductsInCart() {
-      const data = await getPorductsInCart(userToken);
-      setCartLength(data.order.product?.length);
-    }
-    fetchPoductsInCart();
-  });
+  console.log("len: ", cartLength);
 
   return (
     <div className="main-nav">

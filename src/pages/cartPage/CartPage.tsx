@@ -12,9 +12,11 @@ import {
 import { UserContext } from "../../contexts/category/user.context";
 import { postSendCheckout } from "../../api/order/order";
 import { CircularProgress } from "@mui/material";
+import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
 
 function CartPage() {
   const { userToken } = useContext(UserContext);
+  const { setCartLength } = useContext(CartProductsContext);
   const [products, setproducts] = useState<any[]>([]);
   const [order_id, setorder_id] = useState<number | string>("");
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
@@ -26,6 +28,9 @@ function CartPage() {
     }
     fetchPoductsInCart();
   }, []);
+  useEffect(() => {
+    setCartLength(products.length);
+  }, [products]);
 
   function handleDeletePorduct(id: string | number) {
     setproducts((prev) => prev.filter((item) => item.product_id != id));
@@ -53,7 +58,7 @@ function CartPage() {
       setloadingSendOrder(true);
       const data = await postSendCheckout(userToken, order_id);
       setloadingSendOrder(false);
-      setproducts([])
+      setproducts([]);
     } catch (error: any) {
       setloadingSendOrder(false);
       alert(error.message);
