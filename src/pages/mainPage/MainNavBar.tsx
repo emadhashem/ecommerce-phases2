@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./MainNavBar.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -12,11 +12,23 @@ import Badge from "@mui/material/Badge";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 import { UserContext } from "../../contexts/category/user.context";
 import { Button } from "@mui/material";
+import { getPorductsInCart } from "../../api/product/product";
 
 function MainNavBar() {
   const navigate = useNavigate();
   const { darkMode } = useContext(DarkModeContext);
   const { userToken } = useContext(UserContext);
+  const [cartLength, setCartLength] = useState(0);
+  console.log(cartLength);
+
+  useEffect(() => {
+    async function fetchPoductsInCart() {
+      const data = await getPorductsInCart(userToken);
+      setCartLength(data.order.product?.length);
+    }
+    fetchPoductsInCart();
+  });
+
   return (
     <div className="main-nav">
       <div className="container">
@@ -40,7 +52,7 @@ function MainNavBar() {
                   fontSize="large"
                 />
               </Badge>
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={cartLength} color="error">
                 <ShoppingCartIcon
                   onClick={() => navigate("/cart")}
                   className="icon"
@@ -50,9 +62,9 @@ function MainNavBar() {
             </>
           ) : (
             <div>
-              
-              <Button onClick={() => navigate('/login')} >Login - register</Button>
-              
+              <Button onClick={() => navigate("/login")}>
+                Login - register
+              </Button>
             </div>
           )}
         </div>
