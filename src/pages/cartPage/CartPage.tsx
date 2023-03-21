@@ -11,17 +11,18 @@ import {
 } from "../../api/product/product";
 import { UserContext } from "../../contexts/category/user.context";
 import { postSendCheckout } from "../../api/order/order";
+import { CircularProgress } from "@mui/material";
 
 function CartPage() {
   const { userToken } = useContext(UserContext);
   const [products, setproducts] = useState<any[]>([]);
-  const [order_id, setorder_id] = useState<number | string>('')
-
+  const [order_id, setorder_id] = useState<number | string>("");
+  const [loadingSendOrder, setloadingSendOrder] = useState(false);
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
       setproducts(data.order.product);
-      setorder_id(data.order.order_id)
+      setorder_id(data.order.order_id);
     }
     fetchPoductsInCart();
   }, []);
@@ -49,18 +50,21 @@ function CartPage() {
   }
   async function handleSendCheckout() {
     try {
-      const data = await postSendCheckout(userToken , order_id)
-    } catch (error : any) {
-      alert(error.message)
+      setloadingSendOrder(true);
+      const data = await postSendCheckout(userToken, order_id);
+      setloadingSendOrder(false);
+      setproducts([])
+    } catch (error: any) {
+      setloadingSendOrder(false);
+      alert(error.message);
     }
   }
   async function removeAllFromCart() {
     try {
-      
-      const data = await postRemoveAllFromCart(order_id , userToken)
-      setproducts([])
-    } catch (error : any) {
-      alert(error.message)
+      const data = await postRemoveAllFromCart(order_id, userToken);
+      setproducts([]);
+    } catch (error: any) {
+      alert(error.message);
     }
   }
   return (
@@ -73,7 +77,7 @@ function CartPage() {
           </h3>
         </div>
         <div className="delete-icon">
-          <DeleteIcon onClick = {removeAllFromCart} fontSize="large" />
+          <DeleteIcon onClick={removeAllFromCart} fontSize="large" />
         </div>
       </div>
       <CartList
@@ -81,25 +85,31 @@ function CartPage() {
         handleDeletePorduct={handleDeletePorduct}
         products={products}
       />
-      <div className="cart-footer">
-        <div className="price">
-          <div className="total-price">
-            <p>
-              المجموع: <span>9999999</span> ل.س
-            </p>
+      {products && products.length ? (
+        <div className="cart-footer">
+          <div className="price">
+            <div className="total-price">
+              <p>
+                المجموع: <span>9999999</span> ل.س
+              </p>
+            </div>
+            <div className="delivery">
+              <p>
+                توصيل: <span>9999</span> ل.س
+              </p>
+            </div>
           </div>
-          <div className="delivery">
-            <p>
-              توصيل: <span>9999</span> ل.س
-            </p>
-          </div>
+          <hr />
+          {loadingSendOrder ? (
+            <CircularProgress />
+          ) : (
+            <button onClick={handleSendCheckout} className="check-btn">
+              <CheckCircleRoundedIcon className="icon" />
+              <span>ارسال الطلب</span>
+            </button>
+          )}
         </div>
-        <hr />
-        <button onClick={handleSendCheckout} className="check-btn">
-          <CheckCircleRoundedIcon className="icon" />
-          <span>ارسال الطلب</span>
-        </button>
-      </div>
+      ) : null}
     </div>
   );
 }
