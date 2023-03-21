@@ -15,7 +15,7 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
   );
   const [disapleAcceptBtn, setdisapleAcceptBtn] = useState(false);
   const { cartLength, setCartLength } = useContext(CartProductsContext);
-  console.log("cart=", cartLength);
+
   async function handleReduceCount() {
     if (count > 1) return setcount(count - 1);
   }

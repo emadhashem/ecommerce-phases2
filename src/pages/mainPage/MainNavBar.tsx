@@ -20,8 +20,6 @@ function MainNavBar() {
   const { userToken } = useContext(UserContext);
   const { cartLength } = useContext(CartProductsContext);
 
-  console.log("len: ", cartLength);
-
   return (
     <div className="main-nav">
       <div className="container">
