@@ -30,6 +30,7 @@ function CartPage() {
       fetchPoductsInCart();
     }
   }, [userToken]);
+  
   useEffect(() => {
     setCartLength(products.length);
   }, [products?.length]);

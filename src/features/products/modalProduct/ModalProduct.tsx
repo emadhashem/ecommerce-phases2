@@ -11,7 +11,7 @@ import { CartProductsContext } from "../../../contexts/CartProducts/CartProducts
 
 function ModalProduct({ product, handleClose, onAccept }: any) {
   const [count, setcount] = useState(
-    product.product_count ? product.product_count : 0
+    product.product_count ? product.product_count : 1
   );
   const [disapleAcceptBtn, setdisapleAcceptBtn] = useState(false);
   const { cartLength, setCartLength } = useContext(CartProductsContext);
@@ -57,8 +57,8 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
           <div className="ModalProduct-part-2">
             <div className="total-price">
               <p>
-                السعر الإجمالي:{" "}
-                <span>$ {count * product.product_price_dollar}</span>
+                السعر الإجمالي:
+                <span> $ {count * product.product_price_dollar}</span>
               </p>
             </div>
             <div className="confirmation">

@@ -17,7 +17,7 @@ const CartProductsContextProvider = ({ children }: Props) => {
       setCartLength(data.order.product?.length);
     }
     fetchPoductsInCart();
-  });
+  },[userToken]);
 
   return (
     <CartProductsContext.Provider value={{ cartLength, setCartLength: setCartLength }}>
