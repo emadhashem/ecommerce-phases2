@@ -24,7 +24,7 @@ const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
         className="mySwiper1"
       >
         {photos.map((item: any, idx: number) => (
-          <SwiperSlide>
+          <SwiperSlide key={item.product_photo_id}>
             <img
               src={getImg(item.product_photo_url)}
               key={item.product_photo_id}
@@ -44,7 +44,7 @@ const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
           className="mySwiper2"
         >
           {photos.map((item: any, idx: number) => (
-            <SwiperSlide>
+            <SwiperSlide key={item.product_photo_id}>
               <img
                 src={getImg(item.product_photo_url)}
                 key={item.product_photo_id}
