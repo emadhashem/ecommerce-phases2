@@ -8,7 +8,7 @@ import ModalProduct from "../modalProduct/ModalProduct";
 import { getPorductsBySubCategory } from "../../../api/subcategoies/sub_categories";
 import { getImg } from "../../../api";
 import { postProductToOrder } from "../../../api/product/product";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ProductList({
   showAllProduts = true,
@@ -22,6 +22,8 @@ function ProductList({
   const [productsState, setproductsState] = useState<any[]>([]);
   const { userToken } = useContext(UserContext);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     setproductsState(products);
   }, [products]);
@@ -47,14 +49,14 @@ function ProductList({
     setOpen(false);
   };
   const handleRemoveFromList = (product_id: string) => {
-    if(!handleCheckingInFavorite()) return
+    if (!handleCheckingInFavorite()) return;
     setproductsState((prev) =>
       prev.filter((item: any) => item.product_id !== product_id)
     );
   };
   function handleCheckingInFavorite() {
-    if(pathname.includes('favorites')) return true
-    return false
+    if (pathname.includes("favorites")) return true;
+    return false;
   }
   return (
     <section className="section-products">
@@ -93,7 +95,7 @@ function ProductList({
       </div>
       {showAllProduts && products.length > 5 && (
         <div className="btn">
-          <button>
+          <button onClick={() => navigate("/allProducts")}>
             <span>...عرض الكل</span>
           </button>
         </div>

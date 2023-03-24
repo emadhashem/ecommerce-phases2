@@ -15,6 +15,7 @@ import { DarkModeContext } from "./contexts/darkModeContext/darkModeContext";
 import SettingsPage from "./pages/settingsPage/SettingsPage";
 import UserContextProvider from "./contexts/category/UserContextProvider";
 import CartProductsContextProvider from "./contexts/CartProducts/CartProductsContextProvider";
+import ShowAllProductsPage from "./pages/showAllProducts/ShowAllProductsPage";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/details" element={<DetailsPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/profile/settings" element={<SettingsPage />} />
+                <Route path="/allProducts" element={<ShowAllProductsPage />} />
                 <Route path="*" element={<h1>Not found </h1>} />
               </Routes>
             </GlobalLayOut>

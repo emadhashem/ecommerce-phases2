@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
-import "./favoriteNavBar.scss";
+import { useNavigate } from "react-router-dom";
+import "./showAllProductsNavBar.scss"
 
-function FavoriteNavBar() {
+const showAllProductsNavBar = () => {
   const navigate = useNavigate();
+
   return (
-    <div className="favoriteNavBar-container">
+    <div className="showAllProductsNavBar-container">
       <div className="rapper">
         <div className="back-icon">
           <ArrowBackRoundedIcon
@@ -16,12 +16,12 @@ function FavoriteNavBar() {
         </div>
         <div className="title">
           <p>
-          المفضلة <FavoriteRoundedIcon fontSize="large" />
+            {/* _____ICON HERE_____ */}
           </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default FavoriteNavBar;
+export default showAllProductsNavBar;
