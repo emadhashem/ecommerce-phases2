@@ -11,11 +11,25 @@
       height: 79px;
       img {
         border-radius: 3px;
+        object-fit: cover;
+        border-radius: 10px;
       }
     }
     .swiper-wrapper {
       height: 79px;
     }
+  }
+  .swiper-slide-thumb-active {
+    position: relative;
+  }
+  .active {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(44, 123, 229, 0.5);
+    border-radius: 10px;
   }
 
   .swiper {

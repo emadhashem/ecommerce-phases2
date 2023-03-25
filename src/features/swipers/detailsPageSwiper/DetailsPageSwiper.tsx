@@ -11,6 +11,7 @@ import { getImg } from "../../../api";
 // test
 const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
+  const [currentSlide, setCurrentSlide] = useState(0);
   return (
     <div className="detailsPageSwiper-container">
       <Swiper
@@ -44,12 +45,18 @@ const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
           className="mySwiper2"
         >
           {photos.map((item: any, idx: number) => (
-            <SwiperSlide key={item.product_photo_id}>
+            <SwiperSlide
+              onClick={() => {
+                setCurrentSlide(idx);
+              }}
+              key={item.product_photo_id}
+            >
               <img
                 src={getImg(item.product_photo_url)}
                 key={item.product_photo_id}
                 alt=""
               />
+              {currentSlide === idx && <div className="active"></div>}
             </SwiperSlide>
           ))}
         </Swiper>
