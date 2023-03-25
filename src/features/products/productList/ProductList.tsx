@@ -84,6 +84,7 @@ function ProductList({
               key={product.product_id}
               in_favorite={product.in_favorite}
               handleRemoveFromList={handleRemoveFromList}
+              _product = {product}
             />
           ))
         ) : (
@@ -93,7 +94,7 @@ function ProductList({
           </div>
         )}
       </div>
-      {showAllProduts && products.length > 5 && (
+      {showAllProduts && products.length > 3 && (
         <div className="btn">
           <button onClick={() => navigate("/allProducts")}>
             <span>...عرض الكل</span>

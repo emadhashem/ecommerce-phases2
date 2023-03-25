@@ -16,11 +16,13 @@ const CartProductsContextProvider = ({ children }: Props) => {
       const data = await getPorductsInCart(userToken);
       setCartLength(data.order.product?.length);
     }
-    fetchPoductsInCart();
-  },[userToken]);
+    if (userToken) fetchPoductsInCart();
+  }, [userToken]);
 
   return (
-    <CartProductsContext.Provider value={{ cartLength, setCartLength: setCartLength }}>
+    <CartProductsContext.Provider
+      value={{ cartLength, setCartLength: setCartLength }}
+    >
       {children}
     </CartProductsContext.Provider>
   );

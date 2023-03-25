@@ -2,15 +2,15 @@ import React from "react";
 import Notification from "../notificatioComp/Notification";
 import "./notifcationList.style.scss";
 import imgSrc from "../../../assets/imgs/mainswiperImg.png";
-function NotificationList() {
+function NotificationList({arr} : any) {
   return (
     <div className="notificationlist-container">
-      {[...Array(6)].map((_, idx) => (
+      {arr.map((item : any) => (
         <Notification
-          key={idx}
-          seen={false}
-          description="هناك منتج جديد لدى متجر كيكا بايت"
-          img={imgSrc}
+          key={item.notification_id}
+          seen={item.is_read}
+          description={item.notification_body}
+          notification = {item}
         />
       ))}
     </div>

@@ -64,12 +64,33 @@ export async function getPorductsInCart(token: string) {
 }
 
 const post_remove_all_product_from_order_api_url = API_URL + '/post_remove_all_product_from_order'
-export async function postRemoveAllFromCart(order_id : string | number , token : string) {
+export async function postRemoveAllFromCart(order_id: string | number, token: string) {
     try {
-        const {data} = await axios.post(post_remove_all_product_from_order_api_url , {
+        const { data } = await axios.post(post_remove_all_product_from_order_api_url, {
             order_id
-        } , getHeaders(token))
-    } catch (error : any) {
+        }, getHeaders(token))
+    } catch (error: any) {
+        throwMessageError(error)
+    }
+}
+
+const get_other_product_by_product_id_api_url = API_URL + '/get_other_product_by_product_id'
+export async function getOtherProductsByProductId(product_id: any, token: string) {
+    try {
+        const { data } = await axios.get(`${get_other_product_by_product_id_api_url}/${product_id}`,
+            getHeaders(token)
+        )
+        return data
+    } catch (error: any) {
+        throwMessageError(error)
+    }
+}
+const get_most_sell_products_api_url = API_URL + '/get_most_sell_product'
+export async function getMostSoldPorducts() {
+    try {
+        const {data} = await axios.get(get_most_sell_products_api_url)
+        return data
+    } catch (error) {
         throwMessageError(error)
     }
 }

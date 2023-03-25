@@ -18,16 +18,8 @@ function ProductListItem({
   idx,
   in_favorite,
   handleRemoveFromList,
-}: {
-  productId: any;
-  productImg: any;
-  onClick: (idx: number) => void;
-  productName: string;
-  productPrice: string;
-  idx: number;
-  in_favorite: boolean;
-  handleRemoveFromList: (id: string) => void;
-}) {
+  _product
+}: any) {
   const { userToken } = useContext(UserContext);
   const [favorite, setfavorite] = useState(in_favorite);
   const [favoriteLoading, setfavoriteLoading] = useState(false);
@@ -63,7 +55,7 @@ function ProductListItem({
       <div id={`product-${productId}`} className="single-product">
         <div className="part-1">
           <span className="location">
-            قامشلي <LocationOnRoundedIcon className="icon" />
+            {_product.city_name} <LocationOnRoundedIcon className="icon" />
           </span>
           {favoriteLoading ? (
             <CircularProgress className="loader" />
