@@ -1,6 +1,6 @@
 import "./profilePage.scss";
 import ProfileNavBar from "./ProfileNavBar";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -16,6 +16,8 @@ import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext"
 import { useNavigate } from "react-router-dom";
 import useLogOut from "../../hooks/useLogOut";
 import { Button } from "@mui/material";
+import { UserContext } from "../../contexts/category/user.context";
+import { getUserData } from "../../api/user/userdata";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -69,6 +71,7 @@ const ProfilePage = () => {
   // const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
   const { toggle, darkMode } = useContext(DarkModeContext);
+  const {userToken} = useContext(UserContext)
   const { fetchLogOut } = useLogOut();
   
   

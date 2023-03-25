@@ -21,6 +21,7 @@
       .title {
         margin-right: 5px;
         P {
+          
           gap: 10px;
           display: flex;
           align-items: center;
@@ -31,6 +32,10 @@
           font-size: 20px;
           line-height: 37px;
           color: #2C7BE5;
+          .img-logo {
+            width: 30px;
+            height: 30px;
+          }
         }
       }
 

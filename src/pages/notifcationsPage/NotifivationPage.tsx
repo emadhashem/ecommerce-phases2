@@ -9,11 +9,13 @@ import {
 } from "../../api/notifications/notifications";
 import { UserContext } from "../../contexts/category/user.context";
 import { NotificationContext } from "../../contexts/notificationContext/notification.context";
+import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
 
 function NotifivationPage() {
   const { userToken } = useContext(UserContext);
   const [notifications, setnotifications] = useState<any[]>([]);
   const [oldNotifications, setoldNotifications] = useState<any[]>([]);
+  const { setnotifcationLength } = useContext(CartProductsContext);
   useEffect(() => {
     if (userToken) fetchNotification();
   }, [userToken]);
@@ -44,12 +46,14 @@ function NotifivationPage() {
       );
     });
     setoldNotifications([notifi, ...oldNotifications]);
+    setnotifcationLength(notifications.length);
   }
   async function readAllNotification() {
     try {
-      await postReadAllNotification(userToken)
+      await postReadAllNotification(userToken);
       setoldNotifications([...notifications, ...oldNotifications]);
       setnotifications([]);
+      setnotifcationLength(0);
     } catch (error: any) {
       alert(error);
     }

@@ -11,32 +11,45 @@ import { Link, useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 import { UserContext } from "../../contexts/category/user.context";
-import { Button } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
-
+import { getUserData } from "../../api/user/userdata";
+import { getImg } from "../../api";
 function MainNavBar() {
   const navigate = useNavigate();
   const { darkMode } = useContext(DarkModeContext);
   const { userToken } = useContext(UserContext);
-  const { cartLength } = useContext(CartProductsContext);
-
+  const { cartLength, notifcationLength } = useContext(CartProductsContext);
+  const [userImg, setuserImg] = useState<any>(null)
+  useEffect(() => {
+    if(!userToken) return
+    fetchUserData()
+  }, [userToken])
+  async function fetchUserData() {
+    try {
+      const data = await getUserData(userToken)
+      setuserImg(data.customer.customer_url)
+    } catch (error  :any) {
+      alert(error.message)
+    }
+  }
   return (
     <div className="main-nav">
       <div className="container">
         <div className="nav-icons">
           {userToken ? (
             <>
-              <AccountCircleIcon
+              <Avatar
                 className="icon"
                 onClick={() => navigate("/profile")}
-                fontSize="large"
+                src = {getImg(userImg)}
               />
               <FavoriteIcon
                 className="icon"
                 onClick={() => navigate("/favorites")}
                 fontSize="large"
               />
-              <Badge badgeContent={99} color="error">
+              <Badge badgeContent={notifcationLength} color="error">
                 <NotificationsIcon
                   onClick={() => navigate("notifications")}
                   className="icon"

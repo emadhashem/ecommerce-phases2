@@ -35,8 +35,14 @@ const ShowAllProductsNavBar = () => {
         </div>
         {category && (
           <div className="title">
-            <p>{category.sub_category_name}</p>
-            <img height="15" src={getImg(category.sub_category_url)} />
+            <p>
+              {category.sub_category_name}{" "}
+              <img
+                className="img-logo"
+                height="15"
+                src={getImg(category.sub_category_url)}
+              />
+            </p>
           </div>
         )}
       </div>

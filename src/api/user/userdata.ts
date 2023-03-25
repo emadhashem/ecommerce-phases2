@@ -11,3 +11,11 @@ export async function getUserData(token: string) {
         throwMessageError(error)
     }
 }
+const post_update_register_api_url = API_URL + '/post_update_register' 
+export async function postUpdateUserData(formdata : any , token : any) {
+    try {
+        const {data} = await axios.post(post_update_register_api_url , formdata , getHeaders(token))
+    } catch (error  :any) {
+        throwMessageError(error)
+    }
+}
