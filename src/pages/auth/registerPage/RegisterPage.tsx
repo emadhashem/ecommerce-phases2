@@ -14,6 +14,7 @@ import "./registerPage.scss";
 import { postRegister } from "../../../api/auth/register";
 import { getCities } from "../../../api/city/city";
 import { UserContext } from "../../../contexts/category/user.context";
+import defaultImg from "../../../assets/svgs/defaultImg.svg";
 
 function RegisterPage() {
   const [imgFile, setimgFile] = useState<any>();
@@ -77,7 +78,7 @@ function RegisterPage() {
       for (let key in registerInput) {
         formData.append(key, registerInput[key as keyof typeof registerInput]);
       }
-      if(imgForUpload) formData.append('customer_url' , imgForUpload) 
+      if (imgForUpload) formData.append("customer_url", imgForUpload);
       const data = await postRegister(formData);
       setUserToken(data.customer.remember_token);
       setUsername(data.customer.customer_name);
@@ -97,7 +98,11 @@ function RegisterPage() {
         <span>تسجيل الاشتراك</span>
         <button className="edit-btn" onClick={onClickBtn}>
           <span className="edit-btn-title">صورة شحصية</span>
-          <img className="selected-img" src={imgFile} alt="" />
+          {imgFile ? (
+            <img className="selected-img" src={imgFile} alt="" />
+          ) : (
+            <img className="def-img" src={defaultImg} />
+          )}
           <div className="img-container">
             {/* <img src={logo} /> */}
             <input

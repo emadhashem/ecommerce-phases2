@@ -38,11 +38,15 @@
         border: none;
         border-radius: 50%;
         background-color: rgba(44, 123, 229, 0.3);
-        background-image: url("../../../assets/svgs/Vectorregister.svg");
-        background-repeat: no-repeat;
-        background-position: center;
+        // background-image: url("../../../assets/svgs/Vectorregister.svg");
+        // background-repeat: no-repeat;
+        // background-position: center;
+        padding: 0;
+        margin: 0;
+
         .selected-img {
           height: 100%;
+          width: 100%;
           object-fit: cover;
           overflow: hidden;
           border-radius: 50%;
@@ -50,9 +54,18 @@
           outline: none;
           border-style: none;
           z-index: 999;
+          padding: 0;
+          margin: 0;
+        }
+
+        .def-img {
+          width: 60px;
+          height: 60px;
         }
         .img-container {
           border-radius: 50%;
+          padding: 0;
+          margin: 0;
         }
         span {
           position: absolute;
@@ -61,11 +74,13 @@
           font-size: 15px;
           font-weight: 200;
           color: themed("textColor");
+          padding: 0;
+          margin: 0;
           // z-index: 1;
         }
       }
     }
-    
+
     .input-container {
       display: flex;
       flex-direction: column;
@@ -90,7 +105,7 @@
         color: themed("placeholder");
         font-family: "Cairo";
       }
-      
+
       .select-input {
         margin: 10px 0px;
         cursor: pointer;
