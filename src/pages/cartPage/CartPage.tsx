@@ -13,6 +13,7 @@ import { UserContext } from "../../contexts/category/user.context";
 import { postSendCheckout } from "../../api/order/order";
 import { CircularProgress } from "@mui/material";
 import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
+import { Button } from "@mui/material";
 
 function CartPage() {
   const { userToken } = useContext(UserContext);
@@ -20,6 +21,8 @@ function CartPage() {
   const [products, setproducts] = useState<any[]>([]);
   const [order_id, setorder_id] = useState<number | string>("");
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
+  const [openPopover, setopenPopover] = useState(false);
+
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
@@ -30,7 +33,7 @@ function CartPage() {
       fetchPoductsInCart();
     }
   }, [userToken]);
-  
+
   useEffect(() => {
     setCartLength(products.length);
   }, [products?.length]);
@@ -85,9 +88,28 @@ function CartPage() {
           </h3>
         </div>
         <div className="delete-icon">
-          <DeleteIcon onClick={removeAllFromCart} fontSize="large" />
+          <DeleteIcon onClick={() => setopenPopover(true)} fontSize="large" />
         </div>
       </div>
+      {openPopover && (
+        <div className="popover">
+          <span>هل تريد إزالة الجميع من السلة ؟</span>
+          <div className="button-container">
+            <Button
+              variant="contained"
+              onClick={() => {
+                removeAllFromCart();
+                setopenPopover(false);
+              }}
+            >
+              نعم
+            </Button>
+            <Button variant="contained" onClick={() => setopenPopover(false)}>
+              الغاء
+            </Button>
+          </div>
+        </div>
+      )}
       <CartList
         handleChangeCount={handleChangeCount}
         handleDeletePorduct={handleDeletePorduct}
