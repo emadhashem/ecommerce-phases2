@@ -8,7 +8,7 @@ const SearchPage = () => {
           <div className="title">
             <ArrowLeftRoundedIcon className="icon" />
             <h3>
-            عدد النتاج هو:<span>10</span>
+            عدد النتاج هو: <span>10</span>
             </h3>
           </div>
         </div>
