@@ -12,6 +12,7 @@ import { getImg } from "../../../api";
 const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore>();
   const [currentSlide, setCurrentSlide] = useState(0);
+
   return (
     <div className="detailsPageSwiper-container">
       <Swiper
@@ -56,7 +57,7 @@ const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
                 key={item.product_photo_id}
                 alt=""
               />
-              {currentSlide === idx && <div className="active"></div>}
+              {/* {currentSlide === idx && <div className="active"></div>} */}
             </SwiperSlide>
           ))}
         </Swiper>

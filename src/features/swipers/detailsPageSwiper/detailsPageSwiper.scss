@@ -20,7 +20,9 @@
     }
   }
   .swiper-slide-thumb-active {
-    position: relative;
+    background-color: rgba(44, 123, 229, 0.5);
+    border-radius: 10px;
+    opacity: 0.3;
   }
   .active {
     position: absolute;
