@@ -38,13 +38,13 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/details" element={<DetailsPage />} />
                 <Route path="/allProducts" element={<ShowAllProductsPage />} />
-              
+                <Route path="*" element={<h1>Not found </h1>} />
                 <ProtectedRoute path="/profile" element={<ProfilePage />} />
                 <ProtectedRoute path="/profile/settings" element={<SettingsPage />} />
                 <ProtectedRoute path="/notifications" element={<NotifivationPage />} />
                 <ProtectedRoute path="/cart" element={<CartPage />} />
                 <ProtectedRoute path="/favorites" element={<FavoritsPage />} />
-                <ProtectedRoute path="*" element={<h1>Not found </h1>} />
+                
               </ProtectedRoutes>
             </GlobalLayOut>
           </CartProductsContextProvider>

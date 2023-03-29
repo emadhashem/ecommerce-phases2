@@ -19,7 +19,7 @@ export default function ProtectedRoutes(props: { children: React.ReactNode }) {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/details" element={<DetailsPage />} />
       <Route path="/allProducts" element={<ShowAllProductsPage />} />
-
+      <Route path="*" element={<h1>Not found </h1>} />
       {userToken ? (
         children
       ) : (
