@@ -36,8 +36,8 @@ function MainSwiper() {
         className="mySwiper"
       >
         {ads.map((item: any) => (
-          <SwiperSlide>
-            <img src={getImg(item.ads_url)} />
+          <SwiperSlide key={item.ads_url}>
+            <img  src={getImg(item.ads_url)} />
           </SwiperSlide>
         ))}
       </Swiper>

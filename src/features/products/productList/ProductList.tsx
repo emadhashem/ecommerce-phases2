@@ -94,7 +94,7 @@ function ProductList({
           </div>
         )}
       </div>
-      {showAllProduts && products.length > 3 && (
+      {showAllProduts &&  (
         <div className="btn">
           <button onClick={() => navigate("/allProducts")}>
             <span>...عرض الكل</span>
