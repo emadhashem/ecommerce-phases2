@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import { UserContext } from "../../contexts/category/user.context";
 
-export default function ProtectedRoute(props: {
-  path: string;
-  element: React.ReactNode;
+export default function ProtectedRoute({
+  children,
+}: {
+  children: React.ReactNode;
 }) {
-  const { path, element } = props;
   const { userToken } = useContext(UserContext);
-  return userToken ? <Route path={path} element={element} /> : null;
+  return userToken ? <>{children}</> : <Navigate to="/" />;
 }

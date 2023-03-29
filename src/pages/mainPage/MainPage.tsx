@@ -13,12 +13,17 @@ function MainPage() {
   const [products, setproducts] = useState<any>([]);
   const { categoryId, userToken } = useContext(UserContext);
   useEffect(() => {
+    let cur = true;
     async function fetchProductsBySubcategory() {
       const data = await getPorductsBySubCategory(categoryId, userToken);
-      setproducts(data.product);
+      if (cur) {
+        setproducts(data.product);
+      }
     }
     fetchProductsBySubcategory();
-    return () => setproducts([]);
+    return () => {
+      cur = false;
+    };
   }, [categoryId]);
   return (
     <div className="main-page">
@@ -29,7 +34,7 @@ function MainPage() {
         <div>
           <CategorySwiper />
           <ProductList
-            products={products.slice(0 , 6)}
+            products={products.slice(0, 6)}
             showAllProduts={products.length > 6}
           />
         </div>

@@ -17,7 +17,6 @@ import UserContextProvider from "./contexts/category/UserContextProvider";
 import CartProductsContextProvider from "./contexts/CartProducts/CartProductsContextProvider";
 import ShowAllProductsPage from "./pages/showAllProducts/ShowAllProductsPage";
 import SearchPage from "./pages/searchPage/SearchPage";
-import ProtectedRoutes from "./pages/protectedRoute/ProtectedRoutes";
 import ProtectedRoute from "./pages/protectedRoute/ProtectedRoute";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -30,7 +29,7 @@ function App() {
         <UserContextProvider>
           <CartProductsContextProvider>
             <GlobalLayOut>
-              <ProtectedRoutes>
+              <Routes>
                 {/* <Route path="/home" element={<MainPage />} /> */}
                 <Route path="/" element={<MainPage />} />
                 <Route path="/search/:text" element={<SearchPage />} />
@@ -39,13 +38,47 @@ function App() {
                 <Route path="/details" element={<DetailsPage />} />
                 <Route path="/allProducts" element={<ShowAllProductsPage />} />
                 <Route path="*" element={<h1>Not found </h1>} />
-                <ProtectedRoute path="/profile" element={<ProfilePage />} />
-                <ProtectedRoute path="/profile/settings" element={<SettingsPage />} />
-                <ProtectedRoute path="/notifications" element={<NotifivationPage />} />
-                <ProtectedRoute path="/cart" element={<CartPage />} />
-                <ProtectedRoute path="/favorites" element={<FavoritsPage />} />
-                
-              </ProtectedRoutes>
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <ProfilePage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/profile/settings"
+                  element={
+                    <ProtectedRoute>
+                      <SettingsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/notifications"
+                  element={
+                    <ProtectedRoute>
+                      <NotifivationPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/cart"
+                  element={
+                    <ProtectedRoute>
+                      <CartPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/favorites"
+                  element={
+                    <ProtectedRoute>
+                      <FavoritsPage />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
             </GlobalLayOut>
           </CartProductsContextProvider>
         </UserContextProvider>
