@@ -14,6 +14,7 @@ const SearchPage = () => {
     async function fetchSearchData() {
       try {
         const data = await getSearchData(text, userToken);
+        setproducts(data.product)
       } catch (error: any) {
         alert(error.message);
       }

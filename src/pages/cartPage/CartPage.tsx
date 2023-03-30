@@ -22,12 +22,13 @@ function CartPage() {
   const [order_id, setorder_id] = useState<number | string>("");
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
   const [openPopover, setopenPopover] = useState(false);
-
+  const [orderData, setorderData] = useState<any>(null)
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
       setproducts(data.order.product);
       setorder_id(data.order.order_id);
+      setorderData(data.order)
     }
     if (userToken) {
       fetchPoductsInCart();
@@ -120,12 +121,12 @@ function CartPage() {
           <div className="price">
             <div className="total-price">
               <p>
-                المجموع: <span>9999999</span> ل.س
+                المجموع: <span>{orderData.sum_price_sy}</span> ل.س
               </p>
             </div>
             <div className="delivery">
               <p>
-                توصيل: <span>9999</span> ل.س
+                توصيل: <span>{orderData.delivery_fee}</span> ل.س
               </p>
             </div>
           </div>

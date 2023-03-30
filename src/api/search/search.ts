@@ -1,13 +1,14 @@
 import axios from "axios";
 import { API_URL, getHeaders, throwMessageError } from "..";
 
-const seach_api_url = API_URL + '/search'
+const seach_api_url = API_URL + '/post_search'
 export async function getSearchData(text: any, token: any) {
-    // const newText = Array.from(text)
-    //     .map((char: any) => `%${char.charCodeAt(0).toString(16)}`)
-    //     .join('');
+
     try {
-        const data = await axios.get(seach_api_url + `/${text}`,
+        const {data} = await axios.post(seach_api_url,
+            {
+                query_search: text
+            },
             getHeaders(token)
         )
         return data
