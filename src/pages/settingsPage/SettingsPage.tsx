@@ -49,7 +49,7 @@ function SettingsPage() {
         customer_email: email,
         city_id: city,
         customer_address: address,
-        customer_url: imgFile,
+        customer_url: imgForUpload,
         customer_mobile: phone,
       };
 
@@ -121,23 +121,21 @@ function SettingsPage() {
           type="text"
           placeholder="الاسم"
           value={name}
-          onChange = {(e => setname(e.target.value))}
+          onChange={(e) => setname(e.target.value)}
         />
         <TextField
           className="input"
           type="number"
           placeholder="الهاتف"
           value={phone}
-          onChange = {(e => setphone(e.target.value))}
-
+          onChange={(e) => setphone(e.target.value)}
         />
         <TextField
           className="input"
           type="email"
           placeholder="البريد"
           value={email}
-          onChange = {(e => setemail(e.target.value))}
-
+          onChange={(e) => setemail(e.target.value)}
         />
         <TextField
           className="input"

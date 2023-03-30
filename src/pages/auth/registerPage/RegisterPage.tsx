@@ -129,7 +129,6 @@ function RegisterPage() {
           <TextField
             sx={{ width: "351px", height: "40px" }}
             required
-            type="number"
             placeholder="الهاتف"
             value={phone}
             onChange={(e) => setphone(e.target.value)}
