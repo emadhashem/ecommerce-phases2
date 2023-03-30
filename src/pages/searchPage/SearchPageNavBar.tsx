@@ -3,7 +3,7 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import searchIcon from "../../assets/svgs/searchIcon.svg";
 import "./searchPageNavBar.scss";
 
-const SearchPageNavBar = () => {
+const SearchPageNavBar = ({ result }: any) => {
   const navigate = useNavigate();
   return (
     <div className="searchPageNavBar-container">
@@ -15,11 +15,11 @@ const SearchPageNavBar = () => {
           />
         </div>
         <div className="title">
-          {/* --------------------TYPE HERE SEARCH RESULT-------------------------- */}
           <p>
-            :نتيجة البحث لـ
             <img className="search-icon" src={searchIcon} alt="" />
+            نتيجة البحث لـ:
           </p>
+          <span>{result}</span>
         </div>
       </div>
     </div>

@@ -20,15 +20,31 @@
 
       .title {
         margin-right: 5px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
         P {
           gap: 10px;
           display: flex;
+          flex-direction: row;
           align-items: center;
-          justify-content: center;
           font-family: "Cairo";
           font-style: normal;
           font-weight: 500;
           font-size: 20px;
+          line-height: 37px;
+          color: #2c7be5;
+          direction: rtl;
+        }
+        span {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
           line-height: 37px;
           color: #2c7be5;
         }
