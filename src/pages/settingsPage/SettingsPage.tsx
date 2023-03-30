@@ -159,7 +159,7 @@ function SettingsPage() {
           onChange={(e) => setaddress(e.target.value)}
         />
       </div>
-      <div>
+      <div className="btn-wrapper">
         <Button onClick={saveSettings} className="btn" variant="contained">
           <span>حفظ التعديلات</span>
         </Button>
