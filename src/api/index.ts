@@ -11,7 +11,6 @@ export function getHeaders(token: string) {
     return {
         headers: {
             remembertoken: ret,
-            'Content-Type': 'application/json'
         }
     }
 }

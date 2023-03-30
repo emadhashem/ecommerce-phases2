@@ -8,5 +8,5 @@ export default function ProtectedRoute({
   children: React.ReactNode;
 }) {
   const { userToken } = useContext(UserContext);
-  return userToken ? <>{children}</> : <Navigate to="/" />;
+  return userToken ? <>{children}</> : null
 }
