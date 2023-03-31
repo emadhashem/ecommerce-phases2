@@ -91,6 +91,21 @@
         }
 
         .ordersDetails-container {
+          max-height: 350px;
+          overflow: scroll;
+          @include tablet {
+            max-height: 400px;
+          }
+          @include mobile {
+            max-height: 350px;
+          }
+          @include md_mobile {
+            max-height: 300px;
+          }
+          @include sm_mobile {
+            max-height: 250px;
+          }
+
           .error-message {
             display: flex;
             flex-direction: column;
@@ -138,6 +153,9 @@
       font-family: "Cairo";
       font-style: normal;
       color: themed("textColor");
+      @include sm_mobile {
+        margin-bottom: 10px;
+      }
 
       .footer-title {
         font-weight: 500;

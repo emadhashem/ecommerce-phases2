@@ -49,3 +49,25 @@ $themes: (
 @function themed($key) {
   @return map-get($theme-map, $key);
 }
+
+@mixin tablet {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin sm_mobile {
+  @media only screen and (max-height: 700px) {
+    @content;
+  }
+}
+@mixin md_mobile {
+  @media only screen and (max-height: 745px) {
+    @content;
+  }
+}

@@ -126,7 +126,7 @@ const ProfilePage = () => {
                     <p>
                       {`الطلبية رقم: ${
                         data.order_id
-                      }# - تاريخ: ${data.created_at.slice(0, 10)} - لمبلغ: ${
+                      }# - تاريخ: ${data.created_at.slice(0, 10)} - المبلغ: ${
                         data.sum_price_dollar
                       }$`}
                     </p>
