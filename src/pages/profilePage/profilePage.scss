@@ -91,6 +91,15 @@
         }
 
         .ordersDetails-container {
+          .error-message {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 150px;
+            font-size: 20px;
+            color: themed("orangeBlueIcons");
+          }
           .orderDetails-item {
             display: flex;
             flex-direction: row-reverse;

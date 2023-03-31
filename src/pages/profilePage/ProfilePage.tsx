@@ -18,6 +18,8 @@ import useLogOut from "../../hooks/useLogOut";
 import { Button } from "@mui/material";
 import { UserContext } from "../../contexts/category/user.context";
 import { getUserData } from "../../api/user/userdata";
+import { getPreviousOrders } from "../../api/order/order";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -71,10 +73,21 @@ const ProfilePage = () => {
   // const [darkMode, setDarkMode] = useState(false);
   const navigate = useNavigate();
   const { toggle, darkMode } = useContext(DarkModeContext);
-  const {userToken} = useContext(UserContext)
+  const { userToken } = useContext(UserContext);
+  const [PreviousOrderData, setPreviousOrdersData] = useState<any[]>([]);
   const { fetchLogOut } = useLogOut();
-  
-  
+  useEffect(() => {
+    async function fetchPreviousOrders() {
+      try {
+        const data = await getPreviousOrders(userToken);
+        setPreviousOrdersData(data.order);
+      } catch (error: any) {
+        alert(error.message);
+      }
+    }
+    if (userToken) fetchPreviousOrders();
+  }, [userToken]);
+
   return (
     <React.Fragment>
       <ProfileNavBar />
@@ -106,30 +119,24 @@ const ProfilePage = () => {
               <h3>:الطلبات السابقة</h3>
             </div>
             <div className="ordersDetails-container">
-              {/* ---- single details ----- */}
-              <div className="orderDetails-item">
-                <ArrowLeftRoundedIcon className="icon" />
-                <h4>
-                  الطلبية رقم:<span>#333</span>- تاريخ:<span>01/01/2023</span>-
-                  المبلغ:<span>9999</span> ل.س
-                </h4>
-              </div>
-              {/* ---- single details ----- */}
-              <div className="orderDetails-item">
-                <ArrowLeftRoundedIcon className="icon" />
-                <h4>
-                  الطلبية رقم:<span>#333347833</span>- تاريخ:
-                  <span>01/01/2023</span>- المبلغ:<span>9999</span> ل.س
-                </h4>
-              </div>
-              {/* ---- single details ----- */}
-              <div className="orderDetails-item">
-                <ArrowLeftRoundedIcon className="icon" />
-                <h4>
-                  الطلبية رقم:<span>#333</span>- تاريخ:<span>01/01/2023</span>-
-                  المبلغ:<span>99999</span> ل.س
-                </h4>
-              </div>
+              {PreviousOrderData && PreviousOrderData.length > 0 ? (
+                PreviousOrderData.map((data: any) => (
+                  <div className="orderDetails-item">
+                    <ArrowLeftRoundedIcon className="icon" />
+                    <h4>
+                      الطلبية رقم:<span>{`#${data.order_id}`}</span>- تاريخ:
+                      <span>{` ${data.created_at.slice(0, 10)}`}</span>- المبلغ:
+                      <span>9999</span>
+                      ل.س
+                    </h4>
+                  </div>
+                ))
+              ) : (
+                <div className="error-message">
+                  <SentimentVeryDissatisfiedIcon fontSize="large" />
+                  <p> لا توجد اي طلبات سابقة </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
