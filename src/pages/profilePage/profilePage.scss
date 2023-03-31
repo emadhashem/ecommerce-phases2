@@ -109,14 +109,15 @@
               color: themed("orangeGrayIcons");
               font-size: 25px;
             }
-            h4 {
+            p {
               white-space: initial;
               // word-wrap: break-word;
               font-weight: 500;
               font-size: 13px;
               // line-height: 37px;
-              text-align: right;
+              // text-align: right;
               color: themed("textColor");
+              direction: rtl;
               span {
                 font-weight: 600;
                 padding: 0px 3px;

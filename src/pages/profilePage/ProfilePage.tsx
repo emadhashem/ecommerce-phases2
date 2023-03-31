@@ -86,7 +86,7 @@ const ProfilePage = () => {
       }
     }
     if (userToken) fetchPreviousOrders();
-  }, [userToken]);
+  }, []);
 
   return (
     <React.Fragment>
@@ -123,12 +123,13 @@ const ProfilePage = () => {
                 PreviousOrderData.map((data: any) => (
                   <div className="orderDetails-item">
                     <ArrowLeftRoundedIcon className="icon" />
-                    <h4>
-                      الطلبية رقم:<span>{`#${data.order_id}`}</span>- تاريخ:
-                      <span>{` ${data.created_at.slice(0, 10)}`}</span>- المبلغ:
-                      <span>9999</span>
-                      ل.س
-                    </h4>
+                    <p>
+                      {`الطلبية رقم: ${
+                        data.order_id
+                      }# - تاريخ: ${data.created_at.slice(0, 10)} - لمبلغ: ${
+                        data.sum_price_dollar
+                      }$`}
+                    </p>
                   </div>
                 ))
               ) : (
