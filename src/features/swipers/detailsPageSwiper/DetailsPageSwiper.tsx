@@ -57,6 +57,17 @@ const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
                 key={item.product_photo_id}
                 alt=""
               />
+              <svg>
+                <filter id="blue-wash" color-interpolation-filters="sRGB">
+                  <feColorMatrix
+                    type="matrix"
+                    values="0.32     0     0     0     0
+                    0     0.54     0     0     0
+                    0     0     0.82     0     0
+                    0     0     0     0.6     0 "
+                  />
+                </filter>
+              </svg>
               {/* {currentSlide === idx && <div className="active"></div>} */}
             </SwiperSlide>
           ))}
