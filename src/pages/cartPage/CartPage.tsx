@@ -22,13 +22,13 @@ function CartPage() {
   const [order_id, setorder_id] = useState<number | string>("");
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
   const [openPopover, setopenPopover] = useState(false);
-  const [orderData, setorderData] = useState<any>(null)
+  const [orderData, setorderData] = useState<any>(null);
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
       setproducts(data.order.product);
       setorder_id(data.order.order_id);
-      setorderData(data.order)
+      setorderData(data.order);
     }
     if (userToken) {
       fetchPoductsInCart();
@@ -92,7 +92,7 @@ function CartPage() {
           <DeleteIcon onClick={() => setopenPopover(true)} fontSize="large" />
         </div>
       </div>
-      {openPopover && (
+      {openPopover && products?.length > 0 && (
         <div className="popover">
           <span>هل تريد إزالة الجميع من السلة ؟</span>
           <div className="button-container">
