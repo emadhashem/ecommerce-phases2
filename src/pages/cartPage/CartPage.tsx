@@ -121,7 +121,7 @@ function CartPage() {
           <div className="price">
             <div className="total-price">
               <p>
-                المجموع: <span>{orderData.sum_price_sy}</span> ل.س
+                المجموع: <span>{orderData.sum_price_dollar}</span> $
               </p>
             </div>
             <div className="delivery">
