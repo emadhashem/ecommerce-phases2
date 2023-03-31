@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_URL, getHeaders, throwMessageError } from "..";
 
 const post_send_order_api_url = API_URL + "/post_send_order";
-const post_previous_order_api_url = API_URL + "/get_order";
+const get_previous_order_api_url = API_URL + "/get_order";
 
 export async function postSendCheckout(
   token: string,
@@ -25,7 +25,7 @@ export async function postSendCheckout(
 export async function getPreviousOrders(token: string) {
   try {
     const { data } = await axios.get(
-      post_previous_order_api_url,
+      get_previous_order_api_url,
       getHeaders(token)
     );
     return data;
