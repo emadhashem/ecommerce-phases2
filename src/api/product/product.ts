@@ -2,19 +2,19 @@ import axios from "axios";
 import { API_URL, getHeaders, throwMessageError } from "..";
 
 const get_product_by_id_api_url = API_URL + `/get_product_by_product_id`
-export async function getProductById(id: string | number) {
+export async function getProductById(id: any) {
     const { data } = await axios.get(get_product_by_id_api_url + `/${id}`)
     return data
 }
 
 const get_product_photos_by_id = API_URL + '/get_product_photo_by_product_id'
-export async function getProductPhotosById(id: string | number) {
+export async function getProductPhotosById(id: any) {
     const { data } = await axios.get(get_product_photos_by_id + `/${id}`)
     return data
 }
 
 const post_product_to_order_api_url = API_URL + '/post_product_to_order'
-export async function postProductToOrder(product_id: string | number,
+export async function postProductToOrder(product_id: any,
     product_count: string | number,
     product_price: string,
     product_coin: string,

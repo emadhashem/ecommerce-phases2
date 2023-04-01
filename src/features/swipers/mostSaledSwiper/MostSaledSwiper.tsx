@@ -34,11 +34,7 @@ function MostSaledSwiper() {
   }, []);
   function openProductPage(id: any) {
     if (id) {
-      navigate("/details", {
-        state: {
-          product_id: id,
-        },
-      });
+      navigate(`/details/${id}`);
     }
   }
   async function addProductToCart(product: any, count: number) {

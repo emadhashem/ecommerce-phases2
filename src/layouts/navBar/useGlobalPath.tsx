@@ -11,7 +11,7 @@ navbars.set("/", <MainNavBar />);
 navbars.set("/notifications", <NotificationNavBar />);
 navbars.set("/cart", <CartNavBar />);
 navbars.set("/favorites", <FavoriteNavBar />);
-navbars.set("/details", <DetailsNavBar />);
+
 
 
 function useGlobalPath(curPath: string) {

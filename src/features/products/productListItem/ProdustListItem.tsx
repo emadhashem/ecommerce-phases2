@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
@@ -69,17 +69,9 @@ function ProductListItem({
               }
             />
           )}
-          <img
-            src={productImg}
-            alt=""
-            onClick={() =>
-              navigate("/details", {
-                state: {
-                  product_id: productId,
-                },
-              })
-            }
-          />
+          <a href={`/details/${productId}`}>
+            <img src={productImg} alt="" />
+          </a>
         </div>
         <div className="part-2">
           <AddShoppingCartIcon className="icon" onClick={() => onClick(idx)} />

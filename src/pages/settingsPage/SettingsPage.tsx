@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import React, { useState, useRef, useEffect, useContext } from "react";
 import Badge from "@mui/material/Badge";
 import EditIcon from "@mui/icons-material/Edit";
@@ -7,6 +7,7 @@ import { getUserData, postUpdateUserData } from "../../api/user/userdata";
 import { UserContext } from "../../contexts/category/user.context";
 import { getImg } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { getCities } from "../../api/city/city";
 
 function SettingsPage() {
   const [imgFile, setimgFile] = useState<any>(null);
@@ -20,8 +21,10 @@ function SettingsPage() {
   const [password2, setpassword2] = useState("");
   const [address, setaddress] = useState("");
   const [city, setcity] = useState("-1");
-  const [imgForUpload, setimgForUpload] = useState<any>();
+  const [cities, setcities] = useState<any>([]);
 
+  const [imgForUpload, setimgForUpload] = useState<any>();
+  const [saveSettingsLoading, setsaveSettingsLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchUserData() {
@@ -39,8 +42,16 @@ function SettingsPage() {
     }
     fetchUserData();
   }, []);
+  useEffect(() => {
+    async function fetchCities() {
+      const data = await getCities();
+      setcities(data.city);
+    }
+    fetchCities();
+  }, []);
   async function saveSettings() {
     try {
+      setsaveSettingsLoading(true);
       const formData = new FormData();
       const registerInput = {
         customer_name: name,
@@ -58,8 +69,12 @@ function SettingsPage() {
       }
       if (imgForUpload) formData.append("customer_url", imgForUpload);
       await postUpdateUserData(formData, userToken);
+      setsaveSettingsLoading(false);
+
       navigate("/profile");
     } catch (error: any) {
+      setsaveSettingsLoading(false);
+
       alert(error.message);
     }
   }
@@ -77,6 +92,10 @@ function SettingsPage() {
   async function readBlob(blob: File) {
     const objectURL = URL.createObjectURL(blob);
     return objectURL;
+  }
+  function handleCitySelect(eve: React.ChangeEvent<HTMLSelectElement>) {
+    eve.preventDefault();
+    setcity(eve.target.value as string);
   }
   return (
     <div className="settingsPage">
@@ -158,11 +177,32 @@ function SettingsPage() {
           value={address}
           onChange={(e) => setaddress(e.target.value)}
         />
+        <div className="select-input">
+          <select
+            required
+            // sx={{ width: "351px", height: "40px" }}
+            onChange={handleCitySelect}
+            value={city}
+          >
+            <option value="" selected hidden>
+              اختر المدينة
+            </option>
+            {cities.map((city: any) => (
+              <option key={city.city_id} value={city.city_id}>
+                {city.city_name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <div className="btn-wrapper">
-        <Button onClick={saveSettings} className="btn" variant="contained">
-          <span>حفظ التعديلات</span>
-        </Button>
+        {saveSettingsLoading ? (
+          <CircularProgress />
+        ) : (
+          <Button onClick={saveSettings} className="btn" variant="contained">
+            <span>حفظ التعديلات</span>
+          </Button>
+        )}
         <Button
           onClick={() => navigate("/profile")}
           className="btn"

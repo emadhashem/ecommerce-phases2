@@ -35,7 +35,7 @@ function App() {
                 <Route path="/search/:text" element={<SearchPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
-                <Route path="/details" element={<DetailsPage />} />
+                <Route path="/details/:product_id" element={<DetailsPage />} />
                 <Route path="/allProducts" element={<ShowAllProductsPage />} />
                 <Route path="*" element={<h1>Not found </h1>} />
                 <Route

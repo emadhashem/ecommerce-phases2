@@ -98,6 +98,40 @@
         border-radius: 10px;
         color: themed("textColor") !important;
       }
+      .select-input {
+        margin: 10px 0px;
+        cursor: pointer;
+
+        select {
+          width: 100%;
+          max-width: 351px;
+          height: 40px;
+          padding: 0px 10px;
+          border-radius: 10px;
+          font-family: "Cairo";
+          font-size: 16px;
+          border: 1px solid themed("border");
+          background-color: themed("bg");
+          color: themed("textColor");
+          -webkit-appearance: none;
+          -moz-appearance: none;
+
+          &:invalid {
+            color: themed("placeholder");
+          }
+
+          &:focus {
+            box-shadow: none;
+            outline: none;
+          }
+
+          option {
+            color: themed("textColor");
+            background-color: themed("bgSoft");
+            border: 1px solid themed("border");
+          }
+        }
+      }
     }
 
     .btn-wrapper {
