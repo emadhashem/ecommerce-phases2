@@ -1,9 +1,20 @@
+@import "../../../style.scss";
+
 .detailsPageSwiper-container {
   width: 95%;
-  height: 281px !important;
+  height: 281px;
   border-radius: 10px;
   margin: 19px auto;
   overflow: hidden;
+  direction: rtl;
+  @include tablet {
+    width: 90%;
+    height: 361px;
+  }
+  @include mobile {
+    width: 95%;
+    height: 281px;
+  }
 
   .mySwiper2 {
     .swiper-slide {
@@ -40,9 +51,17 @@
     margin-bottom: 20px;
   }
   .swiper-slide {
-    width: 374px !important;
+    width: 374px;
     height: 186px;
     border-radius: 10px;
+    @include tablet {
+      width: 80%;
+      height: 256px;
+    }
+    @include mobile {
+      width: 374px;
+      height: 186px;
+    }
 
     img {
       display: block;

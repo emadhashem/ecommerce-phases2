@@ -22,7 +22,7 @@ const DetailsPageSwiper = ({ photos = [] }: { photos: any[] }) => {
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
-        modules={[Thumbs]}
+        modules={[Thumbs, FreeMode]}
         className="mySwiper1"
       >
         {photos.map((item: any, idx: number) => (

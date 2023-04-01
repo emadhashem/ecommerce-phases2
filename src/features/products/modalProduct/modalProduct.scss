@@ -12,12 +12,22 @@
       display: flex;
       flex-direction: column;
       background: themed("bg");
-      width: 357px;
-      height: 193px;
+      width: 397px;
+      height: 253px;
+
+      @include mobile {
+        width: 357px;
+        height: 193px;
+      }
 
       .single-product {
         width: 100%;
         height: 100%;
+        margin-top: 0;
+
+        @include tablet {
+          margin-top: 0;
+        }
 
         hr {
           margin: 0 auto;
@@ -36,6 +46,15 @@
           padding-right: 22px;
           margin-bottom: 10px;
           gap: 15px;
+
+          @include tablet {
+            padding-top: 0;
+            padding-bottom: 10px;
+          }
+          @include mobile {
+            padding-top: 10px;
+            padding-bottom: 0px;
+          }
 
           .product-title {
             color: themed("textColor");
