@@ -67,7 +67,8 @@ h4,
 h5,
 h6,
 p,
+.MuiInputBase-input,
 span {
-  font-family: "Cairo";
-  font-style: normal;
+  font-family: "Cairo" !important;
+  font-style: normal !important;
 }
