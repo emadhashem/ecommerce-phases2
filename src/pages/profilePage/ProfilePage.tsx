@@ -94,7 +94,9 @@ const ProfilePage = () => {
       <div className="profilePage-container">
         <div className="profile-header">
           <div className="profile-edit">
-            <Button onClick={fetchLogOut}>logout</Button>
+            <Button onClick={fetchLogOut}>
+              <span style={{ fontWeight: "500" }}>تسجيل الخروج</span>
+            </Button>
             <p onClick={() => navigate("/profile/settings")}>
               تعديل بيانات الحساب <ManageAccountsIcon className="icon" />
             </p>

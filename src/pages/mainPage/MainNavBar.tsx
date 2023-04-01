@@ -20,17 +20,17 @@ function MainNavBar() {
   const { darkMode } = useContext(DarkModeContext);
   const { userToken } = useContext(UserContext);
   const { cartLength, notifcationLength } = useContext(CartProductsContext);
-  const [userImg, setuserImg] = useState<any>(null)
+  const [userImg, setuserImg] = useState<any>(null);
   useEffect(() => {
-    if(!userToken) return
-    fetchUserData()
-  }, [userToken])
+    if (!userToken) return;
+    fetchUserData();
+  }, [userToken]);
   async function fetchUserData() {
     try {
-      const data = await getUserData(userToken)
-      setuserImg(data.customer.customer_url)
-    } catch (error  :any) {
-      alert(error.message)
+      const data = await getUserData(userToken);
+      setuserImg(data.customer.customer_url);
+    } catch (error: any) {
+      alert(error.message);
     }
   }
   return (
@@ -42,7 +42,7 @@ function MainNavBar() {
               <Avatar
                 className="icon"
                 onClick={() => navigate("/profile")}
-                src = {getImg(userImg)}
+                src={getImg(userImg)}
               />
               <FavoriteIcon
                 className="icon"
@@ -67,7 +67,7 @@ function MainNavBar() {
           ) : (
             <div>
               <Button onClick={() => navigate("/login")}>
-                Login - register
+                <span style={{ fontWeight: "600" }}>تسجيل الدخول</span>
               </Button>
             </div>
           )}
