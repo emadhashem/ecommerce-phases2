@@ -17,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 import useLogOut from "../../hooks/useLogOut";
 import { Button } from "@mui/material";
 import { UserContext } from "../../contexts/category/user.context";
-import { getUserData } from "../../api/user/userdata";
 import { getPreviousOrders } from "../../api/order/order";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
@@ -86,7 +85,7 @@ const ProfilePage = () => {
       }
     }
     if (userToken) fetchPreviousOrders();
-  }, []);
+  }, [userToken]);
 
   return (
     <React.Fragment>
@@ -151,10 +150,10 @@ const ProfilePage = () => {
             <a href="mailto:test@gmail.com" target="_blank" rel="noreferrer">
               <MdEmail />
             </a>
-            <a href="" target="_blank" rel="noreferrer">
+            <a href="tel:555-555-5555" target="_blank" rel="noreferrer">
               <FiPhoneCall />
             </a>
-            <a href="https://wa.me/+9999999" target="_blank" rel="noreferrer">
+            <a href="https://wa.me/+963932523445" target="_blank" rel="noreferrer">
               <IoLogoWhatsapp />
             </a>
           </div>
