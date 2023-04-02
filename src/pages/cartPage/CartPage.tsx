@@ -40,7 +40,7 @@ function CartPage() {
   }, [products?.length]);
 
   function handleDeletePorduct(id: string | number) {
-    setproducts((prev) => prev.filter((item) => item.product_id != id));
+    setproducts((prev) => prev.filter((item) => item.order_details_id != id));
   }
   async function handleChangeCount(product: any, count: number) {
     try {
@@ -49,13 +49,15 @@ function CartPage() {
         count,
         userToken
       );
-      setproducts((prev) =>
-        prev.map((item) => {
-          if (item.product_id == product.product_id) {
+      setproducts((prev) => {
+        let arr = prev.map((item) => {
+          if (item.order_details_id == product.order_details_id) {
             return { ...item, product_count: count };
           } else return item;
-        })
-      );
+        });
+        setCartLength(arr.length)
+        return arr
+      });
     } catch (error: any) {
       alert(error.message);
     }

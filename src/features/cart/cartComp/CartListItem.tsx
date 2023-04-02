@@ -25,7 +25,7 @@ function CartListItem({
         product.order_details_id,
         userToken
       );
-      handleDeletePorduct(product.product_id);
+      handleDeletePorduct(product.order_details_id);
       setdeleteLoading(false);
     } catch (error: any) {
       setdeleteLoading(false);

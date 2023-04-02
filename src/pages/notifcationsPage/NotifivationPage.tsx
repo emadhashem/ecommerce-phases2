@@ -17,7 +17,13 @@ function NotifivationPage() {
   const [oldNotifications, setoldNotifications] = useState<any[]>([]);
   const { setnotifcationLength } = useContext(CartProductsContext);
   useEffect(() => {
-    if (userToken) fetchNotification();
+    let cur = true;
+    if (userToken) {
+      if (cur) fetchNotification();
+    }
+    return () => {
+      cur = false;
+    };
   }, [userToken]);
   async function fetchNotification() {
     try {

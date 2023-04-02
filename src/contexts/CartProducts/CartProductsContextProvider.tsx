@@ -14,6 +14,7 @@ const CartProductsContextProvider = ({ children }: Props) => {
   const [notifcationLength, setnotifcationLength] = useState(0);
 
   useEffect(() => {
+    let cur = true
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
       const notifData = await getNotification(userToken)
@@ -24,7 +25,12 @@ const CartProductsContextProvider = ({ children }: Props) => {
       setnotifcationLength(cnt)
       setCartLength(data.order.product?.length);
     }
-    if (userToken) fetchPoductsInCart();
+    if (userToken) {
+      if(cur) fetchPoductsInCart();
+    }
+    return () => {
+      cur = false
+    }
   }, [userToken]);
 
   return (

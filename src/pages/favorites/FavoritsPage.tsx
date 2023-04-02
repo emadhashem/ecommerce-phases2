@@ -7,16 +7,16 @@ import { getFavorites } from "../../api/favorites/favorites";
 import { UserContext } from "../../contexts/category/user.context";
 
 function FavoritsPage() {
-  const {userToken} = useContext(UserContext)
-  const [products , setproducts] = useState<any>([])
+  const { userToken } = useContext(UserContext);
+  const [products, setproducts] = useState<any>([]);
   useEffect(() => {
     async function fetchFavirotes() {
-      const data = await getFavorites(userToken)
+      const data = await getFavorites(userToken);
       setproducts(data.favorite);
     }
-    fetchFavirotes()
-  }, [userToken])
-  
+    if (userToken) fetchFavirotes();
+  }, [userToken]);
+
   return (
     <div className="favoritsPage-container">
       <div className="container-title">
@@ -31,7 +31,7 @@ function FavoritsPage() {
         </div>
       </div>
       <div className="fav-ProductList">
-        <ProductList products={products} showAllProduts = {false} />
+        <ProductList products={products} showAllProduts={false} />
       </div>
     </div>
   );

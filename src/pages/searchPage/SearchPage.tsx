@@ -12,6 +12,7 @@ const SearchPage = () => {
   const [products, setproducts] = useState<any[]>([]);
   const { userToken } = useContext(UserContext);
   useEffect(() => {
+    let cur = true
     async function fetchSearchData() {
       try {
         const data = await getSearchData(text, userToken);
@@ -20,7 +21,12 @@ const SearchPage = () => {
         alert(error.message);
       }
     }
-    fetchSearchData();
+    if(cur) {
+      fetchSearchData();
+    }
+    return () => {
+      cur = false
+    }
   }, [userToken, text]);
 
   return (

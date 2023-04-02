@@ -76,6 +76,7 @@ const ProfilePage = () => {
   const [PreviousOrderData, setPreviousOrdersData] = useState<any[]>([]);
   const { fetchLogOut } = useLogOut();
   useEffect(() => {
+    let cur = true
     async function fetchPreviousOrders() {
       try {
         const data = await getPreviousOrders(userToken);
@@ -84,7 +85,12 @@ const ProfilePage = () => {
         alert(error.message);
       }
     }
-    if (userToken) fetchPreviousOrders();
+    if (userToken) {
+      if(cur) fetchPreviousOrders();
+    }
+    return () => {
+      cur = false
+    }
   }, [userToken]);
 
   return (

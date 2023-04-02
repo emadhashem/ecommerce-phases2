@@ -26,35 +26,43 @@ const DetailsPage = () => {
   const { userToken } = useContext(UserContext);
   const [products, setproducts] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
-  const {product_id} = useParams()
+  const { product_id } = useParams();
   useEffect(() => {
     if (!product_id) {
       navigate("/");
       return;
     }
+    let cur = true;
     async function fetchPorductById() {
       const data = await getProductById(product_id);
       const dataPhotos = await getProductPhotosById(product_id);
       setphotos(dataPhotos.product_photo);
       setproduct(data.product);
     }
-    fetchPorductById();
-    
+    if (product_id) {
+      if (cur) fetchPorductById();
+    }
+    return () => {
+      cur = false;
+    };
   }, [product_id]);
   useEffect(() => {
+    let cur = true;
     async function fetchOtherPorductsbyProductuId() {
       try {
-        const data = await getOtherProductsByProductId(
-          product_id,
-          userToken
-        );
+        const data = await getOtherProductsByProductId(product_id, userToken);
         setproducts(data.other_product);
       } catch (error: any) {
         alert(error.message);
       }
     }
-    if (userToken) fetchOtherPorductsbyProductuId();
-  }, [userToken , product_id]);
+    if (userToken) {
+      if (cur) fetchOtherPorductsbyProductuId();
+    }
+    return () => {
+      cur = false;
+    };
+  }, [userToken, product_id]);
   async function addProductToCart(product: any, count: number) {
     try {
       const data = await postProductToOrder(
@@ -78,9 +86,8 @@ const DetailsPage = () => {
   return (
     product && (
       <>
-        
         <DetailsNavBar />
-        <div className="detailsPage-container" >
+        <div className="detailsPage-container">
           <ModalOverLay open={open} handleClose={handleClose}>
             {product && (
               <ModalProduct
