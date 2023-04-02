@@ -65,6 +65,9 @@
               font-weight: 500;
               font-size: 16px;
               line-height: 30px;
+              &:hover {
+                cursor: pointer;
+              }
             }
             span {
               font-weight: 500;
@@ -97,11 +100,17 @@
               border-radius: 50%;
               background: themed("iconBg");
               font-size: 25px;
+              &:hover {
+                cursor: pointer;
+              }
             }
             .remove-icon {
               color: #b8b8b8;
               font-size: 28px;
               border-radius: 50%;
+              &:hover {
+                cursor: pointer;
+              }
             }
 
             span {

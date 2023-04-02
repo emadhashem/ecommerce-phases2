@@ -60,6 +60,9 @@
         right: 10px;
         font-size: 28px;
         filter: drop-shadow(0 0 0.4rem rgb(56, 56, 56));
+        &:hover {
+          cursor: pointer;
+        }
       }
 
       #inactive-fav-icon {
@@ -162,6 +165,9 @@
           line-height: 22px;
           // text-align: right;
           direction: rtl;
+          &:hover {
+            cursor: pointer;
+          }
         }
 
         .product-price {

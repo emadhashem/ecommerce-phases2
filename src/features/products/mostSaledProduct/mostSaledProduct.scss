@@ -63,6 +63,9 @@
         flex-direction: row;
         font-size: 18px;
         line-height: 19px;
+        &:hover {
+          cursor: pointer;
+        }
         @include tablet {
           font-size: 16px;
         }

@@ -9,6 +9,7 @@ import { getPorductsBySubCategory } from "../../../api/subcategoies/sub_categori
 import { getImg } from "../../../api";
 import { postProductToOrder } from "../../../api/product/product";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function ProductList({
   showAllProduts = true,
@@ -84,7 +85,7 @@ function ProductList({
               key={product.product_id}
               in_favorite={product.in_favorite}
               handleRemoveFromList={handleRemoveFromList}
-              _product = {product}
+              _product={product}
             />
           ))
         ) : (
@@ -94,11 +95,11 @@ function ProductList({
           </div>
         )}
       </div>
-      {showAllProduts &&  (
+      {showAllProduts && (
         <div className="btn">
-          <button onClick={() => navigate("/allProducts")}>
+          <Button variant="contained" onClick={() => navigate("/allProducts")}>
             <span>...عرض الكل</span>
-          </button>
+          </Button>
         </div>
       )}
     </section>

@@ -41,6 +41,9 @@
       padding: 5px;
       gap: 10px;
 
+      &:hover {
+        cursor: pointer;
+      }
       .category-name {
         display: flex;
         flex-direction: row;

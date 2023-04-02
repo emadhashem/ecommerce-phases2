@@ -19,6 +19,7 @@ import { Button } from "@mui/material";
 import { UserContext } from "../../contexts/category/user.context";
 import { getPreviousOrders } from "../../api/order/order";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -76,7 +77,7 @@ const ProfilePage = () => {
   const [PreviousOrderData, setPreviousOrdersData] = useState<any[]>([]);
   const { fetchLogOut } = useLogOut();
   useEffect(() => {
-    let cur = true
+    let cur = true;
     async function fetchPreviousOrders() {
       try {
         const data = await getPreviousOrders(userToken);
@@ -86,11 +87,11 @@ const ProfilePage = () => {
       }
     }
     if (userToken) {
-      if(cur) fetchPreviousOrders();
+      if (cur) fetchPreviousOrders();
     }
     return () => {
-      cur = false
-    }
+      cur = false;
+    };
   }, [userToken]);
 
   return (
@@ -99,10 +100,10 @@ const ProfilePage = () => {
       <div className="profilePage-container">
         <div className="profile-header">
           <div className="profile-edit">
-            <Button onClick={fetchLogOut}>
-              <span style={{ fontWeight: "500" }}>تسجيل الخروج</span>
-            </Button>
-            <p onClick={() => navigate("/profile/settings")}>
+            <p style={{ cursor: "pointer" }} onClick={fetchLogOut}>
+              تسجيل الخروج <LogoutIcon className="icon" />
+            </p>
+            <p style={{ cursor: "pointer" }} onClick={() => navigate("/profile/settings")}>
               تعديل بيانات الحساب <ManageAccountsIcon className="icon" />
             </p>
           </div>
@@ -159,7 +160,11 @@ const ProfilePage = () => {
             <a href="tel:555-555-5555" target="_blank" rel="noreferrer">
               <FiPhoneCall />
             </a>
-            <a href="https://wa.me/+963932523445" target="_blank" rel="noreferrer">
+            <a
+              href="https://wa.me/+963932523445"
+              target="_blank"
+              rel="noreferrer"
+            >
               <IoLogoWhatsapp />
             </a>
           </div>
