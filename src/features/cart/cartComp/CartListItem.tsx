@@ -8,6 +8,7 @@ import { getImg } from "../../../api";
 import { UserContext } from "../../../contexts/category/user.context";
 import { postDeleteProductToOrder } from "../../../api/product/product";
 import { CircularProgress } from "@mui/material";
+import { productCoinInCart } from "../../../shared/helper";
 
 function CartListItem({
   product,
@@ -48,7 +49,7 @@ function CartListItem({
       <div className="single-product">
         <div className="product-title">
           <h4>{product.product_name}</h4>
-          <span>{product.product_count * product.product_price}</span>
+          <span>{productCoinInCart(product)}</span>
         </div>
         <div className="img-container">
           <img src={getImg(product.product_photo_url)} alt="" />

@@ -8,6 +8,7 @@ import { getImg } from "../../../api";
 import { useContext, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import { CartProductsContext } from "../../../contexts/CartProducts/CartProductsContext";
+import { productCoin, productCoinInCart } from "../../../shared/helper";
 
 function ModalProduct({ product, handleClose, onAccept }: any) {
   const [count, setcount] = useState(
@@ -34,7 +35,7 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
           <div className="ModalProduct-part-1">
             <div className="product-title">
               <h4>{product.product_name}</h4>
-              <span>{product.product_price_dollar} $</span>
+              <span>{productCoin(product)}</span>
             </div>
             <div className="img-container">
               <img src={getImg(product.product_photo_url)} alt="" />
@@ -58,7 +59,10 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
             <div className="total-price">
               <p>
                 السعر الإجمالي:
-                <span> $ {count * product.product_price_dollar}</span>
+                <span>
+                  {" "}
+                  {productCoinInCart({ ...product, product_count: count })}{" "}
+                </span>
               </p>
             </div>
             <div className="confirmation">

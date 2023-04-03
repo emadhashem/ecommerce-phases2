@@ -8,7 +8,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/category/user.context";
 import { addFavorite, deleteFavorite } from "../../../api/favorites/favorites";
 import { CircularProgress } from "@mui/material";
-import { handelResult } from "../../../shared/helper";
+import { handelResult, productCoin } from "../../../shared/helper";
 
 function ProductListItem({
   productId,
@@ -89,7 +89,7 @@ function ProductListItem({
               {handelResult(productName, 17)}
             </h3>
             {/* <h4 className="product-old-price">$79.99</h4> */}
-            <h4 className="product-price">${productPrice}</h4>
+            <h4 className="product-price">{productCoin(_product)}</h4>
           </div>
         </div>
       </div>
