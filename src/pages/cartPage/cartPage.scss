@@ -82,6 +82,16 @@
         justify-content: space-between;
         gap: 10px;
 
+        @include tablet {
+          display: flex;
+          flex-direction: row;
+        }
+
+        @include mobile {
+          display: grid;
+          grid-template-columns: 50% 40%;
+        }
+
         p {
           font-family: "Cairo";
           font-style: normal;
@@ -97,20 +107,22 @@
         }
 
         .total-price {
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 189px;
+          // width: 189px;
           height: 35px;
           background: themed("bgSoft");
           border-radius: 10px;
         }
 
         .delivery {
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 144px;
+          // width: 144px;
           height: 35px;
           background: themed("bgSoft");
           border-radius: 10px;

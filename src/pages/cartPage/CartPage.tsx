@@ -23,9 +23,7 @@ function CartPage() {
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
   const [openPopover, setopenPopover] = useState(false);
   const [orderData, setorderData] = useState<any>(null);
-  const sy_coin = "sy";
 
-  console.log(orderData);
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
@@ -126,19 +124,18 @@ function CartPage() {
         <div className="cart-footer">
           <div className="price">
             <div className="total-price">
-              {orderData.coin === sy_coin ? (
-                <p>
-                  المجموع: <span>{orderData.sum_price_sy}</span> ل.س
-                </p>
-              ) : (
-                <p>
-                  المجموع: <span>{orderData.sum_price_dollar}</span> $
-                </p>
-              )}
+              <p>
+                المجموع: <span>{orderData.sum_price_sy}</span> ل.س
+              </p>
             </div>
             <div className="delivery">
               <p>
                 توصيل: <span>{orderData.delivery_fee}</span> ل.س
+              </p>
+            </div>
+            <div className="total-price">
+              <p>
+                المجموع: <span>{orderData.sum_price_dollar}</span> $
               </p>
             </div>
           </div>
