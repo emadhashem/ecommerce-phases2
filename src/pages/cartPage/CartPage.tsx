@@ -23,7 +23,7 @@ function CartPage() {
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
   const [openPopover, setopenPopover] = useState(false);
   const [orderData, setorderData] = useState<any>(null);
-  const sy = "sy";
+  const sy_coin = "sy";
 
   console.log(orderData);
   useEffect(() => {
@@ -84,6 +84,7 @@ function CartPage() {
       alert(error.message);
     }
   }
+
   return (
     <div className="CartPage-container">
       <div className="container-title">
@@ -125,7 +126,7 @@ function CartPage() {
         <div className="cart-footer">
           <div className="price">
             <div className="total-price">
-              {orderData.coin === sy ? (
+              {orderData.coin === sy_coin ? (
                 <p>
                   المجموع: <span>{orderData.sum_price_sy}</span> ل.س
                 </p>
