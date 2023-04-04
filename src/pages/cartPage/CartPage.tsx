@@ -23,6 +23,9 @@ function CartPage() {
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
   const [openPopover, setopenPopover] = useState(false);
   const [orderData, setorderData] = useState<any>(null);
+  const sy = "sy";
+
+  console.log(orderData);
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
@@ -55,8 +58,8 @@ function CartPage() {
             return { ...item, product_count: count };
           } else return item;
         });
-        setCartLength(arr.length)
-        return arr
+        setCartLength(arr.length);
+        return arr;
       });
     } catch (error: any) {
       alert(error.message);
@@ -122,10 +125,15 @@ function CartPage() {
         <div className="cart-footer">
           <div className="price">
             <div className="total-price">
-              <p>
-                المجموع: <span>{orderData.sum_price_dollar}</span> $
-              </p>
-              
+              {orderData.coin === sy ? (
+                <p>
+                  المجموع: <span>{orderData.sum_price_sy}</span> ل.س
+                </p>
+              ) : (
+                <p>
+                  المجموع: <span>{orderData.sum_price_dollar}</span> $
+                </p>
+              )}
             </div>
             <div className="delivery">
               <p>

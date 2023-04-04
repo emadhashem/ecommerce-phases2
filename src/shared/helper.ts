@@ -19,3 +19,12 @@ export const productCoinInCart = (product: any) => {
   }
   return `$ ${product.product_price_dollar * product.product_count}`;
 };
+
+export const orderProductCoin = (product: any) => {
+  if (product.product_coin === sy) {
+    // return "ل.س" + product.product_price_sy;
+    return `${product.sum_price_sy} ل.س`;
+
+  }
+  return `$ ${product.sum_price_dollar}`;
+};
