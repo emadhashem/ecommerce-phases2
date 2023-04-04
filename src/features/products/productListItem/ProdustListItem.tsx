@@ -86,10 +86,10 @@ function ProductListItem({
                 })
               }
             >
-              {handelResult(productName, 17)}
+              {handelResult(productName, 14)}
             </h3>
             {/* <h4 className="product-old-price">$79.99</h4> */}
-            <h4 className="product-price">{productCoin(_product)}</h4>
+            <span className="product-price">{productCoin(_product)}</span>
           </div>
         </div>
       </div>

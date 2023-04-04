@@ -35,7 +35,7 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
           <div className="ModalProduct-part-1">
             <div className="product-title">
               <h4>{product.product_name}</h4>
-              <span>{productCoin(product)}</span>
+              <p>{productCoin(product)}</p>
             </div>
             <div className="img-container">
               <img src={getImg(product.product_photo_url)} alt="" />
@@ -59,9 +59,8 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
             <div className="total-price">
               <p>
                 السعر الإجمالي:
-                <span>
-                  {" "}
-                  {productCoinInCart({ ...product, product_count: count })}{" "}
+                <span style={{ direction: "rtl" }}>
+                  {productCoinInCart({ ...product, product_count: count })}
                 </span>
               </p>
             </div>

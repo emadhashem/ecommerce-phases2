@@ -125,6 +125,7 @@ function CartPage() {
               <p>
                 المجموع: <span>{orderData.sum_price_dollar}</span> $
               </p>
+              
             </div>
             <div className="delivery">
               <p>

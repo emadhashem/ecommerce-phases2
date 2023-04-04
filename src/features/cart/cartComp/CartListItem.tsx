@@ -49,7 +49,7 @@ function CartListItem({
       <div className="single-product">
         <div className="product-title">
           <h4>{product.product_name}</h4>
-          <span>{productCoinInCart(product)}</span>
+          <p>{productCoinInCart(product)}</p>
         </div>
         <div className="img-container">
           <img src={getImg(product.product_photo_url)} alt="" />

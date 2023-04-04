@@ -17,6 +17,7 @@ import { UserContext } from "../../contexts/category/user.context";
 import ModalOverLay from "../../layouts/modlaOverLay/ModalOverLay";
 import ModalProduct from "../../features/products/modalProduct/ModalProduct";
 import DetailsNavBar from "./DetailsNavBar";
+import { productCoin } from "../../shared/helper";
 
 const DetailsPage = () => {
   const location = useLocation();
@@ -27,6 +28,7 @@ const DetailsPage = () => {
   const [products, setproducts] = useState<any[]>([]);
   const [open, setOpen] = useState(false);
   const { product_id } = useParams();
+
   useEffect(() => {
     if (!product_id) {
       navigate("/");
@@ -63,6 +65,7 @@ const DetailsPage = () => {
       cur = false;
     };
   }, [userToken, product_id]);
+
   async function addProductToCart(product: any, count: number) {
     try {
       const data = await postProductToOrder(
@@ -103,7 +106,7 @@ const DetailsPage = () => {
               <h3> {product.product_name}</h3>
             </div>
             <div className="price">
-              <span>{product.product_price_dollar} $</span>
+              <span>{productCoin(product)}</span>
             </div>
           </div>
           <DetailsPageSwiper photos={photos} />
