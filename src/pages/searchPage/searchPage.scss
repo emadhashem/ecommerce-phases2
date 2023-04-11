@@ -1,0 +1,51 @@
+@import "../../style.scss";
+
+.SearchPage-container {
+  @include themify($themes) {
+    width: 100%;
+    min-height: 80vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+
+    .container-title {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      width: 95%;
+      margin: 5px 0px;
+
+      .title {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+
+        .icon {
+          color: themed("orangeGrayIcons");
+          font-size: 40px;
+        }
+
+        h3 {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 37px;
+          text-align: right;
+          color: themed("textColor");
+        }
+      }
+
+      .delete-icon {
+        color: #989898;
+      }
+    }
+
+    .all-ProductList {
+      width: 100%;
+    }
+  }
+}

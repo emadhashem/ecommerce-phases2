@@ -1,0 +1,199 @@
+@import "../../style.scss";
+
+.CartPage-container {
+  @include themify($themes) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+
+    .popover {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      span {
+        color: themed("textColor");
+      }
+      .button-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+
+    .container-title {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      width: 95%;
+
+      .title {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        // margin-right: 10px;
+
+        .icon {
+          color: themed("orangeGrayIcons");
+          font-size: 40px;
+        }
+
+        h3 {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 37px;
+          text-align: right;
+          color: themed("textColor");
+        }
+      }
+
+      .delete-icon {
+        color: #989898;
+      }
+    }
+
+    .cart-footer {
+      width: 95%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      direction: rtl;
+      padding-bottom: 5px;
+
+      hr {
+        width: 96%;
+        border: 1px solid themed("orangeBlueIcons");
+      }
+
+      .price {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+
+        @include tablet {
+          display: flex;
+          flex-direction: row;
+        }
+
+        @include mobile {
+          display: grid;
+          grid-template-columns: 50% 40%;
+        }
+
+        p {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 26px;
+          text-align: right;
+          color: themed("textColor");
+          span {
+            color: themed("orangeBlueIcons");
+            font-weight: 600;
+          }
+        }
+
+        .total-price {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // width: 189px;
+          height: 35px;
+          background: themed("bgSoft");
+          border-radius: 10px;
+        }
+
+        .delivery {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // width: 144px;
+          height: 35px;
+          background: themed("bgSoft");
+          border-radius: 10px;
+        }
+      }
+
+      .check-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 189px;
+        height: 40px;
+        border-radius: 10px;
+        border: none;
+        background: themed("textColor");
+        margin-top: 10px;
+        span {
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          color: themed("bgSoft");
+        }
+
+        .icon {
+          color: themed("bgSoft");
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+/* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
+@media screen and (min-width: 600px) {
+  .CartPage-container {
+    .container-title {
+      margin: 10px 0px;
+    }
+    .cart-footer {
+      .price {
+        p {
+          font-size: 24px;
+          line-height: 26px;
+          text-align: right;
+          color: var(--color-mainBlue);
+          span {
+            color: var(--color-orange);
+            font-weight: 600;
+          }
+        }
+
+        .total-price {
+          width: 50%;
+          height: 60px;
+        }
+
+        .delivery {
+          width: 35%;
+          height: 60px;
+        }
+      }
+
+      .check-btn {
+        gap: 15px;
+        width: 249px;
+        height: 60px;
+        span {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@import "../../../style.scss";
+
+.section-products {
+  @include themify($themes) {
+    .error-message {
+      color: themed("orangeBlueIcons");
+    }
+  }
+  a,
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+
+    // .card {
+    //   background: var(--color-white);
+    //   height: 350px;
+    //   border-radius: 10px;
+    //   overflow: hidden;
+    //   margin: 10px 0;
+    // }
+
+    // .single-product {
+    //   margin-bottom: 26px;
+    //   width: 300px;
+    //   border-radius: 10px;
+
+    // }
+
+    .error-message {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 150px;
+      font-size: 20px;
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+    button {
+      width: 98px;
+      height: 34px;
+      border-radius: 10px;
+      background: #2c7be5;
+      border: none;
+      padding: 2px;
+      span {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 500;
+        color: #fff;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+/* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
+@media screen and (max-width: 1024px) {
+  .section-products .container {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+/* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
+@media screen and (max-width: 600px) {
+  .section-products .container {
+    grid-template-columns: 50% 50%;
+  }
+}

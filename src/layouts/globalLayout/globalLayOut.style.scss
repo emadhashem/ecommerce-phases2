@@ -1,0 +1,14 @@
+@import "../../style.scss";
+
+.globallayout-container {
+  @include themify($themes) {
+    height: 100vh;
+    width: 100%;
+    background-color: themed("bg");
+    .layout-body {
+      height: 100%;
+      overflow-y: scroll;
+      background-color: themed("bg");
+    }
+  }
+}

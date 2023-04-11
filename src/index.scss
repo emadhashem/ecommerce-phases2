@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
+@import "./style.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @include themify($themes) {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px themed("bg") inset !important;
+    }
+    input:-webkit-autofill {
+      -webkit-text-fill-color: themed("blackGray") !important;
+    }
+  }
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
+    border-radius: unset !important;
+  }
+}
+
+body {
+  @include themify($themes) {
+    height: 100vh;
+    position: relative;
+    background-color: themed("bg");
+    --color-mainBlue: #2c7be5;
+    --color-bg: #edf2f9;
+    --color-bg-Blue: rgba(44, 123, 229, 0.5);
+    --color-white: #ffffff;
+    --color-orange: #ff6347;
+    --color-gray: #989898;
+  }
+}
+#root {
+  --swiper-navigation-size: 22px;
+  --swiper-pagination-color: var(--color-mainBlue);
+  scroll-behavior: smooth;
+  /* min-height: 100vh; */
+}
+::placeholder {
+  color: var(--color-mainBlue);
+  font-family: "Cairo";
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2c7be5;
+  border-radius: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+.MuiInputBase-input,
+span {
+  font-family: "Cairo" !important;
+  font-style: normal !important;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.icon:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,59 @@
+@import "../../../style.scss";
+
+.notifcation-container {
+  @include themify($themes) {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 8px 5px;
+    background: themed("bgSoft");
+    border-radius: 10px;
+    height: 100px;
+    .notifcation-img {
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 7px;
+      img {
+        width: 60%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .description-container {
+      display: grid;
+      grid-template-columns: 85% 15%;
+      text-align: right;
+      gap: 10px;
+      align-items: center;
+      max-height: 100px;
+      max-width: 100%;
+      overflow: hidden;
+
+      .description {
+        color: themed("textColor");
+        font-family: "Cairo";
+        font-style: normal;
+
+        span {
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 19px;
+          text-align: right;
+        }
+        p {
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 30px;
+          text-align: right;
+        }
+      }
+
+      .dont-icon-unseen {
+        color: #2c7be5;
+      }
+      .dont-icon-seen {
+        color: #c0d0e6;
+      }
+    }
+  }
+}

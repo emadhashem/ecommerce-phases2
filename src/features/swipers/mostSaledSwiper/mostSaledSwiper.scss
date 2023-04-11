@@ -1,0 +1,71 @@
+@import "../../../style.scss";
+
+.MostSaledSwiper {
+  @include themify($themes) {
+    .container-title {
+      display: flex;
+      flex-direction: row-reverse;
+      margin-right: 15px;
+
+      .bar {
+        width: 4px;
+        height: 32px;
+        background: themed("orangeBlueIcons");
+      }
+
+      h3 {
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 37px;
+        text-align: right;
+        color: themed("textColor");
+        padding-right: 8px;
+      }
+    }
+  }
+  .mySwiper {
+    width: 95% !important;
+    direction: rtl;
+  }
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+    border-radius: 10px;
+    width: 18% !important;
+    padding: 0 !important;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+}
+
+/* ____ MEDIA QUERIES (MEDIUM DEVICES) ________ */
+@media screen and (max-width: 1024px) {
+  .MostSaledSwiper .swiper-slide {
+    width: 31% !important;
+  }
+}
+
+/* ____ MEDIA QUERIES (SMALL DEVICES) ________ */
+@media screen and (max-width: 600px) {
+  .MostSaledSwiper .swiper-slide {
+    width: 35% !important;
+  }
+}

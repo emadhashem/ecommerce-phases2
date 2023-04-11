@@ -1,0 +1,14 @@
+.pagecontainer-container {
+  height: 100vh;
+  .swiper {
+    width: 100%;
+    height: 110vh;
+
+    /* height: 1000px; */
+  }
+  .swiper-slide {
+    height: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
