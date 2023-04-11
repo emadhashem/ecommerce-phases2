@@ -8,6 +8,7 @@ import ProductList from "../../features/products/productList/ProductList";
 import "./mainPage.scss";
 import { UserContext } from "../../contexts/category/user.context";
 import { getPorductsBySubCategory } from "../../api/subcategoies/sub_categories";
+import MainPageTable from "./MainPageTable";
 
 function MainPage() {
   const [products, setproducts] = useState<any>([]);
@@ -30,6 +31,7 @@ function MainPage() {
       <div>
         <MainSwiper />
         <Search />
+        <MainPageTable />
         <MostSaledSwiper />
         <div>
           <CategorySwiper />

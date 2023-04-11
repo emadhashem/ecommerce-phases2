@@ -1,0 +1,46 @@
+@import "../../style.scss";
+
+.table {
+  @include themify($themes) {
+    margin-top: 10px;
+    color: themed("textColor");
+
+    img {
+      width: 27px;
+      height: 27px;
+      object-fit: cover;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .MuiTableRow-head {
+      background-color: themed("bg");
+      th,
+      tr {
+        color: themed("textColor");
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 6px 10px;
+        text-align: center;
+      }
+    }
+
+    .MuiTableBody-root {
+      .css-pnm1b2-MuiTableCell-root,
+      .css-10gy0os-MuiTableCell-root {
+        color: themed("textColor");
+        text-align: right;
+        font-family: "Cairo";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 19px;
+        text-align: center;
+        padding: 6px 10px;
+      }
+    }
+  }
+}

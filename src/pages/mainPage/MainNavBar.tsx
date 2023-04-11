@@ -4,8 +4,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import logo from "../../assets/svgs/logo_home_page.svg";
-import darkLogo from "../../assets/svgs/logo_home_page.svg";
+import logo from "../../assets/svgs/logo.svg";
+import darkLogo from "../../assets/svgs/darklogo.svg";
 
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
@@ -44,11 +44,11 @@ function MainNavBar() {
                 onClick={() => navigate("/profile")}
                 src={getImg(userImg)}
               />
-              {/* <FavoriteIcon
+              <FavoriteIcon
                 className="icon"
                 onClick={() => navigate("/favorites")}
                 fontSize="large"
-              /> */}
+              />
               <Badge badgeContent={notifcationLength} color="error">
                 <NotificationsIcon
                   onClick={() => navigate("notifications")}
@@ -75,9 +75,9 @@ function MainNavBar() {
         <div className="logo">
           <Link to="/">
             {darkMode ? (
-              <img className="logo_primary" src={darkLogo} alt="" />
+              <img src={darkLogo} alt="" />
             ) : (
-              <img className="logo_primary" src={logo} alt="" />
+              <img src={logo} alt="" />
             )}
           </Link>
         </div>

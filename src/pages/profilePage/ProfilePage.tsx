@@ -2,7 +2,6 @@ import "./profilePage.scss";
 import ProfileNavBar from "./ProfileNavBar";
 import React, { useContext, useEffect, useState } from "react";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import Switch, { SwitchProps } from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import ArrowLeftRoundedIcon from "@mui/icons-material/ArrowLeftRounded";
@@ -21,6 +20,7 @@ import { UserContext } from "../../contexts/category/user.context";
 import { getPreviousOrders } from "../../api/order/order";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ProfileTable from "./ProfileTable";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -104,11 +104,11 @@ const ProfilePage = () => {
             <p style={{ cursor: "pointer" }} onClick={fetchLogOut}>
               تسجيل الخروج <LogoutIcon className="icon" />
             </p>
-            <p style={{ cursor: "pointer" }} onClick={() => navigate("/profile/settings")}>
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/profile/settings")}
+            >
               تعديل بيانات الحساب <ManageAccountsIcon className="icon" />
-            </p>
-            <p style={{ cursor: "pointer" }} onClick={() =>navigate("/favorites")}>
-              المفضلة <FavoriteIcon className="icon" />
             </p>
           </div>
           <div className="theme">
@@ -131,7 +131,9 @@ const ProfilePage = () => {
               <h3>:الطلبات السابقة</h3>
             </div>
             <div className="ordersDetails-container">
-              {PreviousOrderData && PreviousOrderData.length > 0 ? (
+              <ProfileTable />
+
+              {/* {PreviousOrderData && PreviousOrderData.length > 0 ? (
                 PreviousOrderData.map((data: any) => (
                   <div className="orderDetails-item">
                     <ArrowLeftRoundedIcon className="icon" />
@@ -149,7 +151,7 @@ const ProfilePage = () => {
                   <SentimentVeryDissatisfiedIcon fontSize="large" />
                   <p> لا توجد اي طلبات سابقة </p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

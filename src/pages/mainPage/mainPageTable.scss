@@ -1,0 +1,48 @@
+@import "../../style.scss";
+
+.MainPageTable-wrapper {
+  width: 95%;
+  height: max-content;
+  margin: 10px auto;
+  margin-bottom: 20px;
+  direction: rtl;
+  .table {
+    @include themify($themes) {
+      margin-top: 10px;
+      color: themed("textColor");
+      border-radius: 10px 10px 0px 0px;
+
+      .MuiTableRow-head {
+        background-color: themed("bg");
+        th,
+        tr {
+          color: #ffffff;
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 22px;
+          border-left: 1px solid #2c7be5;
+          padding: 6px 10px;
+          text-align: center;
+        }
+      }
+
+      .MuiTableBody-root {
+        .css-120ze2a-MuiTableCell-root,
+        .css-18fu35v-MuiTableRow-root,
+        .css-1exc4ya-MuiTableCell-root {
+          color: themed("textColor");
+          font-family: "Cairo";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: center;
+          border-left: 1px solid #2c7be5;
+          padding: 6px 10px;
+        }
+      }
+    }
+  }
+}

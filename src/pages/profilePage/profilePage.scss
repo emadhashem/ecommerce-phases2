@@ -95,8 +95,9 @@
         }
 
         .ordersDetails-container {
-          max-height: 350px;
-          overflow: scroll;
+          width: 100%;
+          height: max-content;
+          direction: rtl;
           @include tablet {
             max-height: 400px;
           }
