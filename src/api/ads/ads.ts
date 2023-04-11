@@ -6,3 +6,4 @@ export async function getAds() {
     const {data} = await axios.get(get_ads_api_url)
     return data
 }
+
