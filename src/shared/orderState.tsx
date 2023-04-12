@@ -24,7 +24,7 @@ export const orderState = (state: any) => {
           في السلة
         </div>
       );
-    case "done":
+    case "recieved":
       return (
         <div
           className="order-state"
@@ -36,7 +36,7 @@ export const orderState = (state: any) => {
           تم التسليم
         </div>
       );
-    case "delevirt":
+    case "in_delivery":
       return (
         <div
           className="order-state"

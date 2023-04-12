@@ -15,7 +15,6 @@ import { CircularProgress } from "@mui/material";
 import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
 import { Button } from "@mui/material";
 
-//test
 function CartPage() {
   const { userToken } = useContext(UserContext);
   const { setCartLength, setnotifcationLength,notifcationLength } = useContext(CartProductsContext);
