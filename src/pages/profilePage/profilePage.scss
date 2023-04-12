@@ -94,6 +94,16 @@
           }
         }
 
+        .error-message {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-top: 150px;
+          font-size: 20px;
+          color: themed("orangeBlueIcons");
+        }
+
         .ordersDetails-container {
           width: 100%;
           height: max-content;
@@ -109,16 +119,6 @@
           }
           @include sm_mobile {
             max-height: 250px;
-          }
-
-          .error-message {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 150px;
-            font-size: 20px;
-            color: themed("orangeBlueIcons");
           }
           .orderDetails-item {
             display: flex;

@@ -121,6 +121,16 @@
       .orders-table {
         width: 100%;
       }
+
+      .error-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        font-size: 20px;
+        color: themed("orangeBlueIcons");
+      }
     }
 
     .OrderDetails-footer {

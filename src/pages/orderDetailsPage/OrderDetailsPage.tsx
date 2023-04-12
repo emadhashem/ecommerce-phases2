@@ -10,11 +10,14 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../../contexts/category/user.context";
 import { getOrderData } from "../../api/order/order";
 import moment from "moment";
+import { orderState } from "../../shared/orderState";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
 const OrderDetailsPage = () => {
   const { order_id } = useParams();
   const { userToken } = useContext(UserContext);
   const [order, setorder] = useState<any>(null);
+
   useEffect(() => {
     let cur = true;
     if (cur) {
@@ -46,11 +49,11 @@ const OrderDetailsPage = () => {
                 <div className="icon-wrapper">
                   <BsFillPrinterFill className="icon printer-icon" />
                 </div>
-                <div className="order-state">تم التسليم</div>
+                {orderState(order.order_state)}
               </div>
             </div>
             <p>
-              تاريخ الطلبية:{" "}
+              تاريخ الطلبية:
               <span>{`${moment(order.created_at).format(
                 "YYYY-MM-DD h:mm:ss"
               )}`}</span>
@@ -68,11 +71,18 @@ const OrderDetailsPage = () => {
             </p>
             <div className="notes">
               <span>الملاحظات :</span>
-              <p>{order.note ? order.note : ''} </p>
+              <p>{order.note ? order.note : ""} </p>
             </div>
-            <div className="orders-table">
-              <OrderDetailsTable products = {order.product} />
-            </div>
+            {order.product && order.product.length > 0 ? (
+              <div className="orders-table">
+                <OrderDetailsTable products={order.product} />
+              </div>
+            ) : (
+              <div className="error-message">
+                <SentimentVeryDissatisfiedIcon fontSize="large" />
+                <p> لا توجد اي طلبات سابقة </p>
+              </div>
+            )}
           </div>
 
           {/* ---- footer ---- */}

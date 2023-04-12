@@ -27,6 +27,24 @@
       border-radius: 23px;
     }
 
+    .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+      justify-content: center;
+      padding-left: 0px;
+    }
+
+    .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+      background-color: themed("bgSoft");
+      overflow: hidden;
+    }
+    .css-m0bqz3-MuiTableCell-root-MuiTablePagination-root {
+      border-bottom: none;
+      color: themed("textColor");
+    }
+    .css-levciy-MuiTablePagination-displayedRows {
+      direction: ltr;
+      font-size: 15px;
+    }
+
     .MuiTableRow-head {
       border-radius: 10px;
       background-color: themed("bgSoft");
@@ -55,6 +73,7 @@
         line-height: 19px;
         text-align: center;
         padding: 6px 10px;
+        overflow: hidden;
       }
     }
   }

@@ -5,6 +5,23 @@
     margin-top: 10px;
     color: themed("textColor");
 
+    table,
+    .MuiPaper-root {
+      background-color: themed("bg");
+    }
+    .css-m0bqz3-MuiTableCell-root-MuiTablePagination-root {
+      border-bottom: none;
+      overflow: visible;
+    }
+
+    .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+      padding-right: 12px;
+      justify-content: start;
+    }
+    .css-levciy-MuiTablePagination-displayedRows{
+      direction: ltr;
+    }
+
     img {
       width: 27px;
       height: 27px;

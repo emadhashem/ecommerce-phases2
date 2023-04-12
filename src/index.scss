@@ -14,10 +14,17 @@
     input:-webkit-autofill {
       -webkit-text-fill-color: themed("blackGray") !important;
     }
+    table,
+    .MuiPaper-root {
+      background-color: themed("bgSoft");
+    }
+    .pagination-icon {
+      color: themed("textColor");
+    }
   }
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
-    border-radius: unset !important;
-  }
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
+  border-radius: unset !important;
 }
 
 body {

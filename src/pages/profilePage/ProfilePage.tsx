@@ -130,9 +130,16 @@ const ProfilePage = () => {
               <ArrowDropDownRoundedIcon className="icon" />
               <h3>:الطلبات السابقة</h3>
             </div>
-            <div className="ordersDetails-container">
-              <ProfileTable previousOrderData = {previousOrderData} />
-            </div>
+            {previousOrderData && previousOrderData.length > 0 ? (
+              <div className="ordersDetails-container">
+                <ProfileTable previousOrderData={previousOrderData} />
+              </div>
+            ) : (
+              <div className="error-message">
+                <SentimentVeryDissatisfiedIcon fontSize="large" />
+                <p> لا توجد اي طلبات سابقة </p>
+              </div>
+            )}
           </div>
         </div>
         <div className="profile-footer">
