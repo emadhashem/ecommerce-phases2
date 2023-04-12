@@ -15,7 +15,7 @@ function NotifivationPage() {
   const { userToken } = useContext(UserContext);
   const [notifications, setnotifications] = useState<any[]>([]);
   const [oldNotifications, setoldNotifications] = useState<any[]>([]);
-  const { setnotifcationLength } = useContext(CartProductsContext);
+  const { setnotifcationLength , notifcationLength} = useContext(CartProductsContext);
   useEffect(() => {
     let cur = true;
     if (userToken) {
@@ -32,6 +32,7 @@ function NotifivationPage() {
       const { newNotifi, oldNotifi } = manageNotifi(data.notification);
       setnotifications(newNotifi);
       setoldNotifications(oldNotifi);
+      setnotifcationLength(newNotifi.length)
     } catch (error: any) {
       alert(error.message);
     }
@@ -45,19 +46,24 @@ function NotifivationPage() {
     });
     return { oldNotifi, newNotifi };
   }
+
   function readNotification(notifi: any) {
+   
     setnotifications((arr) => {
       return arr.filter(
         (item) => item.notification_id !== notifi.notification_id
       );
     });
-    setoldNotifications([notifi, ...oldNotifications]);
-    setnotifcationLength(notifications.length);
+    setoldNotifications([{...notifi , is_read : true}, ...oldNotifications]);
+    setnotifcationLength(notifcationLength - 1);
   }
+
   async function readAllNotification() {
     try {
       await postReadAllNotification(userToken);
-      setoldNotifications([...notifications, ...oldNotifications]);
+      setoldNotifications([...(notifications.map((item) => ({
+        ...item, is_read : true
+      }))), ...oldNotifications]);
       setnotifications([]);
       setnotifcationLength(0);
     } catch (error: any) {
@@ -87,7 +93,7 @@ function NotifivationPage() {
             </div>
           </div>
         )}
-        <NotificationList arr={notifications} />
+        <NotificationList arr={notifications}  />
         <div className="container-title">
           <div className="title">
             <div className="bar"></div>

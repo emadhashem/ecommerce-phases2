@@ -2,16 +2,21 @@ import React from "react";
 
 function useGetTime(time: Date) {
   let date = new Date(time);
+  let _now = new Date();
+  let diff = (_now.getTime() - date.getTime()) / (1000);
   let returnTime;
   function ceiltime(n: number) {
     return Math.ceil(n);
   }
-  if (date.getMinutes() >= 24 * 60) {
-    returnTime = `${ceiltime(date.getMinutes() / (24 * 60))} يوم`;
-  } else if (date.getMinutes() >= 60) {
-    returnTime = `${ceiltime(date.getMinutes() / 60)} س`;
+  let days = 24 * 60 * 60
+  let hours = 60 * 60
+  let minutes = 60
+  if (diff >= days) {
+    returnTime = `${ceiltime(diff / (days))} يوم`;
+  } else if (diff >= hours) {
+    returnTime = `${ceiltime(diff / hours)} س`;
   } else {
-    returnTime = `${ceiltime(date.getMinutes())} د`;
+    returnTime = `${ceiltime(diff / minutes)} د`;
   }
   return { returnTime };
 }

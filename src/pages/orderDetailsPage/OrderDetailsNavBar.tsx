@@ -4,6 +4,7 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import "./orderDetailsNavBar.scss";
 import detailsIcon from "../../assets/svgs/detailsIcon.svg";
+import InfoIcon from '@mui/icons-material/Info';
 
 const OrderDetailsNavBar = () => {
   const navigate = useNavigate();
@@ -13,14 +14,14 @@ const OrderDetailsNavBar = () => {
       <div className="rapper">
         <div className="back-icon">
           <ArrowBackRoundedIcon
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/profile")}
             fontSize="large"
           />
         </div>
         <div className="title">
           <p>
             تفاصيل الطلبية
-            <img src={detailsIcon} alt="" />
+            <InfoIcon className="icon" />
           </p>
         </div>
       </div>

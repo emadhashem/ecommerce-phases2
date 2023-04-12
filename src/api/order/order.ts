@@ -33,3 +33,12 @@ export async function getPreviousOrders(token: string) {
     throwMessageError(error);
   }
 }
+const get_order_data_api_api = API_URL + '/get_order_details'
+export async function getOrderData(id : any, token : any) {
+  try {
+    const {data} = await axios.get(get_order_data_api_api + `/${id}`, getHeaders(token))
+    return data
+  } catch (error) {
+    throwMessageError(error)
+  }
+}

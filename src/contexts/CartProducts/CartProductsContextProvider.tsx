@@ -22,12 +22,14 @@ const CartProductsContextProvider = ({ children }: Props) => {
       notifData.notification.forEach((item : any) => {
         if(!item.is_read) ++cnt
       })
+      console.log(cnt);
       setnotifcationLength(cnt)
-      setCartLength(data.order.product?.length);
+      setCartLength(data.order.product?.length ? data.order.product?.length : 0);
     }
     if (userToken) {
       if(cur) fetchPoductsInCart();
     }
+    
     return () => {
       cur = false
     }

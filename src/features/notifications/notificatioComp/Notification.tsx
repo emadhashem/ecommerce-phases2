@@ -9,7 +9,7 @@ import { NotificationContext } from "../../../contexts/notificationContext/notif
 
 
 function Notification({ seen, description, notification } : any) {
-  const {returnTime} = useGetTime(notification.updated_at)
+  const {returnTime} = useGetTime(notification.created_at)
   const {userToken} = useContext(UserContext)
   const {readNotifi} = useContext(NotificationContext)
   async function readNotification() {

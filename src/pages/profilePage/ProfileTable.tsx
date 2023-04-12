@@ -10,10 +10,13 @@ import React, { useContext } from "react";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 import "./profileTable.scss";
 import detailsIcon from "../../assets/svgs/detailsIcon.svg";
-
-const ProfileTable = () => {
+import InfoIcon from "@mui/icons-material/Info";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
+const ProfileTable = ({ previousOrderData = [] }: any) => {
   const { darkMode } = useContext(DarkModeContext);
 
+  const navigate = useNavigate();
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     // [`&.${tableCellClasses.head}`]: {
     //   //   backgroundColor: darkMode ? "#0b1727" : "#ffffff",
@@ -40,21 +43,9 @@ const ProfileTable = () => {
     },
   }));
 
-  function createData(
-    id: string,
-    date: string,
-    state: string,
-    detailsId: string
-  ) {
-    return { id, date, state, detailsId };
+  function handleNavigateToOrderDetails(id: any) {
+    navigate(`/order-details/${id}`);
   }
-
-  const rows = [
-    createData("10011 ", "2023/01/01 18:30:05", "قيد التجهيز", "1"),
-    createData("10011 ", "2023/01/01 18:30:05", "قيد التجهيز", "2"),
-    createData("10011 ", "2023/01/01 18:30:05", "قيد التجهيز", "3"),
-    createData("10011 ", "2023/01/01 18:30:05", "قيد التجهيز", "4"),
-  ];
 
   return (
     <TableContainer className="ProfileTable" component={Paper}>
@@ -68,21 +59,21 @@ const ProfileTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.id}>
+          {previousOrderData.map((item: any) => (
+            <StyledTableRow key={item.id}>
               <StyledTableCell component="th" scope="row">
-                {row.id}
+                {item.order_id}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.date}</StyledTableCell>
+              <StyledTableCell align="right">{`${moment(item.created_at).format(
+                'YYYY-MM-DD h:mm:ss'
+              )}`}</StyledTableCell>
               <StyledTableCell align="right">
-                <div className="order-state">{row.state}</div>
+                <div className="order-state">{item.order_state}</div>
               </StyledTableCell>
               <StyledTableCell align="right">
-                <img
+                <InfoIcon
+                  onClick={() => handleNavigateToOrderDetails(item.order_id)}
                   className="icon"
-                  src={detailsIcon}
-                  alt=""
-                  id={row.detailsId}
                 />
               </StyledTableCell>
             </StyledTableRow>

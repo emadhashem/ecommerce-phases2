@@ -18,6 +18,7 @@ import CartProductsContextProvider from "./contexts/CartProducts/CartProductsCon
 import ShowAllProductsPage from "./pages/showAllProducts/ShowAllProductsPage";
 import SearchPage from "./pages/searchPage/SearchPage";
 import ProtectedRoute from "./pages/protectedRoute/ProtectedRoute";
+import OrderDetailsPage from "./pages/orderDetailsPage/OrderDetailsPage";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -75,6 +76,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <FavoritsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/order-details/:order_id"
+                  element={
+                    <ProtectedRoute>
+                      <OrderDetailsPage />
                     </ProtectedRoute>
                   }
                 />

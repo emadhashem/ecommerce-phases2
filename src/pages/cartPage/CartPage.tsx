@@ -17,7 +17,7 @@ import { Button } from "@mui/material";
 
 function CartPage() {
   const { userToken } = useContext(UserContext);
-  const { setCartLength } = useContext(CartProductsContext);
+  const { setCartLength, setnotifcationLength,notifcationLength } = useContext(CartProductsContext);
   const [products, setproducts] = useState<any[]>([]);
   const [order_id, setorder_id] = useState<number | string>("");
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
@@ -37,7 +37,7 @@ function CartPage() {
   }, [userToken]);
 
   useEffect(() => {
-    setCartLength(products.length);
+    setCartLength(products?.length);
   }, [products?.length]);
 
   function handleDeletePorduct(id: string | number) {
@@ -69,6 +69,7 @@ function CartPage() {
       const data = await postSendCheckout(userToken, order_id);
       setloadingSendOrder(false);
       setproducts([]);
+      setnotifcationLength(notifcationLength + 1)  
     } catch (error: any) {
       setloadingSendOrder(false);
       alert(error.message);
@@ -89,7 +90,7 @@ function CartPage() {
         <div className="title">
           <ArrowLeftRoundedIcon className="icon" />
           <h3>
-            لديك <span>{products.length}</span> عناصر في السلة
+            لديك <span>{products?.length}</span> عناصر في السلة
           </h3>
         </div>
         <div className="delete-icon">

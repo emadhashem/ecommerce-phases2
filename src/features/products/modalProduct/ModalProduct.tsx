@@ -23,10 +23,10 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
   async function handleAddCount() {
     setcount(count + 1);
   }
-  // useEffect(() => {
-  //   setCartLength(cartLength + count);
-  //   console.log("count=", count);
-  // }, [count]);
+  useEffect(() => {
+    setCartLength(cartLength + count);
+    console.log("count=", count);
+  }, [count]);
 
   return (
     <div className="ModalProduct">
@@ -80,7 +80,7 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
                     onAccept(product, count);
                     setdisapleAcceptBtn(false);
                     handleClose();
-                    setCartLength(cartLength + 1);
+                    setCartLength(cartLength ? cartLength + 1 : 1);
                   }}
                 >
                   <span>موافق</span>

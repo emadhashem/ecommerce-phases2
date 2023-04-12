@@ -2,7 +2,7 @@ import React from "react";
 import "./mostSaledProduct.scss";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { getImg } from "../../../api";
-import { handelResult } from "../../../shared/helper";
+import { handelResult, productCoin } from "../../../shared/helper";
 
 function MostSaledProduct({ onCartClick, product, onOpenProuctPage }: any) {
   return (
@@ -24,7 +24,7 @@ function MostSaledProduct({ onCartClick, product, onOpenProuctPage }: any) {
           <span className="product-name">
             {handelResult(product.product_name, 15)}
           </span>
-          <span>${product.product_price_dollar}</span>
+          <span>{productCoin(product)}</span>
         </div>
       </div>
     </div>
