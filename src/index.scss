@@ -43,6 +43,9 @@ body {
 #root {
   --swiper-navigation-size: 22px;
   --swiper-pagination-color: var(--color-mainBlue);
+  --toastify-font-family: "Cairo";
+  --toastify-text-color-light: #2c7be5;
+
   scroll-behavior: smooth;
   /* min-height: 100vh; */
 }
@@ -85,4 +88,11 @@ button:hover {
 
 .icon:hover {
   cursor: pointer;
+}
+
+.Toastify__toast {
+  border-radius: 10px !important;
+  width: 95% !important;
+  height: max-content !important;
+  margin: 0 auto;
 }

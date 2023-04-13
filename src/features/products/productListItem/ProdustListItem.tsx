@@ -36,17 +36,17 @@ function ProductListItem({
       case 0:
         return toast.success(message, {
           autoClose: autoClose,
-          position: toast.POSITION.TOP_RIGHT,
+          position: toast.POSITION.BOTTOM_CENTER,
         });
       case 1:
         return toast.error(message, {
           autoClose: autoClose,
-          position: toast.POSITION.TOP_RIGHT,
+          position: toast.POSITION.BOTTOM_CENTER,
         });
       default:
         return toast("اختر نوع الرسالة", {
           autoClose: autoClose,
-          position: toast.POSITION.TOP_RIGHT,
+          position: toast.POSITION.BOTTOM_CENTER,
         });
     }
   };
