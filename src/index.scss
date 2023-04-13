@@ -26,7 +26,11 @@
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill {
   border-radius: unset !important;
 }
-
+@media print {
+  html, body {
+    direction: rtl;
+  }
+}
 body {
   @include themify($themes) {
     height: 100vh;

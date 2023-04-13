@@ -16,11 +16,11 @@ import { Modal } from "@mui/material";
 import { Button, Stack } from "react-bootstrap";
 import html2canvas from "html2canvas";
 import { getImg } from "../../api";
+import { useReactToPrint } from "react-to-print";
 const OrderDetailsPage = () => {
   const { order_id } = useParams();
   const { userToken } = useContext(UserContext);
   const [order, setorder] = useState<any>(null);
-  const [openPrintModal, setopenPrintModal] = useState(false);
   const printRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let cur = true;
@@ -40,25 +40,9 @@ const OrderDetailsPage = () => {
     }
   }
 
-  function handleClosePrintModal() {
-    setopenPrintModal(false);
-  }
-
-  function handleOpenPrintModal() {
-    setopenPrintModal(true);
-  }
-
-  function handleThePrint() {
-    html2canvas(printRef.current!).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const link = document.createElement("a");
-      link.download = "screenshot.png";
-      link.href = imgData;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
-  }
+  const handleThePrint = useReactToPrint({
+    content: () => printRef.current,
+  });
 
   function productCoinInTable(product: any) {
     let sy = "sy";
@@ -76,8 +60,8 @@ const OrderDetailsPage = () => {
   return (
     order && (
       <React.Fragment>
-        <Modal open={openPrintModal} onClose={handleClosePrintModal}>
-          <div ref={printRef}>
+        {/* <Modal open={openPrintModal} onClose={handleClosePrintModal}>
+          <div>
             <div style={{ direction: "rtl" }}>
               <table>
                 <thead>
@@ -129,9 +113,9 @@ const OrderDetailsPage = () => {
               </Button>
             </Stack>
           </div>
-        </Modal>
+        </Modal> */}
         <OrderDetailsNavBar />
-        <div className="OrderDetailsPage-container">
+        <div className="OrderDetailsPage-container" ref = {printRef} >
           <div className="OrderDetails-header">
             <div className="first-row">
               <p>
@@ -140,7 +124,7 @@ const OrderDetailsPage = () => {
               <div className="order">
                 <div className="icon-wrapper">
                   <BsFillPrinterFill
-                    onClick={handleOpenPrintModal}
+                    onClick={handleThePrint}
                     className="icon printer-icon"
                   />
                 </div>
