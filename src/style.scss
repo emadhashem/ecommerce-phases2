@@ -71,3 +71,8 @@ $themes: (
     @content;
   }
 }
+@mixin xs_mobile {
+  @media only screen and (max-width: 300px) {
+    @content;
+  }
+}
