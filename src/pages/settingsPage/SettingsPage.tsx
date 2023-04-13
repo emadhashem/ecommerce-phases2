@@ -8,6 +8,7 @@ import { UserContext } from "../../contexts/category/user.context";
 import { getImg } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { getCities } from "../../api/city/city";
+import { toast } from "react-toastify";
 
 function SettingsPage() {
   const [imgFile, setimgFile] = useState<any>(null);
@@ -22,10 +23,31 @@ function SettingsPage() {
   const [address, setaddress] = useState("");
   const [city, setcity] = useState("-1");
   const [cities, setcities] = useState<any>([]);
-
   const [imgForUpload, setimgForUpload] = useState<any>();
   const [saveSettingsLoading, setsaveSettingsLoading] = useState(false);
   const navigate = useNavigate();
+  const saveUserDataSuccess = "تم حفظ التعديلات";
+  const saveUserDataFail = "حدث خطا";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+    }
+  };
   useEffect(() => {
     async function fetchUserData() {
       try {
@@ -70,12 +92,11 @@ function SettingsPage() {
       if (imgForUpload) formData.append("customer_url", imgForUpload);
       await postUpdateUserData(formData, userToken);
       setsaveSettingsLoading(false);
-
+      notify(saveUserDataSuccess, 0);
       navigate("/profile");
     } catch (error: any) {
       setsaveSettingsLoading(false);
-
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
 

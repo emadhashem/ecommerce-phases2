@@ -14,16 +14,43 @@ import { postSendCheckout } from "../../api/order/order";
 import { CircularProgress } from "@mui/material";
 import { CartProductsContext } from "../../contexts/CartProducts/CartProductsContext";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
 
 function CartPage() {
   const { userToken } = useContext(UserContext);
-  const { setCartLength, setnotifcationLength,notifcationLength } = useContext(CartProductsContext);
+  const { setCartLength, setnotifcationLength, notifcationLength } =
+    useContext(CartProductsContext);
   const [products, setproducts] = useState<any[]>([]);
   const [order_id, setorder_id] = useState<number | string>("");
   const [loadingSendOrder, setloadingSendOrder] = useState(false);
   const [openPopover, setopenPopover] = useState(false);
   const [orderData, setorderData] = useState<any>(null);
 
+  const deleteAllFromCartSuccess = "تم حذف كل العناصر";
+  const deleteAllFromCartFail = "حدث خطا";
+  const sendOrderSuccess = "تم ارسال الطلب";
+  const sendOrderFail = "حدث خطا في الطلب";
+  const changeCountSuccess = "تم تعديل عدد المنتج";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+    }
+  };
   useEffect(() => {
     async function fetchPoductsInCart() {
       const data = await getPorductsInCart(userToken);
@@ -40,9 +67,10 @@ function CartPage() {
     setCartLength(products?.length);
   }, [products?.length]);
 
-  function handleDeletePorduct(id: string | number) {
+  function handleDeleteProduct(id: string | number) {
     setproducts((prev) => prev.filter((item) => item.order_details_id != id));
   }
+
   async function handleChangeCount(product: any, count: number) {
     try {
       const data = await postchangeProductCountInOrder(
@@ -60,7 +88,7 @@ function CartPage() {
         return arr;
       });
     } catch (error: any) {
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
   async function handleSendCheckout() {
@@ -69,18 +97,20 @@ function CartPage() {
       const data = await postSendCheckout(userToken, order_id);
       setloadingSendOrder(false);
       setproducts([]);
-      setnotifcationLength(notifcationLength + 1)  
+      setnotifcationLength(notifcationLength + 1);
+      notify(sendOrderSuccess, 0);
     } catch (error: any) {
       setloadingSendOrder(false);
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
   async function removeAllFromCart() {
     try {
       const data = await postRemoveAllFromCart(order_id, userToken);
       setproducts([]);
+      notify(deleteAllFromCartSuccess, 0);
     } catch (error: any) {
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
 
@@ -118,7 +148,7 @@ function CartPage() {
       )}
       <CartList
         handleChangeCount={handleChangeCount}
-        handleDeletePorduct={handleDeletePorduct}
+        handleDeletePorduct={handleDeleteProduct}
         products={products}
       />
       {products && products.length ? (

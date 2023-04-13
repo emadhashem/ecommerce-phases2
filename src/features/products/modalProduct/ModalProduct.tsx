@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import { CartProductsContext } from "../../../contexts/CartProducts/CartProductsContext";
 import { productCoin, productCoinInCart } from "../../../shared/helper";
+import { toast } from "react-toastify";
 
 function ModalProduct({ product, handleClose, onAccept }: any) {
   const [count, setcount] = useState(
@@ -23,10 +24,28 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
   async function handleAddCount() {
     setcount(count + 1);
   }
-  // useEffect(() => {
-  //   setCartLength(cartLength + count);
-  //   console.log("count=", count);
-  // }, [count]);
+  const changeCountSuccess = "تم تعديل عدد المنتج";
+  const AddToCartSuccess = "تم اضافة المنتج";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+    }
+  };
 
   return (
     <div className="ModalProduct">
@@ -78,6 +97,11 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
                   onClick={() => {
                     setdisapleAcceptBtn(true);
                     onAccept(product, count);
+                    if (product.product_count) {
+                      notify(changeCountSuccess, 0);
+                    } else {
+                      notify(AddToCartSuccess, 0);
+                    }
                     setdisapleAcceptBtn(false);
                     handleClose();
                     setCartLength(cartLength + 1);

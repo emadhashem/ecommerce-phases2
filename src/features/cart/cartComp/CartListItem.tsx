@@ -9,6 +9,7 @@ import { UserContext } from "../../../contexts/category/user.context";
 import { postDeleteProductToOrder } from "../../../api/product/product";
 import { CircularProgress } from "@mui/material";
 import { handelResult, productCoinInCart } from "../../../shared/helper";
+import { toast } from "react-toastify";
 
 function CartListItem({
   product,
@@ -16,6 +17,29 @@ function CartListItem({
   handleOpen,
   onSetIdx,
 }: any) {
+  const deleteElementFromCartSuccess = "تم ازالة العنصر من السلة";
+  const deleteElementFromCartFail = "حدث خطا";
+  const autoClose = 1500
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+    }
+  };
+
   const [deleteLoading, setdeleteLoading] = useState(false);
   const { userToken } = useContext(UserContext);
   async function deleteProductFromCart() {
@@ -28,9 +52,10 @@ function CartListItem({
       );
       handleDeletePorduct(product.order_details_id);
       setdeleteLoading(false);
+      notify(deleteElementFromCartSuccess, 0);
     } catch (error: any) {
       setdeleteLoading(false);
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
   return (

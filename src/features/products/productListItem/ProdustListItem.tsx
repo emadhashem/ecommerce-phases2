@@ -9,6 +9,7 @@ import { UserContext } from "../../../contexts/category/user.context";
 import { addFavorite, deleteFavorite } from "../../../api/favorites/favorites";
 import { CircularProgress } from "@mui/material";
 import { handelResult, productCoin } from "../../../shared/helper";
+import { toast } from "react-toastify";
 
 function ProductListItem({
   productId,
@@ -25,17 +26,41 @@ function ProductListItem({
   const [favorite, setfavorite] = useState(in_favorite);
   const [favoriteLoading, setfavoriteLoading] = useState(false);
   const navigate = useNavigate();
+  const removeFromFavoriteSuccess = "تم حذف العنصر من المفضلة";
+  const removeFromFavoriteFail = "حدث خطا";
+  const addFromFavoriteSuccess = "تم اضافة العنصر من المفضلة";
+  const addFromFavoriteFail = "حدث خطا";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+    }
+  };
   async function addToFavorite() {
     try {
       setfavoriteLoading(true);
       setfavorite(true);
       const data = await addFavorite(productId, userToken);
       setfavoriteLoading(false);
+      notify(addFromFavoriteSuccess, 0);
     } catch (error: any) {
       setfavorite(false);
       setfavoriteLoading(false);
-
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
   async function removeFromFavorite() {
@@ -45,10 +70,11 @@ function ProductListItem({
       const data = await deleteFavorite(productId, userToken);
       handleRemoveFromList(productId);
       setfavoriteLoading(false);
+      notify(removeFromFavoriteSuccess, 0);
     } catch (error: any) {
       setfavoriteLoading(false);
       setfavorite(true);
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
   return (

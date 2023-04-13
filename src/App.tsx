@@ -19,6 +19,8 @@ import ShowAllProductsPage from "./pages/showAllProducts/ShowAllProductsPage";
 import SearchPage from "./pages/searchPage/SearchPage";
 import ProtectedRoute from "./pages/protectedRoute/ProtectedRoute";
 import OrderDetailsPage from "./pages/orderDetailsPage/OrderDetailsPage";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -30,6 +32,7 @@ function App() {
         <UserContextProvider>
           <CartProductsContextProvider>
             <GlobalLayOut>
+              <ToastContainer />
               <Routes>
                 {/* <Route path="/home" element={<MainPage />} /> */}
                 <Route path="/" element={<MainPage />} />

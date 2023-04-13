@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { getFavorites } from "../../api/favorites/favorites";
 import { UserContext } from "../../contexts/category/user.context";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
 function FavoritsPage() {
   const { userToken } = useContext(UserContext);
   const [products, setproducts] = useState<any>([]);
@@ -17,8 +18,35 @@ function FavoritsPage() {
     }
     if (userToken) fetchFavirotes();
   }, [userToken]);
+  const removeAllFromFavoriteSuccess = "تم ازالة كل العناصر";
+  const removeAllFromFavoriteFail = "حدث خطا ";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.TOP_RIGHT,
+        });
+    }
+  };
   async function removeAllFromFavorite() {
-    setproducts([]);
+    try {
+      setproducts([]);
+      notify(removeAllFromFavoriteSuccess, 0);
+    } catch (error) {
+      notify(removeAllFromFavoriteFail, 1);
+    }
   }
 
   return (
