@@ -21,6 +21,7 @@ import { getPreviousOrders } from "../../api/order/order";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ProfileTable from "./ProfileTable";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -109,6 +110,12 @@ const ProfilePage = () => {
               onClick={() => navigate("/profile/settings")}
             >
               تعديل بيانات الحساب <ManageAccountsIcon className="icon" />
+            </p>
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/favorites")}
+            >
+              المفضلة <FavoriteIcon className="icon" />
             </p>
           </div>
           <div className="theme">

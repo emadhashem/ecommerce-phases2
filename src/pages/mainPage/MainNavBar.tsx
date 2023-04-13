@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "./MainNavBar.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import logo from "../../assets/svgs/logo.svg";
@@ -44,11 +43,11 @@ function MainNavBar() {
                 onClick={() => navigate("/profile")}
                 src={getImg(userImg)}
               />
-              <FavoriteIcon
+              {/* <FavoriteIcon
                 className="icon"
                 onClick={() => navigate("/favorites")}
                 fontSize="large"
-              />
+              /> */}
               <Badge badgeContent={notifcationLength} color="error">
                 <NotificationsIcon
                   onClick={() => navigate("notifications")}
