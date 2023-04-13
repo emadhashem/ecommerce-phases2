@@ -14,11 +14,10 @@ import "./orderDetailsTable.scss";
 import { getImg } from "../../api";
 import { TablePaginationActions } from "../../shared/TablePaginationActions";
 
-const OrderDetailsTable = ({ products = [] }: any) => {
+const OrderDetailsTable = ({ products = [], productCoinInTable }: any) => {
   const { darkMode } = useContext(DarkModeContext);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  console.log(page);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     // [`&.${tableCellClasses.head}`]: {
@@ -65,20 +64,6 @@ const OrderDetailsTable = ({ products = [] }: any) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  function productCoinInTable(product: any) {
-    let sy = "sy";
-    let ret = {
-      coin: "سوري",
-      price: 0,
-    };
-    if (product.product_coin === sy) ret.price = product.product_price_sy;
-    else {
-      ret.coin = "دولار";
-      ret.price = product.product_price_dollar;
-    }
-    return ret;
-  }
 
   return (
     <TableContainer className="table" component={Paper}>
