@@ -25,6 +25,10 @@
           border-left: 1px solid #2c7be5;
           padding: 6px 10px;
           text-align: center;
+
+          &:last-child {
+            border-left: 0;
+          }
         }
       }
 
@@ -41,6 +45,9 @@
           text-align: center;
           border-left: 1px solid #2c7be5;
           padding: 6px 10px;
+          &:last-child {
+            border-left: 0;
+          }
         }
       }
     }

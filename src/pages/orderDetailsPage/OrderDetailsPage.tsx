@@ -133,7 +133,7 @@ const OrderDetailsPage = () => {
             </div>
             <p>
               تاريخ الطلبية:
-              <span>{`${moment(order.created_at).format(
+              <span>{` ${moment(order.created_at).format(
                 "YYYY-MM-DD h:mm:ss"
               )}`}</span>
             </p>
@@ -150,7 +150,7 @@ const OrderDetailsPage = () => {
             </p>
             <div className="notes">
               <span>الملاحظات :</span>
-              <p>{order.note ? order.note : ""} </p>
+              <p>{order.note ? order.note : "لا يوجد ملاحظات"} </p>
             </div>
             {order.product && order.product.length > 0 ? (
               <div className="orders-table">

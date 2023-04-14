@@ -100,9 +100,8 @@ function ProductListItem({
           </a>
         </div>
         <div className="part-2">
-          <AddShoppingCartIcon className="icon" onClick={() => onClick(idx)} />
           <div className="product-info">
-            <h3
+            <p
               className="product-title"
               onClick={() =>
                 navigate("/details", {
@@ -112,10 +111,16 @@ function ProductListItem({
                 })
               }
             >
-              {handelResult(productName, 14)}
-            </h3>
-            {/* <h4 className="product-old-price">$79.99</h4> */}
-            <span className="product-price">{productCoin(_product)}</span>
+              {/* {handelResult(productName, 14)} */}
+              {productName}
+            </p>
+            <div className="product-footer">
+              <AddShoppingCartIcon
+                className="icon"
+                onClick={() => onClick(idx)}
+              />
+              <span className="product-price">{productCoin(_product)}</span>
+            </div>
           </div>
         </div>
       </div>
