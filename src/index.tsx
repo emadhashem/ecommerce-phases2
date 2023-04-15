@@ -4,6 +4,7 @@ import "./index.scss";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import DarkModeContextProvider from "./contexts/darkModeContext/darkModeContextProvider";
+import UserContextProvider from "./contexts/category/UserContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,9 +12,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <DarkModeContextProvider>
-        <App />
-      </DarkModeContextProvider>
+      <UserContextProvider>
+        <DarkModeContextProvider>
+          <App />
+        </DarkModeContextProvider>
+      </UserContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -100,7 +100,7 @@ function ModalProduct({ product, handleClose, onAccept }: any) {
                     if (product.product_count) {
                       notify(changeCountSuccess, 0);
                     } else {
-                      notify(AddToCartSuccess, 0);
+                      // notify(AddToCartSuccess, 0);
                     }
                     setdisapleAcceptBtn(false);
                     handleClose();

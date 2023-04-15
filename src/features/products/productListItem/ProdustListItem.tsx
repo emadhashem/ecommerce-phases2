@@ -10,6 +10,7 @@ import { addFavorite, deleteFavorite } from "../../../api/favorites/favorites";
 import { CircularProgress } from "@mui/material";
 import { handelResult, productCoin } from "../../../shared/helper";
 import { toast } from "react-toastify";
+import useLogOut from "../../../hooks/useLogOut";
 
 function ProductListItem({
   productId,
@@ -25,6 +26,7 @@ function ProductListItem({
   const { userToken } = useContext(UserContext);
   const [favorite, setfavorite] = useState(in_favorite);
   const [favoriteLoading, setfavoriteLoading] = useState(false);
+  const {fetchLogOut} = useLogOut()
   const navigate = useNavigate();
   const removeFromFavoriteSuccess = "تم حذف العنصر من المفضلة";
   const removeFromFavoriteFail = "حدث خطا";
@@ -61,6 +63,7 @@ function ProductListItem({
       setfavorite(false);
       setfavoriteLoading(false);
       notify(error.message, 1);
+      fetchLogOut()
     }
   }
   async function removeFromFavorite() {
@@ -75,6 +78,7 @@ function ProductListItem({
       setfavoriteLoading(false);
       setfavorite(true);
       notify(error.message, 1);
+      fetchLogOut()
     }
   }
   return (

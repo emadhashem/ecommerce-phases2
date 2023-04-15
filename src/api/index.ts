@@ -1,3 +1,5 @@
+import { toast } from "react-toastify"
+
 export const API_URL = 'https://dashboard.souqaljazeera.shop/api'
 export const IMG_API_URL = 'https://dashboard.souqaljazeera.shop/storage'
 export const IMG_API_URL_NOTIFICATION = 'https://dashboard.souqaljazeera.shop/assets/images/notification'
@@ -24,3 +26,4 @@ export function throwMessageError(err: any) {
     throw new Error(err.response.data.message)
 
 }
+

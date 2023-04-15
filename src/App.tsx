@@ -22,10 +22,14 @@ import OrderDetailsPage from "./pages/orderDetailsPage/OrderDetailsPage";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getExchangePrice } from "./api/coins/coins";
+import { UserContext } from "./contexts/category/user.context";
+import { getCheckUserToken } from "./api/user/userdata";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  const {userToken} = useContext(UserContext)
   const [coins, setconins] = useState<any>([]);
   useEffect(() => {
+
     fetchCoins();
   }, []);
   async function fetchCoins() {
@@ -39,7 +43,7 @@ function App() {
   } else
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
-        <UserContextProvider>
+        
           <CartProductsContextProvider>
             <GlobalLayOut>
               <ToastContainer rtl={true} />
@@ -103,7 +107,7 @@ function App() {
               </Routes>
             </GlobalLayOut>
           </CartProductsContextProvider>
-        </UserContextProvider>
+       
       </div>
     );
 }

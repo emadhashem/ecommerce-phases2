@@ -18,6 +18,7 @@ import ModalOverLay from "../../layouts/modlaOverLay/ModalOverLay";
 import ModalProduct from "../../features/products/modalProduct/ModalProduct";
 import DetailsNavBar from "./DetailsNavBar";
 import { productCoin } from "../../shared/helper";
+import { toast } from "react-toastify";
 
 const DetailsPage = () => {
   const location = useLocation();
@@ -65,7 +66,27 @@ const DetailsPage = () => {
       cur = false;
     };
   }, [userToken, product_id]);
-
+  const AddToCartSuccess = "تم اضافة المنتج";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+    }
+  };
   async function addProductToCart(product: any, count: number) {
     try {
       const data = await postProductToOrder(
@@ -76,6 +97,7 @@ const DetailsPage = () => {
         userToken
       );
       handleClose();
+      notify(AddToCartSuccess , 0);
     } catch (error: any) {
       // alert(error.message);
     }

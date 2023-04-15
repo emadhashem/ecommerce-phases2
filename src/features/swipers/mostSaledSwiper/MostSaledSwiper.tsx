@@ -12,12 +12,15 @@ import {
 } from "../../../api/product/product";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../contexts/category/user.context";
+import { toast } from "react-toastify";
+import useLogOut from "../../../hooks/useLogOut";
 
 function MostSaledSwiper() {
   const [open, setOpen] = useState(false);
   const [products, setproducts] = useState<any[]>([]);
   const { userToken } = useContext(UserContext);
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState(1)
+  const {fetchLogOut} = useLogOut()
   const navigate = useNavigate();
   const handleOpen = () => {
     setOpen(true);
@@ -37,6 +40,27 @@ function MostSaledSwiper() {
       navigate(`/details/${id}`);
     }
   }
+  const AddToCartSuccess = "تم اضافة المنتج";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+    }
+  };
   async function addProductToCart(product: any, count: number) {
     try {
       const data = await postProductToOrder(
@@ -47,8 +71,10 @@ function MostSaledSwiper() {
         userToken
       );
       handleClose();
+      notify(AddToCartSuccess , 0);
     } catch (error: any) {
-      // // alert(error.message);
+      notify(error.message , 1);
+      fetchLogOut()
     }
   }
   return (

@@ -10,6 +10,7 @@ import { postDeleteProductToOrder } from "../../../api/product/product";
 import { CircularProgress } from "@mui/material";
 import { handelResult, productCoinInCart } from "../../../shared/helper";
 import { toast } from "react-toastify";
+import useLogOut from "../../../hooks/useLogOut";
 
 function CartListItem({
   product,
@@ -20,6 +21,7 @@ function CartListItem({
   const deleteElementFromCartSuccess = "تم ازالة العنصر من السلة";
   const deleteElementFromCartFail = "حدث خطا";
   const autoClose = 1500
+  const {fetchLogOut} = useLogOut()
   const notify = (message: string, type: number) => {
     switch (type) {
       case 0:
@@ -45,7 +47,6 @@ function CartListItem({
   async function deleteProductFromCart() {
     try {
       setdeleteLoading(true);
-
       const data = await postDeleteProductToOrder(
         product.order_details_id,
         userToken
@@ -56,6 +57,7 @@ function CartListItem({
     } catch (error: any) {
       setdeleteLoading(false);
       notify(error.message, 1);
+      fetchLogOut()
     }
   }
   return (

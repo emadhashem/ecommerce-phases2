@@ -15,6 +15,7 @@ import { postRegister } from "../../../api/auth/register";
 import { getCities } from "../../../api/city/city";
 import { UserContext } from "../../../contexts/category/user.context";
 import defaultImg from "../../../assets/svgs/defaultImg.svg";
+import { toast } from "react-toastify";
 
 function RegisterPage() {
   const [imgFile, setimgFile] = useState<any>();
@@ -42,7 +43,27 @@ function RegisterPage() {
     }
     fetchCities();
   }, []);
-
+  const autoClose = 1500
+  const registerSuccess = 'تم بنجاح'
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+    }
+  };
   async function onFileChoosen(eve: React.ChangeEvent<HTMLInputElement>) {
     eve.stopPropagation();
     eve.preventDefault();
@@ -82,9 +103,10 @@ function RegisterPage() {
       const data = await postRegister(formData);
       setUserToken(data.customer.remember_token);
       setUsername(data.customer.customer_name);
+      notify(registerSuccess , 0)
       setloading(false);
     } catch (error: any) {
-      alert(error.message);
+      notify(error.message , 1);
       setloading(false);
     }
   }

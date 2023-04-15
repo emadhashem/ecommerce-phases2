@@ -10,11 +10,13 @@ import { getImg } from "../../../api";
 import { postProductToOrder } from "../../../api/product/product";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { toast } from "react-toastify";
+import useLogOut from "../../../hooks/useLogOut";
 
 function ProductList({
   showAllProduts = true,
   products = [],
-  setProducts
+  setProducts,
 }: any) {
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
@@ -22,10 +24,31 @@ function ProductList({
   const { userToken } = useContext(UserContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
+  const {fetchLogOut} = useLogOut()
   useEffect(() => {
     setproductsState(products);
   }, [products]);
+  const AddToCartSuccess = "تم اضافة المنتج";
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+    }
+  };
   async function addProductToCart(product: any, count: number) {
     try {
       const data = await postProductToOrder(
@@ -36,8 +59,10 @@ function ProductList({
         userToken
       );
       handleClose();
+      notify(AddToCartSuccess , 0);
     } catch (error: any) {
-      // // alert(error.message);
+      notify(error.message, 1)
+      fetchLogOut()
     }
   }
   const handleOpen = (idx: number) => {
@@ -52,7 +77,9 @@ function ProductList({
     setproductsState((prev) =>
       prev.filter((item: any) => item.product_id !== product_id)
     );
-    setProducts(productsState.filter((item: any) => item.product_id !== product_id))
+    setProducts(
+      productsState.filter((item: any) => item.product_id !== product_id)
+    );
   };
   function handleCheckingInFavorite() {
     if (pathname.includes("favorites")) return true;

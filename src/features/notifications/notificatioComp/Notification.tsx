@@ -6,19 +6,21 @@ import { getImg_Notification } from "../../../api";
 import { postReadNotification } from "../../../api/notifications/notifications";
 import { UserContext } from "../../../contexts/category/user.context";
 import { NotificationContext } from "../../../contexts/notificationContext/notification.context";
+import useLogOut from "../../../hooks/useLogOut";
 
 
 function Notification({ seen, description, notification } : any) {
   const {returnTime} = useGetTime(notification.created_at)
   const {userToken} = useContext(UserContext)
   const {readNotifi} = useContext(NotificationContext)
+  const {fetchLogOut} = useLogOut()
   async function readNotification() {
     if(seen) return
     try {
       await postReadNotification(notification.notification_customer_id , userToken)
       readNotifi(notification)
     } catch (error : any) {
-      
+      fetchLogOut()
     }
   }
   return (
