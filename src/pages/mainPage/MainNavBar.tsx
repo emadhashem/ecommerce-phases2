@@ -3,8 +3,8 @@ import "./MainNavBar.scss";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import logo from "../../assets/svgs/logo.svg";
-import darkLogo from "../../assets/svgs/darklogo.svg";
+import logo from "../../assets/svgs/logo_home_page.svg";
+import darkLogo from "../../assets/svgs/logo_home_page.svg";
 
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "@mui/material/Badge";
@@ -72,11 +72,11 @@ function MainNavBar() {
           )}
         </div>
         <div className="logo">
-          <Link to="/">
+        <Link to="/">
             {darkMode ? (
-              <img src={darkLogo} alt="" />
+              <img className="logo_primary" src={darkLogo} alt="" />
             ) : (
-              <img src={logo} alt="" />
+              <img className="logo_primary" src={logo} alt="" />
             )}
           </Link>
         </div>
