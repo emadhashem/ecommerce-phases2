@@ -78,6 +78,9 @@ const MainPageTable = ({ coins }: any) => {
             <StyledTableRow>
               {coins.map((coin: any) => (
                 <StyledTableCell align="right">
+                  <span style={{ fontSize: "10px", paddingLeft: "8px" }}>
+                    شراء
+                  </span>
                   {coin.exchange_price_buy_price}
                 </StyledTableCell>
               ))}
@@ -85,6 +88,9 @@ const MainPageTable = ({ coins }: any) => {
             <StyledTableRow>
               {coins.map((coin: any) => (
                 <StyledTableCell align="right">
+                  <span style={{ fontSize: "10px", paddingLeft: "8px" }}>
+                    مبيع
+                  </span>
                   {coin.exchange_price_sell_price}
                 </StyledTableCell>
               ))}
