@@ -9,13 +9,14 @@ import {
   CircularProgress,
 } from "@mui/material";
 import "./loginPage.scss";
-import logo from "../../../assets/svgs/logo.svg";
+import logo from "../../../assets/svgs/logo_primary.svg";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../../../api/auth/login";
 import { UserContext } from "../../../contexts/category/user.context";
+import { textAlign } from "html2canvas/dist/types/css/property-descriptors/text-align";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -44,7 +45,7 @@ function LoginPage() {
     } catch (error: any) {
       setloading(false);
 
-       alert(error.message);
+      alert(error.message);
     }
   }
   return (
@@ -100,10 +101,10 @@ function LoginPage() {
       <div className="footer-container">
         <span>ليس لديك حساب؟</span>
         <Link to="/register" className="link">
-          <span>اشترك الان</span>
+          <span>إشترك الآن</span>
         </Link>
         <div className="footer-title">
-          <span>أمان , سرعة , تنوع </span>
+          <span>و تسوق بكل سهولة </span>
         </div>
       </div>
     </div>
