@@ -44,7 +44,7 @@ function LoginPage() {
     } catch (error: any) {
       setloading(false);
 
-      alert(error.message);
+       alert(error.message);
     }
   }
   return (

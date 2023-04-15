@@ -45,3 +45,12 @@ export async function getFavorites(token: string) {
 
     }
 }
+
+const delete_all_api_url = API_URL + '/post_delete_all_favorite'
+export async function postDeleteAllFavorite(token: any) {
+    try {
+        await axios.post(delete_all_api_url, {}, getHeaders(token))
+    } catch (error) {
+        throwMessageError(error)
+    }
+}

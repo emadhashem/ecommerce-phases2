@@ -59,7 +59,7 @@ function SettingsPage() {
         setimg(data.customer.customer_url);
         setcity(data.customer.city_id);
       } catch (error: any) {
-        alert(error.message);
+        // alert(error.message);
       }
     }
     fetchUserData();

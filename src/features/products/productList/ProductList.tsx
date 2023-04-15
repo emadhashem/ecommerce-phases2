@@ -14,10 +14,8 @@ import { Button } from "@mui/material";
 function ProductList({
   showAllProduts = true,
   products = [],
-}: {
-  showAllProduts?: boolean;
-  products: any[];
-}) {
+  setProducts
+}: any) {
   const [idxOfMadlProduct, setidxOfMadlProduct] = useState<number>(-1);
   const [open, setOpen] = useState(false);
   const [productsState, setproductsState] = useState<any[]>([]);
@@ -39,7 +37,7 @@ function ProductList({
       );
       handleClose();
     } catch (error: any) {
-      alert(error.message);
+      // // alert(error.message);
     }
   }
   const handleOpen = (idx: number) => {
@@ -54,6 +52,7 @@ function ProductList({
     setproductsState((prev) =>
       prev.filter((item: any) => item.product_id !== product_id)
     );
+    setProducts(productsState.filter((item: any) => item.product_id !== product_id))
   };
   function handleCheckingInFavorite() {
     if (pathname.includes("favorites")) return true;

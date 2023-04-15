@@ -34,7 +34,7 @@ function NotifivationPage() {
       setoldNotifications(oldNotifi);
       setnotifcationLength(newNotifi.length)
     } catch (error: any) {
-      alert(error.message);
+      // alert(error.message);
     }
   }
   function manageNotifi(arr = []) {

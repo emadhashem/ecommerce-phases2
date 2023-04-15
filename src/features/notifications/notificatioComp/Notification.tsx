@@ -18,7 +18,7 @@ function Notification({ seen, description, notification } : any) {
       await postReadNotification(notification.notification_customer_id , userToken)
       readNotifi(notification)
     } catch (error : any) {
-      alert(error)
+      
     }
   }
   return (

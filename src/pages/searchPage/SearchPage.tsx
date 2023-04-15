@@ -18,7 +18,7 @@ const SearchPage = () => {
         const data = await getSearchData(text, userToken);
         setproducts(data.product);
       } catch (error: any) {
-        alert(error.message);
+        // alert(error.message);
       }
     }
     if(cur) {

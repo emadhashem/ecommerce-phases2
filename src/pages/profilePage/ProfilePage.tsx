@@ -85,7 +85,7 @@ const ProfilePage = () => {
         const data = await getPreviousOrders(userToken);
         setpreviousOrdersData(data.order);
       } catch (error: any) {
-        alert(error.message);
+        // alert(error.message);
       }
     }
     if (userToken) {

@@ -104,11 +104,7 @@ function ProductListItem({
             <p
               className="product-title"
               onClick={() =>
-                navigate("/details", {
-                  state: {
-                    product_id: productId,
-                  },
-                })
+                navigate("/details/" + productId)
               }
             >
               {/* {handelResult(productName, 14)} */}

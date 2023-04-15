@@ -3,7 +3,7 @@ import ArrowLeftRoundedIcon from "@mui/icons-material/ArrowLeftRounded";
 import "./favoritsPage.scss";
 import ProductList from "../../features/products/productList/ProductList";
 import { useContext, useEffect, useState } from "react";
-import { getFavorites } from "../../api/favorites/favorites";
+import { getFavorites, postDeleteAllFavorite } from "../../api/favorites/favorites";
 import { UserContext } from "../../contexts/category/user.context";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
@@ -43,6 +43,7 @@ function FavoritsPage() {
   async function removeAllFromFavorite() {
     try {
       setproducts([]);
+      await postDeleteAllFavorite(userToken)
       notify(removeAllFromFavoriteSuccess, 0);
     } catch (error) {
       notify(removeAllFromFavoriteFail, 1);
@@ -58,9 +59,11 @@ function FavoritsPage() {
             لديك في المفضلة: <span>{products.length}</span> عناصر
           </h3>
         </div>
-        <div className="delete-icon">
-          <DeleteIcon onClick={() => setopenPopover(true)} fontSize="large" />
-        </div>
+        {products?.length > 0 && (
+          <div className="delete-icon">
+            <DeleteIcon onClick={() => setopenPopover(true)} fontSize="large" />
+          </div>
+        )}
       </div>
       {openPopover && products?.length > 0 && (
         <div className="popover">
@@ -82,7 +85,7 @@ function FavoritsPage() {
         </div>
       )}
       <div className="fav-ProductList">
-        <ProductList products={products} showAllProduts={false} />
+        <ProductList setProducts = {(arr : any) => setproducts(arr)} products={products} showAllProduts={false} />
       </div>
     </div>
   );

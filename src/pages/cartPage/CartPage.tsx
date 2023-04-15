@@ -123,9 +123,9 @@ function CartPage() {
             لديك <span>{products?.length}</span> عناصر في السلة
           </h3>
         </div>
-        <div className="delete-icon">
+        {(products.length > 0) && <div className="delete-icon">
           <DeleteIcon onClick={() => setopenPopover(true)} fontSize="large" />
-        </div>
+        </div>}
       </div>
       {openPopover && products?.length > 0 && (
         <div className="popover">

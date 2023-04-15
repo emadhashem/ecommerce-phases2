@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import GlobalLayOut from "./layouts/globalLayout/GlobalLayOut";
@@ -21,9 +21,19 @@ import ProtectedRoute from "./pages/protectedRoute/ProtectedRoute";
 import OrderDetailsPage from "./pages/orderDetailsPage/OrderDetailsPage";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getExchangePrice } from "./api/coins/coins";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-
+  const [coins, setconins] = useState<any>([]);
+  useEffect(() => {
+    fetchCoins();
+  }, []);
+  async function fetchCoins() {
+    try {
+      const data = await getExchangePrice();
+      setconins(data.exchange_price);
+    } catch (error) {}
+  }
   if (SplashPage()) {
     return <SplashPage />;
   } else
@@ -35,7 +45,7 @@ function App() {
               <ToastContainer rtl={true} />
               <Routes>
                 {/* <Route path="/home" element={<MainPage />} /> */}
-                <Route path="/" element={<MainPage />} />
+                <Route path="/" element={<MainPage coins = {coins} />} />
                 <Route path="/search/:text" element={<SearchPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />

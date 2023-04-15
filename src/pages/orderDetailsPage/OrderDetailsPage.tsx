@@ -36,7 +36,7 @@ const OrderDetailsPage = () => {
       const data = await getOrderData(order_id, userToken);
       setorder(data.order);
     } catch (error: any) {
-      alert(error.message);
+      // alert(error.message);
     }
   }
 

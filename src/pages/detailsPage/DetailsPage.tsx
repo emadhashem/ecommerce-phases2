@@ -55,7 +55,7 @@ const DetailsPage = () => {
         const data = await getOtherProductsByProductId(product_id, userToken);
         setproducts(data.other_product);
       } catch (error: any) {
-        alert(error.message);
+        // alert(error.message);
       }
     }
     if (userToken) {
@@ -77,7 +77,7 @@ const DetailsPage = () => {
       );
       handleClose();
     } catch (error: any) {
-      alert(error.message);
+      // alert(error.message);
     }
   }
   const handleOpen = () => {
@@ -131,7 +131,7 @@ const DetailsPage = () => {
             <div className="title">
               <ArrowDropDownRoundedIcon className="icon" />
               {/*  */}
-              <h3> {`:اجهزة ${product.category_name} أخرى`} </h3>
+              <h3> {`: ${product.category_name} أخرى`} </h3>
             </div>
             <ProductList products={products} showAllProduts={false} />
           </div>

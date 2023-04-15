@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "../../contexts/darkModeContext/darkModeContext";
 import "./mainPageTable.scss";
 
-const MainPageTable = () => {
+const MainPageTable = ({ coins }: any) => {
   const { darkMode } = useContext(DarkModeContext);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -67,23 +67,28 @@ const MainPageTable = () => {
         >
           <TableHead>
             <TableRow>
-              <StyledTableCell align="right">دولار قامشلي</StyledTableCell>
-              <StyledTableCell align="right">دولار دمشق</StyledTableCell>
-              <StyledTableCell align="right">دولار حلب</StyledTableCell>
-              <StyledTableCell align="right">دولار إدلب</StyledTableCell>
+              {coins.map((coin: any) => (
+                <StyledTableCell>
+                  {coin.exchange_price_city_coin}
+                </StyledTableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
+            <StyledTableRow>
+              {coins.map((coin: any) => (
+                <StyledTableCell align="right">
+                  {coin.exchange_price_buy_price}
                 </StyledTableCell>
-                <StyledTableCell align="right">{row.calories}</StyledTableCell>
-                <StyledTableCell align="right">{row.fat}</StyledTableCell>
-                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              </StyledTableRow>
-            ))}
+              ))}
+            </StyledTableRow>
+            <StyledTableRow>
+              {coins.map((coin: any) => (
+                <StyledTableCell align="right">
+                  {coin.exchange_price_sell_price}
+                </StyledTableCell>
+              ))}
+            </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>

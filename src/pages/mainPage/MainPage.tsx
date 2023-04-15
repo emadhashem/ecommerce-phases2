@@ -10,7 +10,7 @@ import { UserContext } from "../../contexts/category/user.context";
 import { getPorductsBySubCategory } from "../../api/subcategoies/sub_categories";
 import MainPageTable from "./MainPageTable";
 
-function MainPage() {
+function MainPage({ coins }: any) {
   const [products, setproducts] = useState<any>([]);
   const { categoryId, userToken } = useContext(UserContext);
   useEffect(() => {
@@ -31,7 +31,7 @@ function MainPage() {
       <div>
         <MainSwiper />
         <Search />
-        <MainPageTable />
+        <MainPageTable coins = {coins} />
         <MostSaledSwiper />
         <div>
           <CategorySwiper />
