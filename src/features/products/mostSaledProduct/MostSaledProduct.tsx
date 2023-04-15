@@ -14,16 +14,16 @@ function MostSaledProduct({ onCartClick, product, onOpenProuctPage }: any) {
         onClick={() => onOpenProuctPage(product.product_id)}
       />
       <div className="product-footer">
-        <div className="product-icon" onClick={onCartClick}>
-          <AddShoppingCartIcon className="icon" />
-        </div>
-        <div
-          className="product-info"
+        <p
+          className="product-title"
           onClick={() => onOpenProuctPage(product.product_id)}
         >
-          <span className="product-name">
-            {handelResult(product.product_name, 15)}
-          </span>
+          {product.product_name}
+        </p>
+        <div className="product-info">
+          <div className="product-icon" onClick={onCartClick}>
+            <AddShoppingCartIcon className="icon" />
+          </div>
           <span>{productCoin(product)}</span>
         </div>
       </div>
