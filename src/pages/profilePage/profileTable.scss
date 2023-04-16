@@ -36,8 +36,8 @@
       background-color: themed("bgSoft");
       overflow: hidden;
     }
-    .css-m0bqz3-MuiTableCell-root-MuiTablePagination-root {
-      border-bottom: none;
+    .MuiTablePagination-root {
+      border-bottom: none !important;
       color: themed("textColor");
     }
     .css-levciy-MuiTablePagination-displayedRows {
@@ -60,10 +60,10 @@
         text-align: center;
       }
     }
-
     .MuiTableBody-root {
-      .css-pnm1b2-MuiTableCell-root,
-      .css-10gy0os-MuiTableCell-root {
+      td,
+      tr,
+      th {
         color: themed("textColor");
         text-align: right;
         font-family: "Cairo";
@@ -74,7 +74,26 @@
         text-align: center;
         padding: 6px 10px;
         overflow: hidden;
+        &:last-child {
+          border-left: 0 !important;
+        }
       }
     }
+
+    // .MuiTableBody-root {
+    //   .css-pnm1b2-MuiTableCell-root,
+    //   .css-10gy0os-MuiTableCell-root {
+    //     color: themed("textColor");
+    //     text-align: right;
+    //     font-family: "Cairo";
+    //     font-style: normal;
+    //     font-weight: 500;
+    //     font-size: 12px;
+    //     line-height: 19px;
+    //     text-align: center;
+    //     padding: 6px 10px;
+    //     overflow: hidden;
+    //   }
+    // }
   }
 }

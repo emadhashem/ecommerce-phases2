@@ -3,7 +3,8 @@
 .profilePage-container {
   @include themify($themes) {
     width: 100%;
-    height: 85%;
+    // height: 100vh;
+    // height: 85%;
     // height: 100%;
     // display: grid;
     // grid-template-columns: 100%;
@@ -13,20 +14,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 30px;
     position: relative;
-    @include md_mobile {
-      height: 110%;
-      gap: 20px;
-    }
+    // @include mobile {
+    //   height: 85vh;
+    //   gap: 20px;
+    // }
 
-    @include xs_mobile {
-      height: 130%;
-    }
+    // @include xs_mobile {
+    //   height: 110vh;
+    // }
+    // @include sm_mobile {
+    //   height: 110vh;
+    // }
 
     .profile-header {
-      height: 80%;
+      // height: 80%;
       font-family: "Cairo";
       font-style: normal;
       width: 95%;
@@ -89,12 +93,17 @@
           color: #fff620;
         }
       }
+    }
 
+    .profile-table {
+      width: 95%;
+      margin: 0 auto;
+      direction: rtl;
       .orders {
         padding: 2px 0px;
         .title {
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: row;
           width: 100%;
           margin-left: 5px;
           .icon {
@@ -108,16 +117,6 @@
             text-align: right;
             color: themed("textColor");
           }
-        }
-
-        .error-message {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          margin-top: 150px;
-          font-size: 20px;
-          color: themed("orangeBlueIcons");
         }
 
         .ordersDetails-container {
@@ -162,11 +161,20 @@
           }
         }
       }
+      .error-message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 150px;
+        font-size: 20px;
+        color: themed("orangeBlueIcons");
+      }
     }
 
     .profile-footer {
-      height: 20%;
-      width: 100%;
+      // height: 20%;
+      // width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -175,7 +183,7 @@
       font-family: "Cairo";
       font-style: normal;
       color: themed("textColor");
-      margin-top: 20px;
+      margin-top: 60px;
       @include sm_mobile {
         margin-bottom: 10px;
       }

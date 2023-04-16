@@ -132,22 +132,24 @@ const ProfilePage = () => {
             )}
             {/* <CiDark className="icon" /> */}
           </div>
+        </div>
+        <div className="profile-table">
           <div className="orders">
             <div className="title">
               <ArrowDropDownRoundedIcon className="icon" />
-              <h3>:الطلبات السابقة</h3>
+              <h3>الطلبات السابقة:</h3>
             </div>
-            {previousOrderData && previousOrderData.length > 0 ? (
-              <div className="ordersDetails-container">
-                <ProfileTable previousOrderData={previousOrderData} />
-              </div>
-            ) : (
-              <div className="error-message">
-                <SentimentVeryDissatisfiedIcon fontSize="large" />
-                <p> لا توجد اي طلبات سابقة </p>
-              </div>
-            )}
           </div>
+          {previousOrderData && previousOrderData.length > 0 ? (
+            <div className="ordersDetails-container">
+              <ProfileTable previousOrderData={previousOrderData} />
+            </div>
+          ) : (
+            <div className="error-message">
+              <SentimentVeryDissatisfiedIcon fontSize="large" />
+              <p> لا توجد اي طلبات سابقة </p>
+            </div>
+          )}
         </div>
         <div className="profile-footer">
           <div className="footer-title">

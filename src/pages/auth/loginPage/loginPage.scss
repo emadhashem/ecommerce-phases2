@@ -51,18 +51,24 @@
           width: 100%;
         }
       }
-      .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+      .MuiInputBase-input {
         color: themed("blackGray");
         &::placeholder {
           color: themed("textColor");
         }
       }
-      .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-        color: themed("blackGray");
-        &::placeholder {
-          color: themed("textColor");
-        }
-      }
+      // .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+      //   color: themed("blackGray");
+      //   &::placeholder {
+      //     color: themed("textColor");
+      //   }
+      // }
+      // .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+      //   color: themed("blackGray");
+      //   &::placeholder {
+      //     color: themed("textColor");
+      //   }
+      // }
       .input fieldset {
         height: 55px;
         border: 1px solid themed("border");
