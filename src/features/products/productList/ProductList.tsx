@@ -124,7 +124,7 @@ function ProductList({
       {showAllProduts && (
         <div className="btn">
           <Button variant="contained" onClick={() => navigate("/allProducts")}>
-            <span>...عرض الكل</span>
+            <span>عـرض الكـل</span>
           </Button>
         </div>
       )}

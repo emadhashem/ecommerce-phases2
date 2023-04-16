@@ -19,7 +19,7 @@
     justify-items: center;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 
     // .card {
     //   background: var(--color-white);
@@ -57,8 +57,9 @@
     justify-content: center;
     padding-bottom: 15px;
     button {
-      width: 98px;
+      width: 95%;
       height: 34px;
+      margin: 0 auto;
       border-radius: 10px;
       background: #2c7be5;
       border: none;
