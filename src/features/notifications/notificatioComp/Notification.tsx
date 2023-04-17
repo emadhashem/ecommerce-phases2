@@ -35,7 +35,7 @@ function Notification({ seen, description, notification }: any) {
           <span>قبل {returnTime}</span>
           <p>{description}</p>
         </div>
-        <div>
+        <div className="icon-wrapper">
           <FiberManualRecordRoundedIcon
             className={seen ? "dont-icon-seen" : "dont-icon-unseen"}
           />

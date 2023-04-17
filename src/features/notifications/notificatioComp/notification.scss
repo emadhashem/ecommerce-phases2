@@ -10,11 +10,19 @@
     height: max-content;
     padding: 5px 0px;
     .notifcation-img {
+      width: 30%;
       border-radius: 10px;
       overflow: hidden;
-      margin: 7px;
+      margin: 7px auto;
+      @include tablet {
+        width: 50%;
+      }
+      @include mobile {
+        width: 70%;
+      }
+
       img {
-        width: 60%;
+        width: 100%;
         height: 100%;
         object-fit: contain;
       }
@@ -59,11 +67,17 @@
         }
       }
 
-      .dont-icon-unseen {
-        color: #2c7be5;
-      }
-      .dont-icon-seen {
-        color: #c0d0e6;
+      .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .dont-icon-unseen {
+          color: #2c7be5;
+        }
+        .dont-icon-seen {
+          color: #c0d0e6;
+        }
       }
     }
   }
