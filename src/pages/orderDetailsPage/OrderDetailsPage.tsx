@@ -150,7 +150,7 @@ const OrderDetailsPage = () => {
             </p>
             <div className="notes">
               <span>الملاحظات :</span>
-              <p>{order.note ? order.note : "لا يوجد ملاحظات"} </p>
+              <p>{order.note ? order.note : "لا توجد ملاحظات"} </p>
             </div>
             {order.product && order.product.length > 0 ? (
               <div className="orders-table">

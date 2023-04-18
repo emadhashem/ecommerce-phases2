@@ -4,11 +4,12 @@
   @include themify($themes) {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 80% 20%;
-    grid-column-gap: 0px;
-    grid-row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    position: relative;
 
     .OrderDetails-header {
       display: flex;
@@ -120,6 +121,7 @@
 
       .orders-table {
         width: 100%;
+        height: max-content;
       }
 
       .error-message {
@@ -140,10 +142,16 @@
       align-items: center;
       justify-content: center;
       gap: 5px;
+      margin-top: 60px;
       font-family: "Cairo";
       font-style: normal;
       color: themed("textColor");
+
+      @include mobile {
+        margin-top: 70px;
+      }
       @include sm_mobile {
+        margin-top: 40px;
         margin-bottom: 10px;
       }
 
