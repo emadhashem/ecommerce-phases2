@@ -127,60 +127,6 @@ const OrderDetailsPage = () => {
   return (
     order && (
       <React.Fragment>
-        {/* <Modal open={openPrintModal} onClose={handleClosePrintModal}>
-          <div>
-            <div style={{ direction: "rtl" }}>
-              <table>
-                <thead>
-                  <th>اسم المنتج</th>
-                  <th>الصنف </th>
-                  <th>العدد </th>
-                  <th>السعر </th>
-                  <th>العملة </th>
-                  <th>الصورة </th>
-                </thead>
-                <tbody>
-                  {order.product.map((product: any) => (
-                    <tr>
-                      <td>{product.product_name}</td>
-                      <td>{product.sub_category_name}</td>
-                      <td>{product.product_count}</td>
-                      <td>{productCoinInTable(product).price}</td>
-                      <td>{productCoinInTable(product).coin}</td>
-                      <td>
-                        <img
-                          style={{
-                            width: 15,
-                            height: 15,
-                          }}
-                          src={getImg(product.product_photo_url)}
-                          alt=""
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <Stack>
-              <Button
-                onClick={() => {
-                  handleThePrint();
-                  handleClosePrintModal();
-                }}
-              >
-                Print
-              </Button>
-              <Button
-                onClick={() => {
-                  handleClosePrintModal();
-                }}
-              >
-                Cancel
-              </Button>
-            </Stack>
-          </div>
-        </Modal> */}
         <OrderDetailsNavBar />
         <div className="OrderDetailsPage-container">
           <div className="OrderDetails-header" ref={printRef}>
