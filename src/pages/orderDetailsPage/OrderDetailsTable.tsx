@@ -103,7 +103,7 @@ const OrderDetailsTable = ({ products = [], productCoinInTable }: any) => {
                 {productCoinInTable(item).coin}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <img width="50" height="50"  src={getImg(item.product_photo_url)} alt="" />
+                <img className="table-img" width="50" height="50"  src={getImg(item.product_photo_url)} alt="" />
               </StyledTableCell>
             </StyledTableRow>
           ))}
