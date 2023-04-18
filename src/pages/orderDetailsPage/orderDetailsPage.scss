@@ -3,13 +3,22 @@
 .OrderDetailsPage-container {
   @include themify($themes) {
     width: 100%;
-    height: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 30px;
+    gap: 100px;
     position: relative;
+    @include mobile{
+      gap: 200px;
+    }
+    @include xs_mobile{
+      gap: 40px;
+    }
+    @include sm_mobile{
+      gap: 40px;
+    }
 
     .OrderDetails-header {
       display: flex;
