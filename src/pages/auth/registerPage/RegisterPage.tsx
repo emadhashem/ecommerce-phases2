@@ -43,8 +43,8 @@ function RegisterPage() {
     }
     fetchCities();
   }, []);
-  const autoClose = 1500
-  const registerSuccess = 'تم بنجاح'
+  const autoClose = 1500;
+  const registerSuccess = "تم بنجاح";
   const notify = (message: string, type: number) => {
     switch (type) {
       case 0:
@@ -80,7 +80,7 @@ function RegisterPage() {
   }
   async function handleRegister() {
     if (city === "-1") {
-      return alert("PLEASE CHOOSE CITY");
+      // return alert("PLEASE CHOOSE CITY");
     }
     try {
       setloading(true);
@@ -103,10 +103,10 @@ function RegisterPage() {
       const data = await postRegister(formData);
       setUserToken(data.customer.remember_token);
       setUsername(data.customer.customer_name);
-      notify(registerSuccess , 0)
+      notify(registerSuccess, 0);
       setloading(false);
     } catch (error: any) {
-      notify(error.message , 1);
+      notify(error.message, 1);
       setloading(false);
     }
   }
@@ -151,7 +151,7 @@ function RegisterPage() {
           <TextField
             sx={{ width: "351px", height: "40px" }}
             required
-            placeholder="الهاتف"
+            placeholder="الموبايل"
             value={phone}
             onChange={(e) => setphone(e.target.value)}
           />
@@ -162,7 +162,7 @@ function RegisterPage() {
             required
             type="email"
             id="email"
-            placeholder="البريد"
+            placeholder="البريد الالكتروني (حقل اختياري)"
             value={email}
             onChange={(e) => setemail(e.target.value)}
           />
@@ -187,7 +187,7 @@ function RegisterPage() {
             onChange={(e) => setpassword2(e.target.value)}
           />
         </div>
-        <div className="input">
+        {/* <div className="input">
           <TextField
             sx={{ width: "351px", height: "40px" }}
             required
@@ -214,7 +214,7 @@ function RegisterPage() {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
       </div>
       <div>
         {loading ? (
