@@ -75,7 +75,7 @@ function CartListItem({
       </div>
       <div className="single-product">
         <div className="product-title">
-          <p className="title">{handelResult(product.product_name, 17)}</p>
+          <p className="title">{product.product_name}</p>
           <p>{productCoinInCart(product)}</p>
         </div>
         <div className="img-container">
