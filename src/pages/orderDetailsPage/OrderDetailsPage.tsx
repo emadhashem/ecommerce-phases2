@@ -42,6 +42,73 @@ const OrderDetailsPage = () => {
 
   const handleThePrint = useReactToPrint({
     content: () => printRef.current,
+    pageStyle: `@media print {
+      html, body { height: initial !important; overflow: initial !important; }
+      @page {
+        size: auto;
+        margin: none;
+      }
+      .OrderDetailsPage-container{
+        background: #fff;
+      }
+      .table-img{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+      }
+      tr,td,th{
+        background: #fff;
+        text-align: center !important;
+        font-size: 16px !important;
+        border-left: 1px solid #000 !important;
+      }
+      tbody{
+        background: #fff;
+        height: 100px;
+      }
+      thead{
+        background: #fff;
+        height: 50px;
+        border-bottom: 2px #000 !important;
+      }
+      table{
+        border: 1px solid #000;
+        border-radius: 5px;
+        background: #fff !important;
+      }
+      .first-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .order {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          .icon-wrapper {
+            display: none;
+          }
+
+          .order-state {
+            width: 85px;
+            height: 32px;
+            font-family: "Cairo";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 28px;
+            text-align: center;
+            color: #0bc878;
+            background: rgba(11, 200, 120, 0.2);
+            border-radius: 23px;
+          }
+        }
+      }
+      `,
   });
 
   function productCoinInTable(product: any) {
@@ -60,63 +127,9 @@ const OrderDetailsPage = () => {
   return (
     order && (
       <React.Fragment>
-        {/* <Modal open={openPrintModal} onClose={handleClosePrintModal}>
-          <div>
-            <div style={{ direction: "rtl" }}>
-              <table>
-                <thead>
-                  <th>اسم المنتج</th>
-                  <th>الصنف </th>
-                  <th>العدد </th>
-                  <th>السعر </th>
-                  <th>العملة </th>
-                  <th>الصورة </th>
-                </thead>
-                <tbody>
-                  {order.product.map((product: any) => (
-                    <tr>
-                      <td>{product.product_name}</td>
-                      <td>{product.sub_category_name}</td>
-                      <td>{product.product_count}</td>
-                      <td>{productCoinInTable(product).price}</td>
-                      <td>{productCoinInTable(product).coin}</td>
-                      <td>
-                        <img
-                          style={{
-                            width: 15,
-                            height: 15,
-                          }}
-                          src={getImg(product.product_photo_url)}
-                          alt=""
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <Stack>
-              <Button
-                onClick={() => {
-                  handleThePrint();
-                  handleClosePrintModal();
-                }}
-              >
-                Print
-              </Button>
-              <Button
-                onClick={() => {
-                  handleClosePrintModal();
-                }}
-              >
-                Cancel
-              </Button>
-            </Stack>
-          </div>
-        </Modal> */}
         <OrderDetailsNavBar />
-        <div className="OrderDetailsPage-container" ref = {printRef} >
-          <div className="OrderDetails-header">
+        <div className="OrderDetailsPage-container">
+          <div className="OrderDetails-header" ref={printRef}>
             <div className="first-row">
               <p>
                 رقم الطلبية: <span>{order_id}</span>
