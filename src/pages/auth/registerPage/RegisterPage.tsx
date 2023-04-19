@@ -44,7 +44,7 @@ function RegisterPage() {
     fetchCities();
   }, []);
   const autoClose = 1500;
-  const registerSuccess = "تم بنجاح";
+  const registerSuccess = "تم التسجيل بنجاح";
   const notify = (message: string, type: number) => {
     switch (type) {
       case 0:

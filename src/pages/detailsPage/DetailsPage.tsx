@@ -66,7 +66,7 @@ const DetailsPage = () => {
       cur = false;
     };
   }, [userToken, product_id]);
-  const AddToCartSuccess = "تم اضافة المنتج";
+  const AddToCartSuccess = "تم اضافة المنتج الى السلة";
   const autoClose = 1500;
   const notify = (message: string, type: number) => {
     switch (type) {

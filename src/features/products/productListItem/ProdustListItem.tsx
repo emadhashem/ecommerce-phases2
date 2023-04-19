@@ -28,9 +28,9 @@ function ProductListItem({
   const [favoriteLoading, setfavoriteLoading] = useState(false);
   const {fetchLogOut} = useLogOut()
   const navigate = useNavigate();
-  const removeFromFavoriteSuccess = "تم حذف العنصر من المفضلة";
+  const removeFromFavoriteSuccess = "تم إزالة العنصر من المفضلة";
   const removeFromFavoriteFail = "حدث خطا";
-  const addFromFavoriteSuccess = "تم اضافة العنصر من المفضلة";
+  const addFromFavoriteSuccess = "تم اضافة العنصر الى المفضلة";
   const addFromFavoriteFail = "حدث خطا";
   const autoClose = 1500;
   const notify = (message: string, type: number) => {

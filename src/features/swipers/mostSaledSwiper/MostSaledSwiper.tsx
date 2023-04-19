@@ -19,8 +19,8 @@ function MostSaledSwiper() {
   const [open, setOpen] = useState(false);
   const [products, setproducts] = useState<any[]>([]);
   const { userToken } = useContext(UserContext);
-  const [idxOfMadlProduct, setidxOfMadlProduct] = useState(1)
-  const {fetchLogOut} = useLogOut()
+  const [idxOfMadlProduct, setidxOfMadlProduct] = useState(1);
+  const { fetchLogOut } = useLogOut();
   const navigate = useNavigate();
   const handleOpen = () => {
     setOpen(true);
@@ -40,7 +40,7 @@ function MostSaledSwiper() {
       navigate(`/details/${id}`);
     }
   }
-  const AddToCartSuccess = "تم اضافة المنتج";
+  const AddToCartSuccess = "تم اضافة المنتج الى السلة";
   const autoClose = 1500;
   const notify = (message: string, type: number) => {
     switch (type) {
@@ -71,10 +71,10 @@ function MostSaledSwiper() {
         userToken
       );
       handleClose();
-      notify(AddToCartSuccess , 0);
+      notify(AddToCartSuccess, 0);
     } catch (error: any) {
-      notify(error.message , 1);
-      fetchLogOut()
+      notify(error.message, 1);
+      fetchLogOut();
     }
   }
   return (
@@ -96,14 +96,14 @@ function MostSaledSwiper() {
         freeMode={true}
         className="mySwiper"
       >
-        {products.map((item: any, idx : number) => (
+        {products.map((item: any, idx: number) => (
           <SwiperSlide key={item.product_id}>
             <MostSaledProduct
               onOpenProuctPage={openProductPage}
               product={item}
               onCartClick={() => {
-                handleOpen()
-                setidxOfMadlProduct(idx)
+                handleOpen();
+                setidxOfMadlProduct(idx);
               }}
             />
           </SwiperSlide>
