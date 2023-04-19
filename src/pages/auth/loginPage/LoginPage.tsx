@@ -17,6 +17,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../../../api/auth/login";
 import { UserContext } from "../../../contexts/category/user.context";
 import { textAlign } from "html2canvas/dist/types/css/property-descriptors/text-align";
+import { toast } from "react-toastify";
 
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +36,27 @@ function LoginPage() {
   ) => {
     event.preventDefault();
   };
+
+  const autoClose = 1500;
+  const notify = (message: string, type: number) => {
+    switch (type) {
+      case 0:
+        return toast.success(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      case 1:
+        return toast.error(message, {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+      default:
+        return toast("اختر نوع الرسالة", {
+          autoClose: autoClose,
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
+    }
+  };
   async function handleLogin() {
     try {
       setloading(true);
@@ -45,7 +67,7 @@ function LoginPage() {
     } catch (error: any) {
       setloading(false);
 
-      alert(error.message);
+      notify(error.message, 1);
     }
   }
   return (
