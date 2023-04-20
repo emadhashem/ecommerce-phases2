@@ -24,7 +24,7 @@ function MostSaledProduct({ onCartClick, product, onOpenProuctPage }: any) {
           <div className="product-icon" onClick={onCartClick}>
             <AddShoppingCartIcon className="icon" />
           </div>
-          <span>{productCoin(product)}</span>
+          <p>{productCoin(product)}</p>
         </div>
       </div>
     </div>
