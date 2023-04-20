@@ -193,7 +193,7 @@ const OrderDetailsPage = () => {
                 <FiPhoneCall />
               </a>
               <a
-                href="https://wa.me/+963932523445"
+                href="https://wa.me/+932555555555"
                 target="_blank"
                 rel="noreferrer"
               >
