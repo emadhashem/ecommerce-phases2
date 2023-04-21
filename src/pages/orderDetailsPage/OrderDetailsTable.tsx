@@ -79,13 +79,7 @@ const OrderDetailsTable = ({ products = [], productCoinInTable }: any) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {(rowsPerPage > 0
-            ? products.slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage
-              )
-            : products
-          ).map((item: any) => (
+          {products.map((item: any) => (
             <StyledTableRow key={item.product_id}>
               <StyledTableCell component="th" scope="row">
                 {item.product_name}
@@ -103,12 +97,18 @@ const OrderDetailsTable = ({ products = [], productCoinInTable }: any) => {
                 {productCoinInTable(item).coin}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <img className="table-img" width="50" height="50"  src={getImg(item.product_photo_url)} alt="" />
+                <img
+                  className="table-img"
+                  width="50"
+                  height="50"
+                  src={getImg(item.product_photo_url)}
+                  alt=""
+                />
               </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
-        {products.length > 5 && (
+        {/* {products.length > 5 && (
           <TableFooter>
             <TableRow>
               <TablePagination
@@ -123,7 +123,7 @@ const OrderDetailsTable = ({ products = [], productCoinInTable }: any) => {
               />
             </TableRow>
           </TableFooter>
-        )}
+        )} */}
       </Table>
     </TableContainer>
   );
