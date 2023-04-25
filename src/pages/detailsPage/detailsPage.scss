@@ -6,6 +6,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: scroll;
+    position: relative;
+    margin-top: 80px;
+
 
     .title {
       display: flex;

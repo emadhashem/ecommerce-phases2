@@ -6,7 +6,7 @@ import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import ProductList from "../../features/products/productList/ProductList";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   getOtherProductsByProductId,
   getProductById,
@@ -110,7 +110,7 @@ const DetailsPage = () => {
   };
   return (
     product && (
-      <>
+      <React.Fragment>
         <DetailsNavBar />
         <div className="detailsPage-container">
           <ModalOverLay open={open} handleClose={handleClose}>
@@ -158,7 +158,7 @@ const DetailsPage = () => {
             <ProductList products={products} showAllProduts={false} />
           </div>
         </div>
-      </>
+      </React.Fragment>
     )
   );
 };

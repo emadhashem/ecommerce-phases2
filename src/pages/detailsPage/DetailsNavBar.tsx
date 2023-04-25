@@ -6,7 +6,7 @@ import "./detailsNavBar.scss";
 function DetailsNavBar() {
   const navigate = useNavigate();
   return (
-    <div className="detailsNavBar-container">
+    <header className="detailsNavBar-container">
       <div className="rapper">
         <div className="back-icon">
           <ArrowBackRoundedIcon
@@ -21,7 +21,7 @@ function DetailsNavBar() {
           </p>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

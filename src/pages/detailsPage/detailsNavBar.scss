@@ -11,7 +11,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-
+    position: absolute;
+    z-index: 2;
     .rapper {
       width: 95%;
       margin-top: 10px;
