@@ -10,13 +10,13 @@
     justify-content: flex-start;
     gap: 100px;
     position: relative;
-    @include mobile{
-      gap: 200px;
+    @include mobile {
+      gap: 10px;
     }
-    @include xs_mobile{
+    @include xs_mobile {
       gap: 40px;
     }
-    @include sm_mobile{
+    @include sm_mobile {
       gap: 40px;
     }
 
@@ -74,7 +74,7 @@
             height: 30px;
             background: rgba(255, 99, 71, 0.2);
             border-radius: 50%;
-            
+
             .printer-icon {
               display: block;
               width: 18px;
@@ -132,6 +132,8 @@
       .orders-table {
         width: 100%;
         height: max-content;
+        max-height: 400px;
+        overflow: scroll;
       }
 
       .error-message {
