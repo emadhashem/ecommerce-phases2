@@ -98,7 +98,7 @@ const ProfilePage = () => {
 
   return (
     <React.Fragment>
-      <ProfileNavBar />
+      
       <div className="profilePage-container">
         <div className="profile-header">
           <div className="profile-edit">

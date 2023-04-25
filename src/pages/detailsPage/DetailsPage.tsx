@@ -59,9 +59,9 @@ const DetailsPage = () => {
         // alert(error.message);
       }
     }
-    if (userToken) {
-      if (cur) fetchOtherPorductsbyProductuId();
-    }
+
+    if (cur) fetchOtherPorductsbyProductuId();
+
     return () => {
       cur = false;
     };
@@ -97,7 +97,7 @@ const DetailsPage = () => {
         userToken
       );
       handleClose();
-      notify(AddToCartSuccess , 0);
+      notify(AddToCartSuccess, 0);
     } catch (error: any) {
       // alert(error.message);
     }

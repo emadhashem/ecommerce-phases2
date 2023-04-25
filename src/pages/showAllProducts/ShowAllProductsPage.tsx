@@ -22,7 +22,6 @@ const ShowAllProductsPage = () => {
 
   return (
     <>
-      <ShowAllProductsNavBar />
       <div className="ShowAllProductsPage-container">
         <div className="container-title">
           <div className="title">
